@@ -6,9 +6,9 @@ import {
   FlexEvenlyContainer,
   MainContent,
 } from '../elements/containers';
+import { Button } from '../elements/buttons';
 import { PageHeader, Text } from '../elements/text';
 import { HEADER } from '../utils';
-import Subscribe from './contact';
 
 const Header = () => (
   <BackgroundContainer>
@@ -19,7 +19,9 @@ const Header = () => (
         <MainContent>
           <PageHeader>{HEADER.title}</PageHeader>
           <Text style={{ margin: '1rem 0' }}>{HEADER.summary}</Text>
-          <Subscribe isOutline={false} />
+          <a href="mailto:ethan.blumenthal@gmail.com" target="_blank">
+            <Button>Get in touch</Button>
+          </a>
         </MainContent>
       </FlexEvenlyContainer>
     </ContentContainer>

@@ -1,4 +1,4 @@
-import { IProject, IService, IHeader, ISkill, ICertification } from './models';
+import { IProject, IHeader, ISkill, IQualification } from './models';
 
 export const PAGES = [
   { title: 'Home', slug: '/' },
@@ -34,7 +34,7 @@ export const EXPERIENCE = [
   },
 ];
 
-export const CERTIFICATIONS: ICertification[] = [
+export const QUALIFICATIONS: IQualification[] = [
   {
     title: 'MS, Computer Science',
     description: 'University of Texas',
@@ -88,7 +88,6 @@ export const PROJECTS: IProject[] = [
     image: '/projects/nft-marketplace.png',
     tags: ['Solidity', 'Ethereum', 'ERC-721'],
     githubURL: 'https://github.com/ethanblumenthal/nft-marketplace',
-    appURL: 'https://github.com/ethanblumenthal/nft-marketplace',
   },
   {
     name: 'Go Blockchain',
@@ -97,7 +96,6 @@ export const PROJECTS: IProject[] = [
     image: '/projects/go-blockchain.png',
     tags: ['Go', 'Blockchain', 'Cryptography'],
     githubURL: 'https://github.com/ethanblumenthal/go-blockchain',
-    appURL: 'https://github.com/ethanblumenthal/go-blockchain',
   },
   {
     name: 'Rust Blockchain',

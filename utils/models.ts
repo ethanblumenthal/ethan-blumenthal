@@ -8,7 +8,7 @@ export interface IPost {
   isPublished: boolean;
 }
 
-export interface ICertification {
+export interface IQualification {
   title: string;
   description: string;
   link: string;

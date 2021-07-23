@@ -2,13 +2,15 @@ import Layout from '../components/layout';
 import Bio from '../components/bio';
 import Experience from '../components/experience';
 import Skillset from '../components/skillset';
-import Certifications from '../components/certifications';
+import Qualifications from '../components/qualifications';
 
-export default () => (
+const About = () => (
   <Layout pageTitle="About" description="About">
     <Bio />
     <Experience />
-    <Certifications />
+    <Qualifications />
     <Skillset />
   </Layout>
 );
+
+export default About;

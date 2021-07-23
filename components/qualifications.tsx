@@ -6,18 +6,18 @@ import {
   HeaderContainer,
   LgGridContainer,
 } from '../elements/containers';
-import { CERTIFICATIONS } from '../utils';
+import { QUALIFICATIONS } from '../utils';
 import { Bookmark, Code } from 'react-feather';
 
-const Certifications = () => (
+const Qualifications = () => (
   <BackgroundContainer>
     <ContentContainer>
       <HeaderContainer>
-        <SectionHeader>Certifications</SectionHeader>
+        <SectionHeader>Qualifications</SectionHeader>
       </HeaderContainer>
 
       <LgGridContainer>
-        {CERTIFICATIONS.map(({ title, description, link, icon }) => (
+        {QUALIFICATIONS.map(({ title, description, link, icon }) => (
           <a href={link} target="_blank" key={title}>
             <SmallCard>
               {icon === 'book' ? (
@@ -35,4 +35,4 @@ const Certifications = () => (
   </BackgroundContainer>
 );
 
-export default Certifications;
+export default Qualifications;

@@ -16,7 +16,7 @@ import { PageHeader } from '../elements/text';
 import { CenterContainer } from '../elements/containers';
 import { PROJECTS, IProject } from '../utils';
 
-export default () => (
+const Work = () => (
   <Layout pageTitle="Work" description="Work">
     <CenterContainer>
       <PageHeader style={{ margin: '2rem' }}>Work</PageHeader>
@@ -48,3 +48,5 @@ export default () => (
     ))}
   </Layout>
 );
+
+export default Work;

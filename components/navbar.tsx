@@ -5,8 +5,8 @@ import { Moon, Search, Sun } from 'react-feather';
 
 import { CardHeader } from '../elements/text';
 import { BackgroundContainer, FlexContainer, IconContainer } from '../elements/containers';
+import { OutlineButton } from '../elements/buttons';
 import { PAGES } from '../utils';
-import Contact from './contact';
 
 const UnorderedList = styled.ul`
   display: flex;
@@ -55,7 +55,9 @@ const NavBar = ({ theme, setTheme }) => {
           <IconContainer onClick={() => setTheme(!theme)}>
             {theme === 'dark' ? <Moon /> : <Sun />}
           </IconContainer>
-          <Contact isOutline />
+          <a href="mailto:ethan.blumenthal@gmail.com" target="_blank">
+            <OutlineButton>Get in touch</OutlineButton>
+          </a>
         </FlexContainer>
       </FlexContainer>
     </BackgroundContainer>
