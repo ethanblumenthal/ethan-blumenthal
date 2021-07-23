@@ -4,7 +4,7 @@ export const PAGES = [
   { title: 'Home', slug: '/' },
   { title: 'Blog', slug: '/blog' },
   { title: 'About', slug: '/about' },
-  { title: 'Projects', slug: '/projects' },
+  { title: 'Work', slug: '/work' },
 ];
 
 export const BIO = {
@@ -15,25 +15,22 @@ export const BIO = {
 };
 
 export const HEADER: IHeader = {
-  title: 'Welcome to Cryptonomics!',
-  subtitle: 'Why should you subscribe?',
+  title: "Hi, I'm Ethan!",
   image: '/logo.svg',
   summary:
     'The Internet was originally designed to be the ultimate economic leveler as everyone had an equal opportunity to access the world of digital information and commerce through their devices. However, this utopian vision was quickly corrupted when big technology companies realized that they could monopolize the most important resource of the internet age, data, and sell it to the highest bidder. The crypto revolution promises to return the Internet to its original roots by reimagining how humans interact with each other in a trustless environment enabled by blockchain technology. Crypto will be the largest disrupter of this decade, redistributing the concentration of wealth and power to the masses. Come join me in exploring and building the infinite frontier!',
-  substack:
-    "There are over 5000 tokens listed on CoinMarketCap already. With more being created everyday, finding the right long-term investments in this new economy can be overwhelming. Every week I send out an email newsletter called Cryptonomics via Substack where I dive deep into a token that I believe has tremendous potential. I provide you with in-depth research and analysis about the project's mission, team, technology, and outlook so that you fully understand the opportunity. The subscription also includes access to all previous reports as well as my Discord community where we share ideas and discuss interesting projects.",
 };
 
 export const EXPERIENCE = [
   {
+    title: `Rex`,
+    description: `Rex serves people across three primary verticals: technology, investments, and real estate. We're now launching 10 synergistic tech companies to disrupt real estate, better serve people, and create $1 trillion for shareholders. For the last 16 years our team has engaged in every facet of the real estate industry. We've built a broad understanding of the sector’s many unaddressed pain points, and the technology needed to bring real solutions to life in a $280T industry that has not been truly served by technology.`,
+    link: `https://www.rex.com/`,
+  },
+  {
     title: `Rightpoint`,
     description: `Rightpoint, a Genpact company (NYSE: G) is a global experience leader. Over 700 employees across 12 offices work with clients end-to-end, from defining and enabling vision, to ensuring ongoing market relevance. Our diverse teams lead with empathy, data and creativity—always in service of the experience. From whiteboard to roll-out, we help our clients embed experience across their operations from front to back office to accelerate digital transformation through a human-centric lens.`,
     link: `https://www.rightpoint.com/`,
-  },
-  {
-    title: `Zeitgeist`,
-    description: `Zeitgeist Artist Management was founded in 1999. Our intention is to help artists develop long-term careers in a manner that is consistent with their creative philosophy and vision. Trusted relationships with our clients and business associates, a forward-thinking approach to opportunities presented in the digital space, and a global perspective are valued by the entire team.`,
-    link: 'http://zeitgeistmanagement.com/',
   },
 ];
 
@@ -125,22 +122,5 @@ export const PROJECTS: IProject[] = [
     image: '/projects/decentralized-lottery.png',
     tags: ['Solidity', 'Ethereum', 'Chainlink'],
     githubURL: 'https://github.com/ethanblumenthal/decentralized-lottery',
-  },
-];
-
-export const SERVICES: IService[] = [
-  {
-    cta: 'Invest in Small Cap Gems',
-    subtext: 'TokenSet Investment Fund',
-    summary:
-      'Small cap gems are newer projects with a relatively small market cap. These tokens can have massive financial upside if you catch them before they take off. A TokenSet is a portfolio of cryptocurrencies that is represented by a single token which is tradeable on exchanges. It is similar to an index fund in traditional finance as you can invest in multiple stocks within a single asset. I actively manage the TokenSet and reinvest profits into other opportunities. By purchasing my TokenSet, you will gain exposure to the best up and coming projects in the industry while maintaining full transparency over your investment.',
-    link: 'https://www.tokensets.com/',
-  },
-  {
-    cta: 'Book a Crypto Consultation',
-    subtext: 'OpenLaw Personal Token',
-    summary:
-      'I offer consulting services focused on blockchain technology, decentralized finance, and derivative trading strategies. I can walk you through the core concepts and protocols of how crypto will affect you personally as well as your business. I created a personal token via OpenLaw which you can purchase on exchanges and redeem for my time. This allows for my consultations to be priced according to the market demand for my services. OpenLaw allows you to create real world legal agreements on Ethereum. Please reach out if you would like to discuss how I can help but please note that I cannot offer any financial advice.',
-    link: 'https://www.openlaw.io/',
   },
 ];

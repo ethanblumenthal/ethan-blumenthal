@@ -1,23 +1,28 @@
 import Image from 'next/image';
 
-import { BackgroundContainer, FlexEvenlyContainer, MainContent } from '../elements/containers';
-import { PageHeader, SectionHeader, Text } from '../elements/text';
+import {
+  BackgroundContainer,
+  ContentContainer,
+  FlexEvenlyContainer,
+  MainContent,
+} from '../elements/containers';
+import { PageHeader, Text } from '../elements/text';
 import { HEADER } from '../utils';
-import Subscribe from './subscribe';
+import Subscribe from './contact';
 
 const Header = () => (
   <BackgroundContainer>
-    <FlexEvenlyContainer>
-      <Image src={HEADER.image} alt={HEADER.title} width={400} height={400} />
+    <ContentContainer>
+      <FlexEvenlyContainer>
+        <Image src={HEADER.image} alt={HEADER.title} width={400} height={400} />
 
-      <MainContent>
-        <PageHeader>{HEADER.title}</PageHeader>
-        <Text style={{ margin: '1rem 0' }}>{HEADER.summary}</Text>
-        <SectionHeader>{HEADER.subtitle}</SectionHeader>
-        <Text style={{ margin: '1rem 0' }}>{HEADER.substack}</Text>
-        <Subscribe isOutline={false} />
-      </MainContent>
-    </FlexEvenlyContainer>
+        <MainContent>
+          <PageHeader>{HEADER.title}</PageHeader>
+          <Text style={{ margin: '1rem 0' }}>{HEADER.summary}</Text>
+          <Subscribe isOutline={false} />
+        </MainContent>
+      </FlexEvenlyContainer>
+    </ContentContainer>
   </BackgroundContainer>
 );
 

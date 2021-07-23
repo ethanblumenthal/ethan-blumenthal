@@ -25,7 +25,6 @@ export interface IProject {
   tags: string[];
   image: string;
   githubURL: string;
-  appURL?: string;
 }
 
 export interface IService {
@@ -37,8 +36,6 @@ export interface IService {
 
 export interface IHeader {
   title: string;
-  subtitle: string;
   summary: string;
   image: string;
-  substack: string;
 }
