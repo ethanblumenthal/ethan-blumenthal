@@ -37,20 +37,6 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="icon" href="/logo.svg" />
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
-          ></script>
-          <script
-            async
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-            
-              gtag('config', ${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID});`,
-            }}
-          />
         </Head>
         <body>
           <Main />
