@@ -1,20 +1,17 @@
 import Layout from '../components/layout';
 import Header from '../components/header';
-import RecentPosts from '../components/recent-posts';
-import { getAllPosts } from '../utils/api';
+import Bio from '../components/bio';
+import Experience from '../components/experience';
+import Skillset from '../components/skillset';
+import Qualifications from '../components/qualifications';
 
-const Home = ({ allPosts }) => (
+const Home = () => (
   <Layout pageTitle="Home" description="Home">
-    <Header />
-    <RecentPosts allPosts={allPosts} />
+    <Bio />
+    <Experience />
+    <Qualifications />
+    <Skillset />
   </Layout>
 );
 
 export default Home;
-
-export async function getStaticProps({ preview = false }) {
-  const allPosts = (await getAllPosts(preview)) ?? [];
-  return {
-    props: { allPosts },
-  };
-}

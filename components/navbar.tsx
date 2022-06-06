@@ -7,6 +7,7 @@ import { CardHeader } from '../elements/text';
 import { BackgroundContainer, FlexContainer, IconContainer } from '../elements/containers';
 import { OutlineButton } from '../elements/buttons';
 import { PAGES } from '../utils';
+import Image from 'next/image';
 
 const UnorderedList = styled.ul`
   display: flex;
@@ -32,10 +33,19 @@ const NavBar = ({ theme, setTheme }) => {
       <FlexContainer>
         <FlexContainer>
           <Link href="/">
-            <CardHeader style={{ cursor: 'pointer' }}>Ethan Blumenthal</CardHeader>
+            <>
+              <Image
+                src={'/logo.svg'}
+                alt={'Ethan Blumenthal'}
+                width={50}
+                height={50}
+                style={{ marginRight: '1rem' }}
+              />
+              <CardHeader style={{ cursor: 'pointer' }}>Ethan Blumenthal</CardHeader>
+            </>
           </Link>
 
-          <UnorderedList>
+          {/* <UnorderedList>
             {PAGES.map(({ title, slug }) => (
               <Link href={slug} key={slug}>
                 <ListItem style={{ color: router.pathname === slug ? '#5993C2' : '' }}>
@@ -43,15 +53,15 @@ const NavBar = ({ theme, setTheme }) => {
                 </ListItem>
               </Link>
             ))}
-          </UnorderedList>
+          </UnorderedList> */}
         </FlexContainer>
 
-        <FlexContainer style={{ width: '12rem' }}>
-          <Link href="/tags">
+        <FlexContainer style={{ width: '10rem' }}>
+          {/* <Link href="/tags">
             <IconContainer>
               <Search />
             </IconContainer>
-          </Link>
+          </Link> */}
           <IconContainer onClick={() => setTheme(!theme)}>
             {theme === 'dark' ? <Moon /> : <Sun />}
           </IconContainer>

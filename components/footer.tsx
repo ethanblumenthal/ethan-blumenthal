@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styled from 'styled-components';
-import { Phone, Mail, Linkedin, GitHub, MapPin, MessageCircle } from 'react-feather';
+import { Phone, Mail, Linkedin, GitHub, MapPin, Twitter } from 'react-feather';
 
 import {
   BackgroundContainer,
@@ -51,14 +51,14 @@ const Footer = () => (
           <StackContainer>
             <CardHeader style={{ marginBottom: '0.5rem', color: '#5993C2' }}>Follow Me</CardHeader>
 
+            <Anchor href="https://twitter.com/ethanblumenthal" target="_blank">
+              <Twitter />
+              <Text>Twitter</Text>
+            </Anchor>
+
             <Anchor href="https://www.linkedin.com/in/ethanblumenthal/" target="_blank">
               <Linkedin />
               <Text>LinkedIn</Text>
-            </Anchor>
-
-            <Anchor href="https://medium.com/@ethanblumenthal" target="_blank">
-              <MessageCircle />
-              <Text>Medium</Text>
             </Anchor>
 
             <Anchor href="https://github.com/ethanblumenthal" target="_blank">
