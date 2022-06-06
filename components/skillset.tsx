@@ -16,16 +16,6 @@ const Skillset = () => (
     <ContentContainer>
       <HeaderContainer>
         <SectionHeader>Skillset</SectionHeader>
-
-        <a
-          href="https://ethanblumenthal.s3.us-east-2.amazonaws.com/ethan_blumenthal_resume.pdf"
-          target="_blank"
-        >
-          <ArrowButtonRight>
-            View resume
-            <ArrowRight />
-          </ArrowButtonRight>
-        </a>
       </HeaderContainer>
 
       <LgGridContainer>

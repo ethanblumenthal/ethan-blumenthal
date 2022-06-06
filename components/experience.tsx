@@ -1,5 +1,5 @@
 import { BaseCard } from '../elements/cards';
-import { SectionHeader, CardHeader, Text } from '../elements/text';
+import { SectionHeader, CardHeader, Text, SubText } from '../elements/text';
 import {
   BackgroundContainer,
   ContentContainer,
@@ -10,6 +10,7 @@ import { EXPERIENCE } from '../utils';
 
 interface IExperience {
   title: string;
+  position: string;
   description: string;
   link: string;
 }
@@ -22,10 +23,11 @@ const Experience = () => (
       </HeaderContainer>
 
       <GridContainer>
-        {EXPERIENCE.map(({ title, description, link }: IExperience) => (
+        {EXPERIENCE.map(({ title, position, description, link }: IExperience) => (
           <a href={link} target="_blank" key={title}>
             <BaseCard>
-              <CardHeader style={{ marginBottom: '1rem' }}>{title}</CardHeader>
+              <CardHeader style={{ marginBottom: '0.25rem' }}>{title}</CardHeader>
+              <SubText style={{ marginBottom: '0.75rem' }}>{position}</SubText>
               <Text>{description}</Text>
             </BaseCard>
           </a>

@@ -7,9 +7,10 @@ import {
   MobileWrapper,
 } from '../elements/containers';
 import { PageHeader, Text } from '../elements/text';
-import { Button } from '../elements/buttons';
 import { RoundImage } from '../elements/images';
 import { BIO } from '../utils';
+import { ArrowButtonRight } from '../elements/buttons';
+import { ArrowRight } from 'react-feather';
 
 const Bio = () => (
   <BackgroundContainer>
@@ -24,7 +25,10 @@ const Bio = () => (
             href="https://ethanblumenthal.s3.us-east-2.amazonaws.com/ethan_blumenthal_resume.pdf"
             target="_blank"
           >
-            <Button>View resume</Button>
+            <ArrowButtonRight>
+              View resume
+              <ArrowRight />
+            </ArrowButtonRight>
           </a>
         </MainContent>
       </FlexEvenlyContainer>
