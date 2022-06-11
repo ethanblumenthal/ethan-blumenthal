@@ -34,14 +34,10 @@ const NavBar = ({ theme, setTheme }) => {
         <FlexContainer>
           <Link href="/">
             <>
-              <Image
-                src={'/logo.svg'}
-                alt={'Ethan Blumenthal'}
-                width={50}
-                height={50}
-                style={{ marginRight: '1rem' }}
-              />
-              <CardHeader style={{ cursor: 'pointer' }}>Ethan Blumenthal</CardHeader>
+              <Image src={'/logo.svg'} alt={'Ethan Blumenthal'} width={50} height={50} />
+              <CardHeader style={{ cursor: 'pointer', marginLeft: '1rem' }}>
+                Ethan Blumenthal
+              </CardHeader>
             </>
           </Link>
 

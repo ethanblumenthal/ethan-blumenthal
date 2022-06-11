@@ -66,7 +66,7 @@ export const QUALIFICATIONS: IQualification[] = [
 export const SKILLSET: ISkill[] = [
   {
     title: 'Languages',
-    skills: [, 'Go', 'Rust', 'TypeScript', 'Solidity'],
+    skills: [, 'Golang', 'Rust', 'TypeScript', 'Solidity'],
   },
   {
     title: 'Web',
