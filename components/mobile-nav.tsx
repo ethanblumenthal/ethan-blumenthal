@@ -82,8 +82,11 @@ const MobileNav = ({ theme, setTheme }) => {
           <Link href="/">
             <CardHeader>Ethan Blumenthal</CardHeader>
           </Link>
-          <OutlineButton onClick={() => openModal(true)}>Menu</OutlineButton>
-          {modal ? renderModal() : null}
+          <a href="mailto:ethan.blumenthal@gmail.com" target="_blank">
+            <OutlineButton>Contact</OutlineButton>
+          </a>
+          {/* <OutlineButton onClick={() => openModal(true)}>Menu</OutlineButton>
+          {modal ? renderModal() : null} */}
         </FlexContainer>
       </ContentContainer>
     </BackgroundContainer>
