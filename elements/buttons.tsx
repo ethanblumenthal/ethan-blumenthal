@@ -73,6 +73,7 @@ export const ArrowButton = styled.button`
   outline: none;
   display: flex;
   align-items: center;
+  padding: 0;
 
   & > svg {
     position: relative;

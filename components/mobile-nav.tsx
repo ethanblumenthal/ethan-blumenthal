@@ -12,6 +12,7 @@ import {
   ContentContainer,
   FlexContainer,
   FlexEvenlyContainer,
+  IconContainer,
   ModalContainer,
 } from '../elements/containers';
 import { PAGES } from '../utils';
@@ -82,11 +83,12 @@ const MobileNav = ({ theme, setTheme }) => {
           <Link href="/">
             <CardHeader>Ethan Blumenthal</CardHeader>
           </Link>
-          <a href="mailto:ethan.blumenthal@gmail.com" target="_blank">
-            <OutlineButton>Contact</OutlineButton>
-          </a>
           {/* <OutlineButton onClick={() => openModal(true)}>Menu</OutlineButton>
           {modal ? renderModal() : null} */}
+
+          <IconContainer onClick={() => setTheme(!theme)}>
+            {theme === 'dark' ? <Moon /> : <Sun />}
+          </IconContainer>
         </FlexContainer>
       </ContentContainer>
     </BackgroundContainer>

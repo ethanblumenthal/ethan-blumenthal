@@ -11,7 +11,7 @@ import { EXPERIENCE } from '../utils';
 interface IExperience {
   title: string;
   position: string;
-  description: string;
+  description: string[];
   link: string;
 }
 
@@ -28,7 +28,12 @@ const Experience = () => (
             <BaseCard>
               <CardHeader style={{ marginBottom: '0.25rem' }}>{title}</CardHeader>
               <SubText style={{ marginBottom: '0.75rem' }}>{position}</SubText>
-              <Text>{description}</Text>
+              {description.map((paragraph, idx) => (
+                <>
+                  <Text key={idx}>{paragraph}</Text>
+                  <br />
+                </>
+              ))}
             </BaseCard>
           </a>
         ))}

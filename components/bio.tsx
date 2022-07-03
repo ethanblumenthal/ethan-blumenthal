@@ -21,12 +21,9 @@ const Bio = () => (
         <MainContent isOnRight>
           <PageHeader>{BIO.title}</PageHeader>
           <Text style={{ margin: '1rem 0' }}>{BIO.description}</Text>
-          <a
-            href="https://ethanblumenthal.s3.us-east-2.amazonaws.com/ethan_blumenthal_resume.pdf"
-            target="_blank"
-          >
+          <a href="mailto:ethan.blumenthal@gmail.com" target="_blank">
             <ArrowButtonRight>
-              View resume
+              Get in Touch
               <ArrowRight />
             </ArrowButtonRight>
           </a>

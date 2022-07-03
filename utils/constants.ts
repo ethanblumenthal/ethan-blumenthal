@@ -25,13 +25,19 @@ export const EXPERIENCE = [
   {
     title: `OwnProp`,
     position: `Co-Founder, Engineering Lead`,
-    description: `Blockchain-based platform to buy and sell property with ease, transparency and low cost. The NYSE of real estate. Real estate investing has high capital requirements, knowledge barriers and complex tax issues that make it painful for accredited investors and inaccessible to the 100M US retail investors. Even if you are able to invest in real estate, you are left with an asset that is costly to maintain and difficult to sell. We launched OwnProp to open up real estate investing to everyone and provide liquidity to homeowners and current investors. OwnProp is starting with properties available to accredited investors, and plans to open up to retail investors within 18 - 24 months.`,
+    description: [
+      `Blockchain-based platform to buy and sell property with ease, transparency and low cost. The NYSE of real estate. Real estate investing has high capital requirements, knowledge barriers and complex tax issues that make it painful for accredited investors and inaccessible to the 100M US retail investors.`,
+      `Even if you are able to invest in real estate, you are left with an asset that is costly to maintain and difficult to sell. We launched OwnProp to open up real estate investing to everyone and provide liquidity to homeowners and current investors. OwnProp is starting with properties available to accredited investors, and plans to open up to retail investors within 18 - 24 months.`,
+    ],
     link: `https://www.ownprop.com/`,
   },
   {
     title: `Rex`,
     position: `Blockchain Engineer`,
-    description: `Rex is an ecosystem that incubates, launches and operates tech startups across a number of sectors at the intersection of technology and real estate: Services, FinTech, InsureTech, Data Services, and more. We are creating the Future of Real Estate by building and launching multiple tech companies committed to serving and empowering people everywhere. We are launching synergistic tech startups that will scale via real estate into numerous industries creating a flywheel effect where each launch strengthens the value of the network, increases the talent density, accelerates cross-pollination of ideas, and creates mutually beneficial corporate and technical infrastructure.`,
+    description: [
+      `Rex is an ecosystem that incubates, launches and operates tech startups across a number of sectors at the intersection of technology and real estate: Services, FinTech, InsureTech, Data Services, and more. We are creating the Future of Real Estate by building and launching multiple tech companies committed to serving and empowering people everywhere.`,
+      `We are launching synergistic tech startups that will scale via real estate into numerous industries creating a flywheel effect where each launch strengthens the value of the network, increases the talent density, accelerates cross-pollination of ideas, and creates mutually beneficial corporate and technical infrastructure.`,
+    ],
     link: `https://www.rex.com/`,
   },
 ];

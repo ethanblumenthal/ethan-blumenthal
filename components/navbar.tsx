@@ -58,13 +58,15 @@ const NavBar = ({ theme, setTheme }) => {
               <Search />
             </IconContainer>
           </Link> */}
-          <IconContainer onClick={() => setTheme(!theme)}>
-            {theme === 'dark' ? <Moon /> : <Sun />}
-          </IconContainer>
-          <a href="mailto:ethan.blumenthal@gmail.com" target="_blank">
+
+          {/* <a href="mailto:ethan.blumenthal@gmail.com" target="_blank">
             <OutlineButton>Get in touch</OutlineButton>
-          </a>
+          </a> */}
         </FlexContainer>
+
+        <IconContainer onClick={() => setTheme(!theme)}>
+          {theme === 'dark' ? <Moon /> : <Sun />}
+        </IconContainer>
       </FlexContainer>
     </BackgroundContainer>
   );
