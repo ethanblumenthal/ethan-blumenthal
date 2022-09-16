@@ -26,7 +26,7 @@ export const EXPERIENCE = [
     title: `OwnProp`,
     position: `Co-Founder, Engineering Lead`,
     description: [
-      `OwnProp is democratizing access to commercial real estate investing, enabling new economic opportunities for all to a once inaccessible market. Real estate yields the highest and most stable returns of any asset class, yet has previously only been available to the wealthy due to high minimums, low liquidity, and a significant knowledge gap. OwnProp is solving these problems by using blockchain technology to reduce overhead costs, increase transparency, and speed up the settlement of transactions. OwnProp’s tokenized investment opportunities include iconic properties that provide predictable appreciation as well as cash flow. The OwnProp platform is currently available to accredited investors as we work towards opening up to retail investors in summer of 2023.`,
+      `OwnProp is democratizing access to commercial real estate investing, enabling new economic opportunities for all to a once inaccessible market. Real estate yields the highest and most stable returns of any asset class, yet has previously only been available to the wealthy due to high minimums, low liquidity, and a significant knowledge gap. OwnProp is solving these problems by using blockchain technology to reduce overhead costs, increase transparency, and speed up the settlement of transactions. OwnProp’s tokenized investment opportunities include iconic properties that provide predictable appreciation and cash flow.`,
     ],
     link: `https://www.ownprop.com/`,
   },
