@@ -10,7 +10,7 @@ export const PAGES = [
 export const BIO = {
   title: "Hi, I'm Ethan!",
   description:
-    'I am a software engineer specializing in smart contract development and blockchain architecture. I have extensive experience working with peer-to-peer networking, cryptography, and game theory. My mission is to contribute to the development of a more decentralized, transparent, and secure Internet. Together, we can create a more equitable future where everyone can participate in the new global token economy enabled by Web3.',
+    'Ethan is the Co-Founder and Engineering Lead of OwnProp, a blockchain based platform that is democratizing access to commercial real estate investing by lowering minimums and improving liquidity. He previously worked as a Software Engineer at Rightpoint where he helped Fortune 500 companies drive business outcomes by implementing scalable technological solutions. He received a BA in Economics from the University of Illinois and is working towards a MS in Computer Science from the University of Texas. Ethan is passionate about the opportunity that smart contracts provide to revolutionize real estate, the largest asset class in the world.',
   image: '/ethanblumenthal.jpg',
 };
 
@@ -26,8 +26,7 @@ export const EXPERIENCE = [
     title: `OwnProp`,
     position: `Co-Founder, Engineering Lead`,
     description: [
-      `Blockchain-based platform to buy and sell property with ease, transparency and low cost. The NYSE of real estate. Real estate investing has high capital requirements, knowledge barriers and complex tax issues that make it painful for accredited investors and inaccessible to the 100M US retail investors.`,
-      `Even if you are able to invest in real estate, you are left with an asset that is costly to maintain and difficult to sell. We launched OwnProp to open up real estate investing to everyone and provide liquidity to homeowners and current investors. OwnProp is starting with properties available to accredited investors, and plans to open up to retail investors within 18 - 24 months.`,
+      `OwnProp is democratizing access to commercial real estate investing, enabling new economic opportunities for all to a once inaccessible market. Real estate yields the highest and most stable returns of any asset class, yet has previously only been available to the wealthy due to high minimums, low liquidity, and a significant knowledge gap. OwnProp is solving these problems by using blockchain technology to reduce overhead costs, increase transparency, and speed up the settlement of transactions. OwnProp’s tokenized investment opportunities include iconic properties that provide predictable appreciation as well as cash flow. The OwnProp platform is currently available to accredited investors as we work towards opening up to retail investors in summer of 2023.`,
     ],
     link: `https://www.ownprop.com/`,
   },
@@ -35,8 +34,7 @@ export const EXPERIENCE = [
     title: `Rex`,
     position: `Blockchain Engineer`,
     description: [
-      `Rex is an ecosystem that incubates, launches and operates tech startups across a number of sectors at the intersection of technology and real estate: Services, FinTech, InsureTech, Data Services, and more. We are creating the Future of Real Estate by building and launching multiple tech companies committed to serving and empowering people everywhere.`,
-      `We are launching synergistic tech startups that will scale via real estate into numerous industries creating a flywheel effect where each launch strengthens the value of the network, increases the talent density, accelerates cross-pollination of ideas, and creates mutually beneficial corporate and technical infrastructure.`,
+      `Rex is a technology, investment and real estate company whose mission is to empower the billions of people who use real estate to work, play, and call home. Rex has launched Tech Ventures Real Estate (TVRE), a venture to disrupt real estate - the world’s largest asset class. TVRE leverages Rex’s access to 10k+ apartments, an in-house startup studio and elite tech team that conceives of, launches, and scales revenue generating businesses at an industry leading pace. Founded by Peter Rex and headquartered in Austin, Texas, Rex has been named a Forbes ‘Best Place to Work.’ To learn more, visit rex.com.`,
     ],
     link: `https://www.rex.com/`,
   },
