@@ -10,7 +10,7 @@ export const PAGES = [
 export const BIO = {
   title: "Hi, I'm Ethan!",
   description:
-    'Ethan is the Co-Founder and Engineering Lead of OwnProp, a blockchain based platform that is democratizing access to commercial real estate investing by lowering minimums and improving liquidity. He previously worked as a Software Engineer at Rightpoint where he helped Fortune 500 companies drive business outcomes by implementing scalable technological solutions. He received a BA in Economics from the University of Illinois and is working towards a MS in Computer Science from the University of Texas. Ethan is passionate about the opportunity that smart contracts provide to revolutionize real estate, the largest asset class in the world.',
+    'Ethan is the Co-Founder and CEO of OwnProp, a blockchain based platform that is democratizing access to commercial real estate investing by lowering minimums and improving liquidity. He previously worked as a Software Engineer at Rightpoint where he helped Fortune 500 companies drive business outcomes by implementing scalable technology solutions. He received a BA in Economics from the University of Illinois and is working towards a MS in Computer Science from the University of Texas. Ethan is passionate about the opportunity that smart contracts provide to revolutionize real estate, the largest asset class in the world.',
   image: '/ethanblumenthal.jpg',
 };
 
@@ -24,7 +24,7 @@ export const HEADER: IHeader = {
 export const EXPERIENCE = [
   {
     title: `OwnProp`,
-    position: `Co-Founder, Engineering Lead`,
+    position: `Co-Founder & CEO`,
     description: [
       `OwnProp is democratizing access to commercial real estate investing, enabling new economic opportunities for all to a once inaccessible market. Real estate yields the highest and most stable returns of any asset class, yet has previously only been available to the wealthy due to high minimums, low liquidity, and a significant knowledge gap. OwnProp is solving these problems by using blockchain technology to reduce overhead costs, increase transparency, and speed up the settlement of transactions. OwnProp’s tokenized investment opportunities include iconic properties that provide predictable appreciation and cash flow.`,
     ],
