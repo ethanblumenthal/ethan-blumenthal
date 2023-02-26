@@ -10,7 +10,7 @@ export const PAGES = [
 export const BIO = {
   title: "Hi, I'm Ethan!",
   description:
-    'Ethan is the Co-Founder and CEO of OwnProp, a blockchain based platform that is democratizing access to commercial real estate investing by lowering minimums and improving liquidity. He previously worked as a Software Engineer at Rightpoint where he helped Fortune 500 companies drive business outcomes by implementing scalable technology solutions. He received a BA in Economics from the University of Illinois and is working towards a MS in Computer Science from the University of Texas. Ethan is passionate about the opportunity that smart contracts provide to revolutionize real estate, the largest asset class in the world.',
+    'Ethan is the former Co-Founder of OwnProp, a blockchain based platform that democratizes access to commercial real estate investing by lowering minimums and improving liquidity. He previously worked as a Software Engineer at Rightpoint where he helped Fortune 500 companies drive business outcomes by implementing scalable technology solutions. He received a BA in Economics from the University of Illinois and is working towards a MS in Computer Science from the University of Texas. Ethan is passionate about connecting real world assets to Web3 to create a more equitable future.',
   image: '/ethanblumenthal.jpg',
 };
 
@@ -24,7 +24,7 @@ export const HEADER: IHeader = {
 export const EXPERIENCE = [
   {
     title: `OwnProp`,
-    position: `Co-Founder & CEO`,
+    position: `Co-Founder`,
     description: [
       `OwnProp is democratizing access to commercial real estate investing, enabling new economic opportunities for all to a once inaccessible market. Real estate yields the highest and most stable returns of any asset class, yet has previously only been available to the wealthy due to high minimums, low liquidity, and a significant knowledge gap. OwnProp is solving these problems by using blockchain technology to reduce overhead costs, increase transparency, and speed up the settlement of transactions. OwnProp’s tokenized investment opportunities include iconic properties that provide predictable appreciation and cash flow.`,
     ],
@@ -37,6 +37,14 @@ export const EXPERIENCE = [
       `Rex is a technology, investment and real estate company whose mission is to empower the billions of people who use real estate to work, play, and call home. Rex has launched Tech Ventures Real Estate (TVRE), a venture to disrupt real estate - the world’s largest asset class. TVRE leverages Rex’s access to 10k+ apartments, an in-house startup studio and elite tech team that conceives of, launches, and scales revenue generating businesses at an industry leading pace. Founded by Peter Rex and headquartered in Austin, Texas, Rex has been named a Forbes ‘Best Place to Work.’ To learn more, visit rex.com.`,
     ],
     link: `https://www.rex.com/`,
+  },
+  {
+    title: `Rightpoint`,
+    position: `Software Developer`,
+    description: [
+      `Rightpoint, a Genpact company (NYSE: G) is a global experience leader. Over 700 employees across 12 offices work with clients end-to-end, from defining and enabling vision, to ensuring ongoing market relevance. Our diverse teams lead with empathy, data and creativity—always in service of the experience. From whiteboard to roll-out, we help our clients embed experience across their operations from front to back office to accelerate digital transformation through a human-centric lens. Rightpoint has been recognized among the top customer experience consultancies in The Forrester Wave™: Customer Experience Strategy Consulting Practices, Q4 2020.`,
+    ],
+    link: `https://www.rightpoint.com/`,
   },
 ];
 
@@ -51,6 +59,12 @@ export const QUALIFICATIONS: IQualification[] = [
     title: 'BA, Economics',
     description: 'University of Illinois',
     link: `https://economics.illinois.edu/`,
+    icon: 'book',
+  },
+  {
+    title: 'Cert, Software Engineering',
+    description: 'Fullstack Academy',
+    link: `https://www.fullstackacademy.com/`,
     icon: 'book',
   },
   {
@@ -70,19 +84,23 @@ export const QUALIFICATIONS: IQualification[] = [
 export const SKILLSET: ISkill[] = [
   {
     title: 'Languages',
-    skills: [, 'Golang', 'Rust', 'TypeScript', 'Solidity'],
+    skills: ['Solidity', 'Golang', 'TypeScript', 'Python'],
   },
   {
-    title: 'Web',
-    skills: ['Node', 'Express', 'GraphQL', 'React'],
+    title: 'Web Dev',
+    skills: ['React', 'Node', 'Express', 'GraphQL'],
   },
   {
     title: 'Blockchain',
-    skills: ['Truffle', 'OpenZeppelin', 'Substrate', 'Cosmos'],
+    skills: ['OpenZeppelin', 'Ethers', 'Hardhat'],
+  },
+  {
+    title: 'Databases',
+    skills: ['PostgreSQL', 'MongoDB', 'Redis'],
   },
   {
     title: 'DevOps',
-    skills: ['Jenkins', 'Docker', 'Kubernetes', 'Terraform'],
+    skills: ['GitHub Actions', 'Docker', 'Kubernetes'],
   },
 ];
 

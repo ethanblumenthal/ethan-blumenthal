@@ -114,9 +114,11 @@ export const GridContainer = styled.div`
 `;
 
 export const LgGridContainer = styled.div`
-  display: grid;
+  display: inline-grid;
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: center;
+  align-items: center;
 `;
 
 export const ModalContainer = styled.div`
