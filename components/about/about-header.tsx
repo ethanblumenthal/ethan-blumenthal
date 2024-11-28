@@ -19,7 +19,7 @@ export default function AboutHeader() {
           className="border-gray-800 hover:bg-gray-800"
           asChild
         >
-          <Link href="/services">View Services</Link>
+          <Link href="/projects">View Projects</Link>
         </Button>
       </div>
     </section>
