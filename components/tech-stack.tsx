@@ -2,42 +2,42 @@ const technologies = [
   {
     name: 'React',
     category: 'Frontend',
-    icon: '/placeholder.svg',
+    icon: '/tech-stack/react.webp',
   },
   {
     name: 'NextJS',
     category: 'Frontend',
-    icon: '/placeholder.svg',
-  },
-  {
-    name: 'Supabase',
-    category: 'Backend',
-    icon: '/placeholder.svg',
+    icon: '/tech-stack/nextjs.webp',
   },
   {
     name: 'NodeJS',
     category: 'Backend',
-    icon: '/placeholder.svg',
+    icon: '/tech-stack/nodejs.webp',
+  },
+  {
+    name: 'Supabase',
+    category: 'Backend',
+    icon: '/tech-stack/supabase.webp',
   },
   {
     name: 'TypeScript',
-    category: 'Communication',
-    icon: '/placeholder.svg',
-  },
-  {
-    name: 'Golang',
-    category: 'Collaboration',
-    icon: '/placeholder.svg',
+    category: 'Language',
+    icon: '/tech-stack/typescript.webp',
   },
   {
     name: 'Python',
-    category: 'Content Generation',
-    icon: '/placeholder.svg',
+    category: 'Language',
+    icon: '/tech-stack/python.webp',
+  },
+  {
+    name: 'Golang',
+    category: 'Language',
+    icon: '/tech-stack/golang.webp',
   },
   {
     name: 'Solidity',
     category: 'Smart Contracts',
-    icon: '/placeholder.svg',
+    icon: '/tech-stack/solidity.webp',
   },
 ];
 

@@ -1,14 +1,14 @@
-"use client"
+'use client';
 
-import Link from "next/link"
-import { ArrowLeft } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import FadeIn from "@/components/fade-in"
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import FadeIn from '@/components/fade-in';
 
 const posts = {
-  "designing-for-accessibility": {
-    title: "Designing for Accessibility: Making the Web Inclusive for All",
-    date: "Jun 19, 2024",
+  'designing-for-accessibility': {
+    title: 'Designing for Accessibility: Making the Web Inclusive for All',
+    date: 'Jun 19, 2024',
     content: `
       Accessibility in web design is not just a trend but a necessity. As the internet becomes an integral part of daily life, it's crucial to ensure that websites are usable by everyone, including people with disabilities. Designing for accessibility means creating digital experiences that are inclusive and considerate of all users, regardless of their abilities. This article explores the importance of web accessibility and offers practical steps for implementing it effectively.
 
@@ -17,21 +17,21 @@ const posts = {
       ### 1. Legal Compliance
 
       Many countries have laws and regulations requiring websites to be accessible to people with disabilities. In the United States, the Americans with Disabilities Act (ADA) and Section 508 of the Rehabilitation Act mandate web accessibility for government and public sector websites. Non-compliance can result in legal actions and fines, making it imperative for organizations to prioritize accessibility.
-    `
-  }
-}
+    `,
+  },
+};
 
 interface BlogPostPageProps {
   params: {
-    slug: string
-  }
+    slug: string;
+  };
 }
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = posts[params.slug as keyof typeof posts]
+  const post = posts[params.slug as keyof typeof posts];
 
   if (!post) {
-    return <div>Post not found</div>
+    return <div>Post not found</div>;
   }
 
   return (
@@ -61,7 +61,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   {paragraph.replace('## ', '')}
                 </h2>
               </FadeIn>
-            )
+            );
           }
           if (paragraph.startsWith('###')) {
             return (
@@ -70,7 +70,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   {paragraph.replace('### ', '')}
                 </h3>
               </FadeIn>
-            )
+            );
           }
           return (
             <FadeIn key={index} delay={0.3 + index * 0.1}>
@@ -78,9 +78,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 {paragraph}
               </p>
             </FadeIn>
-          )
+          );
         })}
       </div>
     </article>
-  )
+  );
 }

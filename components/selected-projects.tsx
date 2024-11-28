@@ -1,26 +1,6 @@
 import { Button } from '@/components/ui/button';
+import { PROJECTS } from '@/lib/constants';
 import Link from 'next/link';
-
-const projects = [
-  {
-    name: 'Liquid Finance',
-    category: 'Commercial Debt',
-    image: '/placeholder.svg',
-    gradient: 'from-red-500/20',
-  },
-  {
-    name: 'Cityfunds',
-    category: 'Home Equity',
-    image: '/placeholder.svg',
-    gradient: 'from-gray-500/20',
-  },
-  {
-    name: 'OwnProp',
-    category: 'Commercial Equity',
-    image: '/placeholder.svg',
-    gradient: 'from-blue-500/20',
-  },
-];
 
 export default function SelectedProjects() {
   return (
@@ -36,10 +16,10 @@ export default function SelectedProjects() {
         </Button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
+        {PROJECTS.map((project) => (
           <Link
-            key={project.name}
-            href="/projects"
+            key={project.slug}
+            href={`/projects/${project.slug}`}
             className="group relative rounded-lg border border-dashed border-gray-800 overflow-hidden"
           >
             <div className="aspect-video relative overflow-hidden">
@@ -54,7 +34,7 @@ export default function SelectedProjects() {
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-4">
               <h3 className="text-xl font-semibold text-white">
-                {project.name}
+                {project.title}
               </h3>
               <p className="text-gray-300">{project.category}</p>
             </div>

@@ -5,19 +5,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ProjectMetadata from '@/components/projects/project-metadata';
 import FadeIn from '@/components/fade-in';
-
-const projects = {
-  'liquid-finance': {
-    title: 'Liquid Finance',
-    description:
-      'Liquid is an autonomous lending protocol that shrinks commercial real estate (CRE) financing timelines from 2-3 months to days. We leverage large language models (LLMs) to analyze deal materials (e.g., pro formas, pitch decks) and instantly generate actionable loan terms. Our terms provide borrowers with unmatched transparency, showing precisely how interest rates, collateral requirements, and repayment schedules are calculated.',
-    year: '2024',
-    position: 'Co-Founder, CTO',
-    category: 'Commercial Debt',
-    tool: 'Framer',
-    previewUrl: 'https://liquid.finance',
-  },
-};
+import { PROJECTS } from '@/lib/constants';
 
 interface ProjectPageProps {
   params: {
@@ -26,7 +14,7 @@ interface ProjectPageProps {
 }
 
 export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = projects[params.slug as keyof typeof projects];
+  const project = PROJECTS.find((project) => project.slug === params.slug);
 
   if (!project) {
     return <div>Project not found</div>;

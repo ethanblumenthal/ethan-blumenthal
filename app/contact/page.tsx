@@ -1,7 +1,7 @@
-import FadeIn from "@/components/fade-in"
-import ContactHeader from "@/components/contact/contact-header"
-import ContactForm from "@/components/contact/contact-form"
-import FaqSection from "@/components/contact/faq-section"
+import FadeIn from '@/components/fade-in';
+import ContactHeader from '@/components/contact/contact-header';
+import ContactForm from '@/components/contact/contact-form';
+import FaqSection from '@/components/contact/faq-section';
 
 export default function Contact() {
   return (
@@ -16,5 +16,5 @@ export default function Contact() {
         <FaqSection />
       </FadeIn>
     </div>
-  )
+  );
 }

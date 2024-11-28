@@ -14,12 +14,13 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { SOCIAL_LINKS } from '@/lib/constants';
 
 const Navigation = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 top-0 z-30 h-full w-[250px] border-r bg-black text-gray-400">
+    <aside className="fixed left-0 top-0 z-30 h-full w-[250px] border-r text-gray-400">
       <div className="flex h-full flex-col">
         {/* Profile Section */}
         <div className="p-6">
@@ -102,7 +103,7 @@ const Navigation = () => {
           </h3>
           <div className="flex gap-4">
             <a
-              href="https://twitter.com"
+              href={SOCIAL_LINKS.TWITTER}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white"
@@ -110,7 +111,7 @@ const Navigation = () => {
               <Twitter className="h-5 w-5" />
             </a>
             <a
-              href="https://linkedin.com"
+              href={SOCIAL_LINKS.LINKEDIN}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white"
@@ -118,7 +119,7 @@ const Navigation = () => {
               <Linkedin className="h-5 w-5" />
             </a>
             <a
-              href="https://github.com"
+              href={SOCIAL_LINKS.GITHUB}
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-white"
