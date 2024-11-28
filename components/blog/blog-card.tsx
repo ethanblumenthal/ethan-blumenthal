@@ -1,11 +1,11 @@
-import Link from "next/link"
-import Image from "next/image"
+import Link from 'next/link';
+import Image from 'next/image';
 
 interface BlogCardProps {
-  title: string
-  date: string
-  image: string
-  slug: string
+  title: string;
+  date: string;
+  image: string;
+  slug: string;
 }
 
 export default function BlogCard({ title, date, image, slug }: BlogCardProps) {
@@ -28,5 +28,5 @@ export default function BlogCard({ title, date, image, slug }: BlogCardProps) {
         </div>
       </article>
     </Link>
-  )
+  );
 }
