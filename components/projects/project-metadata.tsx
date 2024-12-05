@@ -2,14 +2,14 @@ interface ProjectMetadataProps {
   year: string;
   position: string;
   category: string;
-  tool: string;
+  location: string;
 }
 
 export default function ProjectMetadata({
   year,
   position,
   category,
-  tool,
+  location,
 }: ProjectMetadataProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-8 rounded-lg bg-gray-900/50 p-8">
@@ -26,8 +26,8 @@ export default function ProjectMetadata({
         <p className="text-xl text-white">{category}</p>
       </div>
       <div>
-        <h3 className="text-lg text-gray-400 mb-2">Tool</h3>
-        <p className="text-xl text-white">{tool}</p>
+        <h3 className="text-lg text-gray-400 mb-2">Location</h3>
+        <p className="text-xl text-white">{location}</p>
       </div>
     </div>
   );

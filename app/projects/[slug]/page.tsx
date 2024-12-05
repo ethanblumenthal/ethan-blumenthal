@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import ProjectMetadata from '@/components/projects/project-metadata';
 import FadeIn from '@/components/fade-in';
 import { PROJECTS } from '@/lib/constants';
+import Image from 'next/image';
 
 interface ProjectPageProps {
   params: {
@@ -56,8 +57,23 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           year={project.year}
           position={project.position}
           category={project.category}
-          tool={project.tool}
+          location={project.location}
         />
+      </FadeIn>
+
+      <FadeIn delay={0.6}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {project.images.map((image, index) => (
+            <div key={index} className="relative aspect-video">
+              <Image
+                src={image}
+                alt={`${project.title} screenshot ${index + 1}`}
+                fill
+                className="object-cover rounded-lg border border-gray-800"
+              />
+            </div>
+          ))}
+        </div>
       </FadeIn>
     </div>
   );
