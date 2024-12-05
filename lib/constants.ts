@@ -67,8 +67,6 @@ export const PROJECTS = [
       '/ownprop/ownprop-3.webp',
       '/ownprop/ownprop-4.webp',
     ],
-    desktopImages: [
-       
-      ],
+    desktopImages: [],
   },
 ];

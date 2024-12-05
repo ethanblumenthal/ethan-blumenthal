@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import FadeIn from '@/components/fade-in';
+import { useParams } from 'next/navigation';
 
 const posts = {
   'designing-for-accessibility': {
@@ -21,13 +22,8 @@ const posts = {
   },
 };
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+export default function BlogPostPage() {
+  const params = useParams();
   const post = posts[params.slug as keyof typeof posts];
 
   if (!post) {
