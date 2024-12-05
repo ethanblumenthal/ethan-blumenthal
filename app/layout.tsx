@@ -1,5 +1,6 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navigation from '@/components/navigation';
 import MobileNav from '@/components/mobile-nav';
@@ -29,6 +30,7 @@ export default function RootLayout({
                   {/* <ThemeToggle /> */}
                 </div>
                 {children}
+                <Analytics />
               </div>
             </main>
           </div>
