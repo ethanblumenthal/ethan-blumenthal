@@ -2,7 +2,6 @@ import FadeIn from '@/components/fade-in';
 import Hero from '@/components/hero';
 import TechStack from '@/components/tech-stack';
 import SelectedProjects from '@/components/selected-projects';
-import RecentPosts from '@/components/recent-posts';
 import Newsletter from '@/components/newsletter';
 
 export default function Home() {
@@ -17,9 +16,9 @@ export default function Home() {
       <FadeIn delay={0.4}>
         <SelectedProjects />
       </FadeIn>
-      <FadeIn delay={0.6}>
+      {/* <FadeIn delay={0.6}>
         <RecentPosts />
-      </FadeIn>
+      </FadeIn> */}
       <FadeIn delay={0.8}>
         <Newsletter />
       </FadeIn>

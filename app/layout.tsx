@@ -1,12 +1,14 @@
 import './globals.css';
-import { Kanit } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navigation from '@/components/navigation';
+import MobileNav from '@/components/mobile-nav';
+import { ThemeToggle } from '@/components/theme-toggle';
 
-const kanit = Kanit({ subsets: ['latin'], weight: '400' });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Ethan Blumenthal',
+  title: 'CTO Portfolio',
   description: 'Portfolio website for a technology CTO',
 };
 
@@ -17,12 +19,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={kanit.className}>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+      <body className={inter.className}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex min-h-screen">
             <Navigation />
-            <main className="flex-1 pl-[250px]">
-              <div className="container mx-auto px-4 py-8">{children}</div>
+            <main className="flex-1 md:pl-[250px]">
+              <div className="container mx-auto px-4 py-8">
+                <div className="flex justify-between items-center mb-8">
+                  <MobileNav />
+                  <ThemeToggle />
+                </div>
+                {children}
+              </div>
             </main>
           </div>
         </ThemeProvider>
