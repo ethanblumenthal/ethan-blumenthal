@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navigation from '@/components/navigation';
 import MobileNav from '@/components/mobile-nav';
-import { ThemeToggle } from '@/components/theme-toggle';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,7 +26,7 @@ export default function RootLayout({
               <div className="container mx-auto px-4 py-8">
                 <div className="flex justify-between items-center mb-8">
                   <MobileNav />
-                  <ThemeToggle />
+                  {/* <ThemeToggle /> */}
                 </div>
                 {children}
               </div>

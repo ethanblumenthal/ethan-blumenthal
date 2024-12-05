@@ -37,7 +37,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Live Preview
+              Live Application
             </a>
           </Button>
         </div>
@@ -62,14 +62,14 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       </FadeIn>
 
       <FadeIn delay={0.6}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-4 gap-8">
           {project.images.map((image, index) => (
-            <div key={index} className="relative aspect-video">
+            <div key={index} className="relative h-[600px]">
               <Image
                 src={image}
                 alt={`${project.title} screenshot ${index + 1}`}
                 fill
-                className="object-cover rounded-lg border border-gray-800"
+                className="object-contain rounded-lg border border-gray-800"
               />
             </div>
           ))}

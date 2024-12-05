@@ -4,13 +4,6 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import { SOCIAL_LINKS } from '@/lib/constants';
 
@@ -20,7 +13,6 @@ export default function ContactForm() {
     email: '',
     website: '',
     details: '',
-    timeline: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -68,7 +60,7 @@ export default function ContactForm() {
               </div>
               <div>
                 <label htmlFor="website" className="text-white mb-2 block">
-                  Existing website (optional)
+                  Website (optional)
                 </label>
                 <Input
                   id="website"
@@ -94,26 +86,6 @@ export default function ContactForm() {
                   }
                 />
               </div>
-              <div>
-                <label htmlFor="timeline" className="text-white mb-2 block">
-                  Project timeline
-                </label>
-                <Select
-                  value={formData.timeline}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, timeline: value })
-                  }
-                >
-                  <SelectTrigger className="bg-gray-900/50 border-gray-800">
-                    <SelectValue placeholder="Select timeline..." />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1-2-months">1-2 months</SelectItem>
-                    <SelectItem value="3-4-months">3-4 months</SelectItem>
-                    <SelectItem value="6-months">6+ months</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
               <Button
                 type="submit"
                 className="w-full bg-white text-black hover:bg-gray-200"
@@ -133,18 +105,18 @@ export default function ContactForm() {
               <Button
                 variant="outline"
                 className="w-full border-gray-800 bg-gray-900/50 justify-start"
-                onClick={() =>
-                  navigator.clipboard.writeText('ethan.blumenthal@gmail.com')
-                }
+                asChild
               >
-                <span className="truncate">ethan.blumenthal@gmail.com</span>
+                <a href="mailto:ethan.blumenthal@gmail.com">
+                  <span className="truncate">Email Me</span>
+                </a>
               </Button>
-              <Button
+              {/* <Button
                 variant="outline"
                 className="w-full border-gray-800 bg-gray-900/50"
               >
                 Book a Call
-              </Button>
+              </Button> */}
             </div>
           </div>
 

@@ -4,7 +4,6 @@ import AboutStats from '@/components/about/about-stats';
 import AboutBio from '@//components/about/about-bio';
 import WorkExperience from '@/components/about/work-experience';
 import TechStack from '@/components/tech-stack';
-import RecentPosts from '@/components/recent-posts';
 
 export default function About() {
   return (
@@ -24,9 +23,9 @@ export default function About() {
       <FadeIn delay={0.8}>
         <TechStack />
       </FadeIn>
-      <FadeIn delay={1}>
+      {/* <FadeIn delay={1}>
         <RecentPosts />
-      </FadeIn>
+      </FadeIn> */}
     </div>
   );
 }

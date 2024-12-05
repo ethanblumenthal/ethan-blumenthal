@@ -27,7 +27,7 @@ const MobileNav = () => {
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent side="left" className="pr-0">
+      <SheetContent side="left" className="pr-0 bg-background">
         <div className="flex h-full flex-col">
           {/* Profile Section */}
           <div className="p-6">

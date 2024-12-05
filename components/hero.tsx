@@ -12,7 +12,7 @@ export default function Hero() {
         <div className="space-y-4">
           <h1 className="text-6xl font-bold text-white">Hey, I&apos;m Ethan</h1>
           <h2 className="text-5xl font-bold text-white">
-            Co-Founder, CTO @ Liquid Finance
+            I'm working on something new
           </h2>
           <p className="text-xl text-gray-400">
             I&apos;ve been building real estate investing products for the past

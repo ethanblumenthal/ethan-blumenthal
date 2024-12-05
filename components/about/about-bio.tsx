@@ -5,7 +5,9 @@ export default function AboutBio() {
     <section className="py-12">
       <div className="grid md:grid-cols-[2fr,1fr] gap-12 items-start">
         <div className="space-y-6">
-          <h2 className="text-4xl font-bold text-white">Hello! I&apos;m Ethan,</h2>
+          <h2 className="text-4xl font-bold text-white">
+            Hello! I&apos;m Ethan,
+          </h2>
           <div className="text-gray-400 space-y-4 text-lg leading-relaxed">
             <p>
               Ethan serves as the CTO and Co-Founder at Liquid Finance while

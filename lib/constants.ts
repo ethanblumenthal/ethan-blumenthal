@@ -7,28 +7,28 @@ export enum SOCIAL_LINKS {
 }
 
 export const NAV_ITEMS = [
-    { name: 'Home', slug: '/', icon: Home },
-    { name: 'Projects', slug: '/projects', icon: FolderKanban },
-    // { name: 'Blog', slug: '/blog', icon: FileText },
-    { name: 'About', slug: '/about', icon: User2 },
-    { name: 'Contact', slug: '/contact', icon: Mail },
-  ];
+  { name: 'Home', slug: '/', icon: Home },
+  { name: 'Projects', slug: '/projects', icon: FolderKanban },
+  // { name: 'Blog', slug: '/blog', icon: FileText },
+  { name: 'About', slug: '/about', icon: User2 },
+  { name: 'Contact', slug: '/contact', icon: Mail },
+];
 
 export const PROJECTS = [
-//   {
-//     title: 'Liquid Finance',
-//     category: 'BTC-backed CRE Loans',
-//     image: '/placeholder.svg',
-//     slug: 'liquid-finance',
-//     gradient: 'from-blue-500/20',
-//     description:
-//       'Liquid is an autonomous lending protocol that shrinks commercial real estate (CRE) financing timelines from 2-3 months to days. We leverage large language models (LLMs) to analyze deal materials (e.g., pro formas, pitch decks) and instantly generate actionable loan terms. Our terms provide borrowers with unmatched transparency, showing precisely how interest rates, collateral requirements, and repayment schedules are calculated.',
-//     year: '2024-Present',
-//     position: 'Co-Founder, CTO',
-//     location: 'Austin, TX',
-//     previewUrl: 'https://liquid.finance',
-//     images: ['/liquid-1.png', '/liquid-2.png', '/liquid-3.png'],
-//   },
+  //   {
+  //     title: 'Liquid Finance',
+  //     category: 'BTC-backed CRE Loans',
+  //     image: '/placeholder.svg',
+  //     slug: 'liquid-finance',
+  //     gradient: 'from-blue-500/20',
+  //     description:
+  //       'Liquid is an autonomous lending protocol that shrinks commercial real estate (CRE) financing timelines from 2-3 months to days. We leverage large language models (LLMs) to analyze deal materials (e.g., pro formas, pitch decks) and instantly generate actionable loan terms. Our terms provide borrowers with unmatched transparency, showing precisely how interest rates, collateral requirements, and repayment schedules are calculated.',
+  //     year: '2024-Present',
+  //     position: 'Co-Founder, CTO',
+  //     location: 'Austin, TX',
+  //     previewUrl: 'https://liquid.finance',
+  //     images: ['/liquid-1.png', '/liquid-2.png', '/liquid-3.png'],
+  //   },
   {
     title: 'Cityfunds',
     category: 'Home Equity Investments',
@@ -36,7 +36,7 @@ export const PROJECTS = [
     slug: 'cityfunds',
     gradient: 'from-blue-500/20',
     description:
-      'Nada is an award-winning fintech and investment platform on a mission to unlock the wealth trapped within the $30 trillion home equity market for homeowners and investors. As the first company qualified by the SEC to issue city-specific shares of home equity, Nada’s Cityfunds product provides investors with direct access to the home equity market. By investing in the equity of homes, Nada is providing homeowners with immediate liquidity without the burden of added debt or monthly payments. Nada\'s innovative platform aligns individual investors with homeowners to build and preserve their wealth through the power of home equity.',
+      "Nada is an award-winning fintech and investment platform on a mission to unlock the wealth trapped within the $30 trillion home equity market for homeowners and investors. As the first company qualified by the SEC to issue city-specific shares of home equity, Nada’s Cityfunds product provides investors with direct access to the home equity market. By investing in the equity of homes, Nada is providing homeowners with immediate liquidity without the burden of added debt or monthly payments. Nada's innovative platform aligns individual investors with homeowners to build and preserve their wealth through the power of home equity.",
     year: '2023-2024',
     position: 'VP of Engineering',
     location: 'Austin, TX',
