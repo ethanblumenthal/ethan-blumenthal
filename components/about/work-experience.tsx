@@ -11,28 +11,28 @@ const experiences: WorkExperience[] = [
     period: '2023 - 2024',
     title: 'VP of Engineering',
     description:
-      'I led cross-functional teams to design and launch innovative digital products, significantly improving user engagement and satisfaction.',
+      'Built and scaled mobile and web applications for Cityfunds platform holding over $10M in home equity investments across 150 homes.',
   },
   {
     company: 'OwnProp (Rex)',
     period: '2021 - 2023',
     title: 'Co-Founder',
     description:
-      'I developed responsive websites and interactive experiences, which enhanced client visibility and user interaction.',
+      'Co-founded a tokenized commercial real estate platform, securing $850k in assets and 3,500 investors while pioneering ERC-1404 security tokens and AMM frameworks.',
   },
   {
     company: 'Rightpoint',
     period: '2019 - 2021',
     title: 'Software Developer',
     description:
-      'I designed user-centered interfaces and conducted usability testing to ensure optimal user experiences.',
+      'Delivered enterprise-grade software solutions for Fortune 500 companies, integrating payment systems, CMS platforms, and microservices with a focus on scalability and user experience.',
   },
   {
     company: 'Zeitgeist Artist Management',
     period: '2015 - 2018',
     title: 'Marketing Coordinator',
     description:
-      'I assisted in designing and maintaining client websites, focusing on usability and aesthetic appeal.',
+      'Directed marketing campaigns generating 10M+ impressions, developed content strategies, and managed digital branding for indie rock artists.',
   },
 ];
 

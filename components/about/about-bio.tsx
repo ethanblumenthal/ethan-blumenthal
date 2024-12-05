@@ -10,28 +10,18 @@ export default function AboutBio() {
           </h2>
           <div className="text-gray-400 space-y-4 text-lg leading-relaxed">
             <p>
-              Ethan serves as the CTO and Co-Founder at Liquid Finance while
-              also dedicating his expertise as the VP of Engineering at Nada.
-              This company empowers homeowners by enabling them to capitalize on
-              their home equity without the requirement of monthly payments.
-              Nada&apos;s innovative platform, Cityfunds, offers investors an
-              opportunity to invest in regional real estate markets through the
-              collection of home equity investments.
-            </p>
-            <p>
-              Ethan previously co-established OwnProp, a platform rooted in
-              blockchain technology designed to democratize commercial real
-              estate investment by reducing minimum investments and boosting
-              liquidity. Before this, he was a Software Engineer at Rightpoint,
-              assisting Fortune 500 companies in facilitating business outcomes
-              through the deployment of viable technology solutions.
-            </p>
-            <p>
-              After earning a BA in Economics from the University of Illinois,
-              he is currently pursuing a MS in Computer Science at the
-              University of Texas. Ethan holds a strong interest in merging
-              real-world assets with Web3 to build a more evenly-distributed
-              future.
+              Ethan is a full-stack product developer with a focus on real
+              estate investment marketplaces leveraging smart contracts and
+              large language models (LLMs). As CEO of OwnProp, Ethan led the
+              technical development of industry-first tokenization and
+              fractionalization capabilities for CRE deals. Recently, as VP of
+              Engineering at Nada Finance, he built the first home equity
+              investment (HEI) origination platform and its associated retail
+              investment product, Cityfunds. His technical acumen and
+              understanding of blockchain’s impact on real-world assets position
+              him uniquely to advance technology-driven solutions. Ethan holds a
+              BA in Economics from the University of Illinois and pursued an MS
+              in Computer Science at the University of Texas.
             </p>
           </div>
         </div>
