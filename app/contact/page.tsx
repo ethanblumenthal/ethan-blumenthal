@@ -1,7 +1,6 @@
 import FadeIn from '@/components/fade-in';
 import ContactHeader from '@/components/contact/contact-header';
 import ContactForm from '@/components/contact/contact-form';
-import FaqSection from '@/components/contact/faq-section';
 
 export default function Contact() {
   return (
@@ -12,9 +11,9 @@ export default function Contact() {
       <FadeIn delay={0.2}>
         <ContactForm />
       </FadeIn>
-      <FadeIn delay={0.4}>
+      {/* <FadeIn delay={0.4}>
         <FaqSection />
-      </FadeIn>
+      </FadeIn> */}
     </div>
   );
 }

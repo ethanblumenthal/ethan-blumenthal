@@ -1,8 +1,18 @@
+import { Home, FolderKanban, User2, Mail } from 'lucide-react';
+
 export enum SOCIAL_LINKS {
   TWITTER = 'https://x.com/ethanblumenthal',
   LINKEDIN = 'https://www.linkedin.com/in/ethanblumenthal/',
   GITHUB = 'https://github.com/ethanblumenthal',
 }
+
+export const NAV_ITEMS = [
+    { name: 'Home', slug: '/', icon: Home },
+    { name: 'Projects', slug: '/projects', icon: FolderKanban },
+    // { name: 'Blog', slug: '/blog', icon: FileText },
+    { name: 'About', slug: '/about', icon: User2 },
+    { name: 'Contact', slug: '/contact', icon: Mail },
+  ];
 
 export const PROJECTS = [
 //   {
