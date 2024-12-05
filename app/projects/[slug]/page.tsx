@@ -61,9 +61,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         />
       </FadeIn>
 
+      {project?.mobileImages && project?.mobileImages.length > 0 && (
       <FadeIn delay={0.6}>
-        <div className="grid grid-cols-4 gap-8">
-          {project.images.map((image, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {project?.mobileImages.map((image, index) => (
             <div key={index} className="relative h-[600px]">
               <Image
                 src={image}
@@ -75,6 +76,24 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           ))}
         </div>
       </FadeIn>
+      )}
+
+      {project?.desktopImages && project?.desktopImages.length > 0 && (
+        <FadeIn delay={0.6}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {project?.desktopImages.map((image, index) => (
+            <div key={index} className="relative h-[600px]">
+              <Image
+                src={image}
+                alt={`${project.title} screenshot ${index + 1}`}
+                fill
+                className="object-contain rounded-lg border border-gray-800"
+              />
+            </div>
+          ))}
+          </div>
+        </FadeIn>
+      )}
     </div>
   );
 }

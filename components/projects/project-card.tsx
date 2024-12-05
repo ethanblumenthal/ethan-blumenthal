@@ -19,7 +19,7 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <Link href={`/projects/${slug}`} className="group block">
-      <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-gray-800">
+      <div className="relative aspect-[6/3] overflow-hidden rounded-lg border border-gray-800">
         <Image
           src={image}
           alt={title}

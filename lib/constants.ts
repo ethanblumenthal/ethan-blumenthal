@@ -41,12 +41,18 @@ export const PROJECTS = [
     position: 'VP of Engineering',
     location: 'Austin, TX',
     previewUrl: 'https://www.app.cityfunds.com/',
-    images: ['/cityfunds-1.png', '/cityfunds-2.png', '/cityfunds-3.png'],
+    mobileImages: [],
+    desktopImages: [
+      '/cityfunds/desktop-1.png',
+      '/cityfunds/desktop-2.png',
+      '/cityfunds/desktop-3.png',
+      '/cityfunds/desktop-4.png',
+    ],
   },
   {
     title: 'OwnProp',
     category: 'Tokenized CRE Investments',
-    image: '/ownprop.jpg',
+    image: '/ownprop.png',
     slug: 'ownprop',
     gradient: 'from-blue-500/20',
     description:
@@ -55,11 +61,14 @@ export const PROJECTS = [
     position: 'Co-Founder, Engineering Lead',
     location: 'Austin, TX',
     previewUrl: 'https://app.ownprop.com/',
-    images: [
+    mobileImages: [
       '/ownprop/ownprop-1.webp',
       '/ownprop/ownprop-2.webp',
       '/ownprop/ownprop-3.webp',
       '/ownprop/ownprop-4.webp',
     ],
+    desktopImages: [
+       
+      ],
   },
 ];
