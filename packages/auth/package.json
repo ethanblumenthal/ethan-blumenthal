@@ -1,0 +1,20 @@
+{
+  "name": "@personal-app/auth",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.ts",
+  "types": "index.ts",
+  "scripts": {
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "better-auth": "^0.7.2"
+  },
+  "peerDependencies": {
+    "@personal-app/db": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5"
+  }
+}
