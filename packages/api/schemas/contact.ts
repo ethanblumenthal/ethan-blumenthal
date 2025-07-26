@@ -7,13 +7,11 @@ export const contactSchema = z.object({
   email: z.string().email('Valid email is required'),
   phone: z.string().optional(),
   company: z.string().optional(),
+  title: z.string().optional(),
   website: z.string().url().optional().or(z.literal('')),
   status: z.enum(['prospect', 'qualified', 'engaged', 'converted', 'lost']).default('prospect'),
-  group: z.enum(['venture_capital', 'private_equity', 'angel_investor', 'lender', 'broker']).optional(),
-  labels: z.array(z.enum([
-    'multifamily', 'office', 'retail', 'industrial', 'prop_tech', 
-    'crypto', 'bitcoin', 'vertical_saas', 'early_stage', 'generalist', 'accelerator'
-  ])).default([]),
+  group: z.enum(['venture_capital', 'private_equity', 'angel_investor', 'lender', 'broker']).nullable().optional(),
+  labels: z.array(z.string()).default([]),
   notes: z.string().optional(),
   xProfile: z.string().optional(),
   linkedinProfile: z.string().optional(),

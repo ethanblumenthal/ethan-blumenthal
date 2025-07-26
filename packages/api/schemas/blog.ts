@@ -9,8 +9,11 @@ export const blogPostSchema = z.object({
   author: z.string().default('Ethan Blumenthal'),
   status: z.enum(['draft', 'published', 'archived']).default('draft'),
   tags: z.array(z.string()).default([]),
-  featuredImage: z.string().optional(),
-  publishedAt: z.date().optional(),
+  featuredImage: z.string().nullable().optional(),
+  metaTitle: z.string().optional(),
+  metaDescription: z.string().optional(),
+  metaKeywords: z.array(z.string()).default([]),
+  publishedAt: z.date().nullable().optional(),
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });

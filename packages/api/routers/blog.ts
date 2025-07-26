@@ -12,47 +12,52 @@ export const blogRouter = router({
         status: z.enum(['draft', 'published', 'archived']).optional(),
         tags: z.array(z.string()).optional(),
         author: z.string().optional(),
-        limit: z.number().min(1).max(100).default(50),
+        limit: z.number().min(1).max(1000).default(50),
         offset: z.number().min(0).default(0),
       }).optional()
     )
     .query(async ({ input }) => {
-      const { status, tags, author, limit = 50, offset = 0 } = input || {};
-      
-      const conditions = [];
+      try {
+        const { status, tags, author, limit = 50, offset = 0 } = input || {};
+        
+        const conditions = [];
 
-      if (status) {
-        conditions.push(eq(blogPosts.status, status));
+        if (status) {
+          conditions.push(eq(blogPosts.status, status));
+        }
+        if (author) {
+          conditions.push(like(blogPosts.author, `%${author}%`));
+        }
+        if (tags && tags.length > 0) {
+          // Check if any of the provided tags are in the blog post's tags array
+          conditions.push(
+            or(...tags.map(tag => sql`${blogPosts.tags} @> ${[tag]}`))
+          );
+        }
+
+        // Execute queries
+        const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
+
+        const [postResults, totalResult] = await Promise.all([
+          db.select()
+            .from(blogPosts)
+            .where(whereClause)
+            .orderBy(desc(blogPosts.createdAt))
+            .limit(limit)
+            .offset(offset),
+          db.select({ count: count() })
+            .from(blogPosts)
+            .where(whereClause)
+        ]);
+
+        return {
+          posts: postResults,
+          total: totalResult[0]?.count || 0,
+        };
+      } catch (error) {
+        console.error('Error fetching blog posts:', error);
+        throw new Error('Failed to fetch blog posts');
       }
-      if (author) {
-        conditions.push(like(blogPosts.author, `%${author}%`));
-      }
-      if (tags && tags.length > 0) {
-        // Check if any of the provided tags are in the blog post's tags array
-        conditions.push(
-          or(...tags.map(tag => sql`${blogPosts.tags} @> ${[tag]}`))
-        );
-      }
-
-      // Execute queries
-      const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
-
-      const [postResults, totalResult] = await Promise.all([
-        db.select()
-          .from(blogPosts)
-          .where(whereClause)
-          .orderBy(desc(blogPosts.createdAt))
-          .limit(limit)
-          .offset(offset),
-        db.select({ count: count() })
-          .from(blogPosts)
-          .where(whereClause)
-      ]);
-
-      return {
-        posts: postResults,
-        total: totalResult[0]?.count || 0,
-      };
     }),
 
   // Get single blog post by slug
@@ -70,12 +75,12 @@ export const blogRouter = router({
 
   // Get single blog post by ID
   getById: publicProcedure
-    .input(z.object({ id: z.string() }))
+    .input(z.object({ id: z.number() }))
     .query(async ({ input }) => {
       const post = await db
         .select()
         .from(blogPosts)
-        .where(eq(blogPosts.id, parseInt(input.id)))
+        .where(eq(blogPosts.id, input.id))
         .limit(1);
       
       return post[0] || null;
@@ -102,6 +107,9 @@ export const blogRouter = router({
           status: input.status,
           tags: input.tags,
           featuredImage: input.featuredImage,
+          metaTitle: input.metaTitle,
+          metaDescription: input.metaDescription,
+          metaKeywords: input.metaKeywords,
           publishedAt: input.publishedAt,
         })
         .returning();
@@ -111,7 +119,7 @@ export const blogRouter = router({
 
   // Update existing blog post
   update: publicProcedure
-    .input(updateBlogPostSchema)
+    .input(updateBlogPostSchema.extend({ id: z.number() }))
     .mutation(async ({ input }) => {
       const { id, ...updateData } = input;
       
@@ -129,7 +137,7 @@ export const blogRouter = router({
           ...updateData,
           updatedAt: new Date(),
         })
-        .where(eq(blogPosts.id, parseInt(id!)))
+        .where(eq(blogPosts.id, id))
         .returning();
 
       return updatedPost;
@@ -137,18 +145,18 @@ export const blogRouter = router({
 
   // Delete blog post
   delete: publicProcedure
-    .input(z.object({ id: z.string() }))
+    .input(z.object({ id: z.number() }))
     .mutation(async ({ input }) => {
       await db
         .delete(blogPosts)
-        .where(eq(blogPosts.id, parseInt(input.id)));
+        .where(eq(blogPosts.id, input.id));
       
       return { success: true };
     }),
 
   // Publish blog post
   publish: publicProcedure
-    .input(z.object({ id: z.string() }))
+    .input(z.object({ id: z.number() }))
     .mutation(async ({ input }) => {
       const publishedAt = new Date();
       
@@ -159,71 +167,92 @@ export const blogRouter = router({
           publishedAt,
           updatedAt: publishedAt,
         })
-        .where(eq(blogPosts.id, parseInt(input.id)))
+        .where(eq(blogPosts.id, input.id))
         .returning();
 
       return publishedPost;
     }),
 
+  // Archive blog post
+  archive: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .mutation(async ({ input }) => {
+      const [archivedPost] = await db
+        .update(blogPosts)
+        .set({
+          status: 'archived',
+          updatedAt: new Date(),
+        })
+        .where(eq(blogPosts.id, input.id))
+        .returning();
+
+      return archivedPost;
+    }),
+
   // Get blog post statistics
   getStats: publicProcedure
     .query(async () => {
-      const totalPosts = await db
-        .select({ count: count() })
-        .from(blogPosts);
+      try {
+        const totalPosts = await db
+          .select({ count: count() })
+          .from(blogPosts);
 
-      const statusStats = await db
-        .select({ 
-          status: blogPosts.status, 
-          count: count() 
-        })
-        .from(blogPosts)
-        .groupBy(blogPosts.status);
+        const statusStats = await db
+          .select({ 
+            status: blogPosts.status, 
+            count: count() 
+          })
+          .from(blogPosts)
+          .groupBy(blogPosts.status);
 
-      const authorStats = await db
-        .select({ 
-          author: blogPosts.author, 
-          count: count() 
-        })
-        .from(blogPosts)
-        .groupBy(blogPosts.author);
+        const authorStats = await db
+          .select({ 
+            author: blogPosts.author, 
+            count: count() 
+          })
+          .from(blogPosts)
+          .groupBy(blogPosts.author);
 
-      // Get all tags and count their occurrences
-      const tagResults = await db
-        .select({ tags: blogPosts.tags })
-        .from(blogPosts)
-        .where(sql`array_length(${blogPosts.tags}, 1) > 0`);
+        // Get all tags and count their occurrences
+        const tagResults = await db
+          .select({ tags: blogPosts.tags })
+          .from(blogPosts)
+          .where(sql`array_length(${blogPosts.tags}, 1) > 0`);
 
-      // Count tag frequencies
-      const tagCounts: Record<string, number> = {};
-      tagResults.forEach(result => {
-        result.tags.forEach(tag => {
-          tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+        // Count tag frequencies
+        const tagCounts: Record<string, number> = {};
+        tagResults.forEach(result => {
+          result.tags.forEach(tag => {
+            tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+          });
         });
-      });
 
-      // Get top 10 most popular tags
-      const popularTags = Object.entries(tagCounts)
-        .sort(([, a], [, b]) => b - a)
-        .slice(0, 10)
-        .map(([tag, count]) => ({ tag, count }));
+        // Get top 10 most popular tags
+        const popularTags = Object.entries(tagCounts)
+          .sort(([, a], [, b]) => b - a)
+          .slice(0, 10)
+          .map(([tag, count]) => ({ tag, count }));
 
-      return {
-        total: totalPosts[0]?.count || 0,
-        byStatus: statusStats.reduce((acc, stat) => ({
-          ...acc,
-          [stat.status]: stat.count
-        }), {
-          draft: 0,
-          published: 0,
-          archived: 0,
-        }),
-        byAuthor: authorStats.reduce((acc, stat) => ({
-          ...acc,
-          [stat.author]: stat.count
-        }), {}),
-        popularTags,
-      };
+        return {
+          total: totalPosts[0]?.count || 0,
+          byStatus: statusStats.reduce((acc, stat) => ({
+            ...acc,
+            [stat.status]: stat.count
+          }), {
+            draft: 0,
+            published: 0,
+            archived: 0,
+          }),
+          byAuthor: authorStats.reduce((acc, stat) => ({
+            ...acc,
+            [stat.author]: stat.count
+          }), {}),
+          popularTags,
+        };
+      } catch (error) {
+        console.error('Error fetching blog stats:', error);
+        throw new Error('Failed to fetch blog statistics');
+      }
     }),
 
   // Generate AI blog post
