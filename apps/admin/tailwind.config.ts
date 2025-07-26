@@ -26,24 +26,24 @@ const config: Config = {
         
         // Core Dark Theme Colors
         dark: {
-          primary: '#0A0A0B',
-          secondary: '#1A1A1B',
-          tertiary: '#2A2A2B',
-          border: '#333333',
+          primary: '#191A1A',
+          secondary: '#1F2121',
+          tertiary: '#21393C',
+          border: 'rgba(255, 255, 255, 0.1)',
         },
         
-        // Accent Colors
+        // Accent Colors - New primary color
         cyan: {
-          50: '#E6FFFA',
-          100: '#B2F5EA',
-          200: '#81E6D9',
-          300: '#4FD1C7',
-          400: '#38B2AC',
-          500: '#00C9A7',
-          600: '#00B094',
-          700: '#009688',
-          800: '#00796B',
-          900: '#004D40',
+          50: '#F0FDFF',
+          100: '#D7F7FB',
+          200: '#B4F0F7',
+          300: '#7CE5F1',
+          400: '#3DD9E8',
+          500: '#30B7C6',
+          600: '#2A9EAD',
+          700: '#248794',
+          800: '#1F6F7A',
+          900: '#1A5B65',
         },
         
         // Status Colors
@@ -62,10 +62,10 @@ const config: Config = {
         
         // Text Colors
         text: {
-          primary: '#FFFFFF',
-          secondary: '#A0A0A0',
-          muted: '#6B7280',
-          inverse: '#000000',
+          primary: '#E8E8E6',
+          secondary: 'rgba(232, 232, 230, 0.7)',
+          muted: 'rgba(232, 232, 230, 0.5)',
+          inverse: '#191A1A',
         },
         
         // Original shadcn/ui colors
@@ -137,8 +137,8 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'gradient-primary': 'linear-gradient(135deg, #00C9A7 0%, #00B094 100%)',
-        'gradient-dark': 'linear-gradient(135deg, #0A0A0B 0%, #1A1A1B 100%)',
+        'gradient-primary': 'linear-gradient(135deg, #30B7C6 0%, #21393C 100%)',
+        'gradient-dark': 'linear-gradient(135deg, #191A1A 0%, #1F2121 100%)',
       },
       keyframes: {
         'accordion-down': {

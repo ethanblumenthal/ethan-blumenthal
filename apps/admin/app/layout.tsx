@@ -1,13 +1,14 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+import Link from 'next/link';
 import { TRPCProvider } from '@/components/providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Personal App Admin | CRE Platform Dashboard',
-  description: 'Advanced admin dashboard for commercial real estate platform management',
+  title: 'Ethan Blumenthal Admin',
+  description: 'Advanced dashboard for Ethan Blumenthal',
 };
 
 export default function RootLayout({
@@ -32,7 +33,7 @@ export default function RootLayout({
                       </div>
                       <div>
                         <h1 className="text-lg font-bold text-white">
-                          Personal App
+                          Ethan Blumenthal
                         </h1>
                         <p className="text-xs text-gray-400">
                           Admin Dashboard
@@ -43,18 +44,21 @@ export default function RootLayout({
                   
                   {/* Navigation Links */}
                   <nav className="hidden md:flex items-center space-x-6">
-                    <a href="#" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <Link href="/" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
                       Dashboard
-                    </a>
-                    <a href="#" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    </Link>
+                    <Link href="/contacts" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
                       Contacts
-                    </a>
-                    <a href="#" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    </Link>
+                    <Link href="/content" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
                       Content
-                    </a>
-                    <a href="#" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    </Link>
+                    <Link href="/social" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                      Social
+                    </Link>
+                    <Link href="/analytics" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
                       Analytics
-                    </a>
+                    </Link>
                   </nav>
                   
                   {/* Status Indicator */}
@@ -80,7 +84,7 @@ export default function RootLayout({
               <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                   <div className="flex items-center gap-4 text-sm text-gray-400">
-                    <span>© 2024 Personal App. All rights reserved.</span>
+                    <span>© 2024 Ethan Blumenthal. All rights reserved.</span>
                     <span className="hidden md:inline">•</span>
                     <span className="hidden md:inline">Powered by AI & Modern Tech</span>
                   </div>

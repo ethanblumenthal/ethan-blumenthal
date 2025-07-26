@@ -36,8 +36,8 @@ function MetricCard({ title, value, subtitle, change, icon: Icon, isLoading }: M
   return (
     <div className="metric-card group">
       <div className="flex items-center justify-between mb-4">
-        <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20">
-          <Icon className="h-5 w-5 text-cyan-400" />
+        <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
+          <Icon className="h-5 w-5 text-primary" />
         </div>
         {change && (
           <div className={`flex items-center gap-1 text-xs font-medium ${
@@ -50,15 +50,15 @@ function MetricCard({ title, value, subtitle, change, icon: Icon, isLoading }: M
       </div>
       
       <div className="space-y-1">
-        <h3 className="text-sm font-medium text-gray-400">{title}</h3>
-        <div className="text-2xl font-bold text-white">
+        <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>
+        <div className="text-2xl font-bold text-foreground">
           {isLoading ? (
-            <div className="animate-pulse bg-dark-tertiary h-8 w-20 rounded" />
+            <div className="animate-pulse bg-muted h-8 w-20 rounded" />
           ) : (
             value
           )}
         </div>
-        <p className="text-xs text-gray-500">{subtitle}</p>
+        <p className="text-xs text-muted-foreground">{subtitle}</p>
       </div>
     </div>
   );
@@ -115,9 +115,9 @@ export default function AdminDashboard() {
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-2">
-          <h1 className="text-4xl font-bold text-white">CRE Platform Dashboard</h1>
-          <p className="text-lg text-gray-400">
-            Real-time insights into your commercial real estate operations
+          <h1  className="text-3xl font-bold text-primary">Dashboard</h1>
+          <p className="text-muted-foreground">
+            Real-time insights into Ethan Blumenthal
           </p>
         </div>
         <div className="flex items-center gap-2">
