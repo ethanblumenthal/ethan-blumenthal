@@ -4,42 +4,42 @@
  
 @layer base {
   :root {
-    /* Perplexity Finance Dark Theme as Default */
-    --background: 240 10% 3.9%; /* #0A0A0B */
-    --foreground: 0 0% 100%; /* #FFFFFF */
+    /* New color scheme */
+    --background: 0 0% 9.8%; /* #191A1A */
+    --foreground: 0 0% 91%; /* #E8E8E6 */
 
-    --card: 240 10% 6%; /* #1A1A1B */
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 12.2%; /* #1F2121 */
+    --card-foreground: 0 0% 91%; /* #E8E8E6 */
  
-    --popover: 240 10% 6%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 12.2%; /* #1F2121 */
+    --popover-foreground: 0 0% 91%; /* #E8E8E6 */
  
-    --primary: 168 77% 39%; /* #00C9A7 cyan-500 */
-    --primary-foreground: 240 10% 3.9%;
+    --primary: 187 61% 47%; /* #30B7C6 */
+    --primary-foreground: 0 0% 91%; /* #E8E8E6 */
  
-    --secondary: 240 10% 12%; /* #2A2A2B */
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 188 30% 18%; /* #21393C */
+    --secondary-foreground: 0 0% 91%; /* #E8E8E6 */
  
-    --muted: 240 10% 12%;
-    --muted-foreground: 0 0% 62.8%; /* #A0A0A0 */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
  
-    --accent: 168 77% 39%;
-    --accent-foreground: 240 10% 3.9%;
+    --accent: 187 61% 47%; /* #30B7C6 */
+    --accent-foreground: 0 0% 91%; /* #E8E8E6 */
  
     --destructive: 0 84% 55%; /* #FF4444 */
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 20%; /* #333333 */
-    --input: 240 10% 12%;
-    --ring: 168 77% 39%;
+    --border: 0 0% 20%;
+    --input: 0 0% 12.2%; /* #1F2121 */
+    --ring: 187 61% 47%; /* #30B7C6 */
  
     --radius: 0.75rem;
     
     /* Chart colors for data visualization */
-    --chart-1: 168 77% 39%; /* cyan-500 */
-    --chart-2: 142 71% 45%; /* success */
-    --chart-3: 0 84% 55%; /* danger */
-    --chart-4: 39 100% 50%; /* warning */
+    --chart-1: 187 61% 47%; /* #30B7C6 primary */
+    --chart-2: 142 71% 45%; /* success green */
+    --chart-3: 0 84% 55%; /* danger red */
+    --chart-4: 39 100% 50%; /* warning yellow */
     --chart-5: 280 100% 70%; /* purple accent */
   }
  
@@ -86,7 +86,7 @@
   
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background: linear-gradient(135deg, #0A0A0B 0%, #1A1A1B 100%);
+    background: #191A1A;
   }
   
   /* Enhanced Typography */
@@ -107,49 +107,101 @@
   }
   
   ::-webkit-scrollbar-track {
-    @apply bg-dark-secondary;
+    background: #1F2121;
   }
   
   ::-webkit-scrollbar-thumb {
-    @apply bg-cyan-500 rounded-full;
+    background: #30B7C6;
+    border-radius: 9999px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-cyan-400;
+    background: #2A9EAD;
   }
 }
 
 @layer components {
-  /* Perplexity-style card component */
+  /* Updated card component */
   .perplexity-card {
-    @apply bg-dark-secondary border border-dark-border rounded-lg p-6 transition-all duration-200 hover:border-cyan-500/30;
+    background: #1F2121;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    transition: all 200ms;
+  }
+  
+  .perplexity-card:hover {
+    border-color: rgba(48, 183, 198, 0.3);
   }
   
   /* Metric card styling */
   .metric-card {
-    @apply perplexity-card relative overflow-hidden;
+    background: #1F2121;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 200ms;
   }
   
   .metric-card::before {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 transition-opacity duration-300;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(48, 183, 198, 0.05) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 300ms;
   }
   
   .metric-card:hover::before {
-    @apply opacity-100;
+    opacity: 1;
+  }
+  
+  .metric-card:hover {
+    border-color: rgba(48, 183, 198, 0.3);
   }
   
   /* Button variants */
   .btn-primary {
-    @apply bg-gradient-primary text-white border-none hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-200;
+    background: #30B7C6;
+    color: #E8E8E6;
+    border: none;
+    transition: all 200ms;
+  }
+  
+  .btn-primary:hover {
+    background: #21393C;
+    box-shadow: 0 10px 25px rgba(48, 183, 198, 0.25);
   }
   
   .btn-ghost {
-    @apply bg-transparent text-text-secondary border border-dark-border hover:bg-dark-tertiary hover:text-text-primary transition-all duration-200;
+    background: transparent;
+    color: rgba(232, 232, 230, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 200ms;
+  }
+  
+  .btn-ghost:hover {
+    background: #1F2121;
+    color: #E8E8E6;
   }
   
   /* Search input styling */
   .search-input {
-    @apply bg-dark-tertiary border-dark-border text-text-primary placeholder:text-text-muted focus:border-cyan-500 focus:ring-cyan-500/20;
+    background: #1F2121;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #E8E8E6;
+    transition: all 200ms;
+  }
+  
+  .search-input::placeholder {
+    color: rgba(232, 232, 230, 0.5);
+  }
+  
+  .search-input:focus {
+    border-color: #30B7C6;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(48, 183, 198, 0.1);
   }
 }

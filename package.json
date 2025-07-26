@@ -18,5 +18,8 @@
     "@turbo/gen": "^2.5.5",
     "turbo": "^2.5.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@tanstack/react-table": "^8.21.3",
+    "react-markdown": "^10.1.0"
+  }
 }

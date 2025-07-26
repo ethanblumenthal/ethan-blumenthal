@@ -115,24 +115,33 @@ The CRE Platform combines portfolio website management, CRM functionality, blog 
 
 3. **Environment setup**
    ```bash
-   # Copy environment files
-   cp apps/web/.env.example apps/web/.env.local
-   cp apps/admin/.env.example apps/admin/.env.local
+   # Copy environment files (or use the provided examples)
+   cp apps/web/.env.local.example apps/web/.env.local
+   cp apps/admin/.env.local.example apps/admin/.env.local
    
    # Configure your environment variables
    # See Environment Variables section below
    ```
 
 4. **Database setup**
+   
+   **IMPORTANT**: The application requires a PostgreSQL database to function.
+   
+   See [DATABASE_SETUP.md](./DATABASE_SETUP.md) for detailed instructions.
+   
+   Quick setup with Supabase:
+   - Create a free account at https://supabase.com
+   - Create a new project
+   - Copy your database URL from Settings > Database
+   - Add to both .env.local files:
+     ```env
+     DATABASE_URL=your_connection_string_here
+     ```
+   
+   Then run:
    ```bash
-   # Push schema to database
+   cd packages/db
    bun db:push
-   
-   # Run migrations
-   bun db:migrate
-   
-   # Seed with sample data (optional)
-   bun db:seed
    ```
 
 5. **Start development servers**
@@ -142,7 +151,7 @@ The CRE Platform combines portfolio website management, CRM functionality, blog 
    
    # Or start individual apps
    bun dev:web      # Web app on http://localhost:3000
-   bun dev:admin    # Admin app on http://localhost:3001
+   bun dev:admin    # Admin app on http://localhost:3002
    ```
 
 ## ⚙️ Environment Variables

@@ -11,7 +11,7 @@ export const leadRouter = router({
     .input(
       z.object({
         platform: z.enum(['twitter', 'linkedin']).optional(),
-        limit: z.number().min(1).max(100).default(50),
+        limit: z.number().min(1).max(1000).default(50),
         offset: z.number().min(0).default(0),
       }).optional()
     )
@@ -170,43 +170,48 @@ export const leadRouter = router({
   // Get lead statistics
   getStats: publicProcedure
     .query(async () => {
-      const totalLeads = await db
-        .select({ count: count() })
-        .from(leads);
+      try {
+        const totalLeads = await db
+          .select({ count: count() })
+          .from(leads);
 
-      const platformStats = await db
-        .select({ 
-          platform: leads.platform, 
-          count: count() 
-        })
-        .from(leads)
-        .groupBy(leads.platform);
+        const platformStats = await db
+          .select({ 
+            platform: leads.platform, 
+            count: count() 
+          })
+          .from(leads)
+          .groupBy(leads.platform);
 
-      const avgEngagementResult = await db
-        .select({ 
-          avg: avg(leads.engagementScore)
-        })
-        .from(leads)
-        .where(sql`${leads.engagementScore} IS NOT NULL`);
+        const avgEngagementResult = await db
+          .select({ 
+            avg: avg(leads.engagementScore)
+          })
+          .from(leads)
+          .where(sql`${leads.engagementScore} IS NOT NULL`);
 
-      const avgFollowerResult = await db
-        .select({ 
-          avg: avg(leads.followerCount)
-        })
-        .from(leads)
-        .where(sql`${leads.followerCount} IS NOT NULL`);
+        const avgFollowerResult = await db
+          .select({ 
+            avg: avg(leads.followerCount)
+          })
+          .from(leads)
+          .where(sql`${leads.followerCount} IS NOT NULL`);
 
-      return {
-        total: totalLeads[0]?.count || 0,
-        byPlatform: platformStats.reduce((acc, stat) => ({
-          ...acc,
-          [stat.platform]: stat.count
-        }), {
-          twitter: 0,
-          linkedin: 0,
-        }),
-        averageEngagementScore: parseFloat(avgEngagementResult[0]?.avg || '0'),
-        averageFollowerCount: parseFloat(avgFollowerResult[0]?.avg || '0'),
-      };
+        return {
+          total: totalLeads[0]?.count || 0,
+          byPlatform: platformStats.reduce((acc, stat) => ({
+            ...acc,
+            [stat.platform]: stat.count
+          }), {
+            twitter: 0,
+            linkedin: 0,
+          }),
+          averageEngagementScore: parseFloat(avgEngagementResult[0]?.avg || '0'),
+          averageFollowerCount: parseFloat(avgFollowerResult[0]?.avg || '0'),
+        };
+      } catch (error) {
+        console.error('Error fetching lead stats:', error);
+        throw new Error('Failed to fetch lead statistics');
+      }
     }),
 });
