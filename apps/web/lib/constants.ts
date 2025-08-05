@@ -8,30 +8,30 @@ export enum SOCIAL_LINKS {
 
 export const NAV_ITEMS = [
   { name: 'Home', slug: '/', icon: Home },
-  { name: 'Projects', slug: '/projects', icon: FolderKanban },
-  { name: 'Blog', slug: '/blog', icon: FileText },
+  // { name: 'Projects', slug: '/projects', icon: FolderKanban },
+  // { name: 'Blog', slug: '/blog', icon: FileText },
   { name: 'About', slug: '/about', icon: User2 },
   { name: 'Contact', slug: '/contact', icon: Mail },
 ];
 
 export const PROJECTS = [
-  //   {
-  //     title: 'Liquid Finance',
-  //     category: 'BTC-backed CRE Loans',
-  //     image: '/placeholder.svg',
-  //     slug: 'liquid-finance',
-  //     gradient: 'from-blue-500/20',
-  //     description:
-  //       'Liquid is an autonomous lending protocol that shrinks commercial real estate (CRE) financing timelines from 2-3 months to days. We leverage large language models (LLMs) to analyze deal materials (e.g., pro formas, pitch decks) and instantly generate actionable loan terms. Our terms provide borrowers with unmatched transparency, showing precisely how interest rates, collateral requirements, and repayment schedules are calculated.',
-  //     year: '2024-Present',
-  //     position: 'Co-Founder, CTO',
-  //     location: 'Austin, TX',
-  //     previewUrl: 'https://liquid.finance',
-  //     images: ['/liquid-1.png', '/liquid-2.png', '/liquid-3.png'],
-  //   },
+    {
+      title: 'Liquid Finance',
+      category: 'Agentic CRE Workflows',
+      image: '/placeholder.svg',
+      slug: 'liquid-finance',
+      gradient: 'from-primary/20',
+      description:
+        'Flow AI is revolutionizing commercial real estate with its agentic workforce. Designed to streamline the formulaic yet human-dependent processes of private equity firms, Flow replaces investor relations and financial modeling teams by answering complex queries, analyzing deal data, and enabling a unique "Vibe Modeling" experience. Flow AI addresses inefficiencies in a historically opaque market, reducing costs, closing times, and errors while unlocking untapped data potential.',
+      year: '2024-Present',
+      position: 'Co-Founder, CTO',
+      location: 'Austin, TX',
+      previewUrl: 'https://flowcre.ai',
+      desktopImages: ['/liquid/flow-1.png', '/liquid/flow-2.png', '/liquid/flow-3.png', '/liquid/flow-4.png'],
+    },
   {
     title: 'Cityfunds',
-    category: 'Home Equity Investments',
+    category: 'Home Equity Platform',
     image: '/cityfunds.webp',
     slug: 'cityfunds',
     gradient: 'from-blue-500/20',

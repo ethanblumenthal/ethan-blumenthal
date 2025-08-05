@@ -10,18 +10,12 @@ export default function Home() {
       <FadeIn>
         <Hero />
       </FadeIn>
-      <FadeIn delay={0.2}>
-        <TechStack />
-      </FadeIn>
       <FadeIn delay={0.4}>
         <SelectedProjects />
       </FadeIn>
       {/* <FadeIn delay={0.6}>
         <RecentPosts />
       </FadeIn> */}
-      <FadeIn delay={0.8}>
-        <EnhancedNewsletter />
-      </FadeIn>
     </div>
   );
 }

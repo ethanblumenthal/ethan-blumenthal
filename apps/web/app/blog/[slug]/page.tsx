@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { Button } from '@personal-app/ui';
+import { Button } from '@/components/ui/button';
 import { formatDate } from '@/lib/blog';
 import { ArrowLeft, Calendar, Clock, User, Tag } from 'lucide-react';
 import Link from 'next/link';
@@ -94,12 +94,12 @@ const markdownComponents = {
     </li>
   ),
   blockquote: ({ children, ...props }: any) => (
-    <blockquote {...props} className="border-l-4 border-blue-500 pl-4 py-2 mb-4 bg-gray-800/50 rounded-r-lg text-gray-300 italic">
+    <blockquote {...props} className="border-l-4 border-primary pl-4 py-2 mb-4 bg-gray-800/50 rounded-r-lg text-gray-300 italic">
       {children}
     </blockquote>
   ),
   code: ({ children, ...props }: any) => (
-    <code {...props} className="bg-gray-800 text-blue-300 px-2 py-1 rounded text-sm font-mono">
+    <code {...props} className="bg-gray-800 text-primary px-2 py-1 rounded text-sm font-mono">
       {children}
     </code>
   ),
@@ -128,7 +128,7 @@ const markdownComponents = {
   a: ({ children, ...props }: any) => (
     <a 
       {...props}
-      className="text-blue-400 hover:text-blue-300 underline underline-offset-2"
+      className="text-primary hover:text-primary/80 underline underline-offset-2"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -270,7 +270,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 className="group block"
               >
                 <div className="bg-gray-900/50 rounded-lg p-6 border border-gray-800 hover:border-gray-700 transition-colors">
-                  <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors mb-2">
+                  <h3 className="font-semibold text-white group-hover:text-primary transition-colors mb-2">
                     {relatedPost.title}
                   </h3>
                   <p className="text-gray-400 text-sm mb-3 line-clamp-2">
@@ -289,14 +289,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Newsletter CTA */}
       <div className="border-t border-gray-800 pt-12 mt-12">
-        <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-lg p-8 text-center">
+        <div className="bg-gradient-to-r from-primary/20 to-primary/10 rounded-lg p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-4">
             Enjoyed this article?
           </h3>
           <p className="text-gray-300 mb-6">
             Subscribe to get more insights on PropTech, Bitcoin, and commercial real estate investing.
           </p>
-          <Button asChild className="bg-blue-600 hover:bg-blue-700">
+          <Button asChild>
             <Link href="/#newsletter">Subscribe to Newsletter</Link>
           </Button>
         </div>
