@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '@personal-app/ui';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { trpc } from '@/lib/trpc';
 import { formatDate } from '@/lib/blog';
@@ -20,10 +20,9 @@ export default function RecentPosts() {
         <h2 className="text-4xl font-bold text-white">Recent Blog Posts</h2>
         <Button
           variant="outline"
-          className="border-gray-800 hover:bg-gray-800"
-          asChild
+          href="/blog"
         >
-          <Link href="/blog">View Blog</Link>
+          View Blog
         </Button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -54,7 +53,7 @@ export default function RecentPosts() {
                 <time className="text-sm text-gray-400">
                   {formatDate(post.publishedAt?.toString() || post.createdAt.toString())}
                 </time>
-                <h3 className="text-xl font-semibold mt-2 text-white group-hover:text-blue-400 transition-colors line-clamp-2">
+                <h3 className="text-xl font-semibold mt-2 text-white group-hover:text-primary transition-colors line-clamp-2">
                   {post.title}
                 </h3>
                 {post.excerpt && (

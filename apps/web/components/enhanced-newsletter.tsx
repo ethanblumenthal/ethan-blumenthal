@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Button, Input, Label, Checkbox } from '@personal-app/ui';
+import { Input, Label, Checkbox } from '@personal-app/ui';
+import { Button } from '@/components/ui/button';
 // import { createContactSchema } from '@personal-app/api/schemas/client';
 import { trpc } from '@/components/providers';
 import { CheckCircle, AlertCircle, TrendingUp, Users, Zap } from 'lucide-react';
@@ -86,10 +87,10 @@ export default function EnhancedNewsletter() {
   if (isSubmitted) {
     return (
       <section className="py-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
         <div className="relative max-w-2xl mx-auto text-center">
           <div className="perplexity-card p-8">
-            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-600 flex items-center justify-center">
+            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-primary to-primary/80 flex items-center justify-center">
               <CheckCircle className="h-8 w-8 text-white" />
             </div>
             <h2 className="text-3xl font-bold text-white mb-4">
@@ -98,15 +99,15 @@ export default function EnhancedNewsletter() {
             <p className="text-gray-300 mb-6 text-lg leading-relaxed">
               You're now subscribed to receive exclusive insights on PropTech, Bitcoin, and the future of commercial real estate investing.
             </p>
-            <div className="bg-cyan-500/10 border border-cyan-500/30 rounded-lg p-4 mb-6">
-              <p className="text-sm text-cyan-300">
+            <div className="bg-primary/10 border border-primary/30 rounded-lg p-4 mb-6">
+              <p className="text-sm text-primary/90">
                 🚀 Expect your first newsletter with market insights within 24 hours
               </p>
             </div>
             <Button
               onClick={() => setIsSubmitted(false)}
               variant="outline"
-              className="border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white"
+              className="border-primary text-primary hover:bg-primary hover:text-white"
             >
               Subscribe Another Email
             </Button>
@@ -121,12 +122,12 @@ export default function EnhancedNewsletter() {
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-transparent" />
       <div className="relative max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full mb-6">
-            <div className="h-2 w-2 bg-cyan-400 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-cyan-400">Market Intelligence</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full mb-6">
+            <div className="h-2 w-2 bg-primary rounded-full animate-pulse" />
+            <span className="text-sm font-medium text-primary">Market Intelligence</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Join the <span className="bg-gradient-to-r from-cyan-400 to-cyan-600 bg-clip-text text-transparent">CRE Innovation</span> Newsletter
+            Join the <span className="bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">CRE Innovation</span> Newsletter
           </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
             Get exclusive market analysis, PropTech insights, and investment opportunities delivered weekly. 
@@ -134,7 +135,7 @@ export default function EnhancedNewsletter() {
           </p>
           <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-400">
             <div className="flex items-center gap-2">
-              <Users className="h-4 w-4 text-cyan-400" />
+              <Users className="h-4 w-4 text-primary" />
               <span><strong className="text-white">2,500+</strong> Active Subscribers</span>
             </div>
             <div className="flex items-center gap-2">
@@ -160,9 +161,9 @@ export default function EnhancedNewsletter() {
             </div>
             
             <div className="grid gap-4">
-              <div className="perplexity-card p-4 hover:border-cyan-500/30 transition-colors">
+              <div className="perplexity-card p-4 hover:border-primary/30 transition-colors">
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-cyan-500 to-cyan-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-primary to-primary/80 flex items-center justify-center flex-shrink-0">
                     <Zap className="h-4 w-4 text-white" />
                   </div>
                   <div>
@@ -172,7 +173,7 @@ export default function EnhancedNewsletter() {
                 </div>
               </div>
               
-              <div className="perplexity-card p-4 hover:border-cyan-500/30 transition-colors">
+              <div className="perplexity-card p-4 hover:border-primary/30 transition-colors">
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center flex-shrink-0">
                     <TrendingUp className="h-4 w-4 text-white" />
@@ -184,7 +185,7 @@ export default function EnhancedNewsletter() {
                 </div>
               </div>
               
-              <div className="perplexity-card p-4 hover:border-cyan-500/30 transition-colors">
+              <div className="perplexity-card p-4 hover:border-primary/30 transition-colors">
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
                     <Users className="h-4 w-4 text-white" />
@@ -198,9 +199,9 @@ export default function EnhancedNewsletter() {
             </div>
             
             {/* Subscriber testimonial */}
-            <div className="perplexity-card p-6 border-cyan-500/30">
+            <div className="perplexity-card p-6 border-primary/30">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-cyan-500 to-cyan-600 flex items-center justify-center text-white font-bold">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-primary/80 flex items-center justify-center text-white font-bold">
                   JD
                 </div>
                 <div>

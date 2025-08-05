@@ -5,9 +5,6 @@ export default function AboutBio() {
     <section className="py-12">
       <div className="grid md:grid-cols-[2fr,1fr] gap-12 items-start">
         <div className="space-y-6">
-          <h2 className="text-4xl font-bold text-white">
-            Hello! I&apos;m Ethan,
-          </h2>
           <div className="text-gray-400 space-y-4 text-lg leading-relaxed">
             <p>
               Ethan is a full-stack product developer with a focus on real
@@ -24,6 +21,22 @@ export default function AboutBio() {
               in Computer Science at the University of Texas.
             </p>
           </div>
+          <section className="py-6">
+      <div className="inline-grid grid-cols-1 md:grid-cols-3 gap-8 rounded-lg bg-zinc-800 p-8">
+        <div>
+          <h2 className="text-2xl font-bold text-white mb-2">Austin, TX</h2>
+          <p className="text-gray-400 text-lg">Based In</p>
+        </div>
+        <div className="md:border-l border-dotted border-gray-400 md:pl-8">
+          <h2 className="text-2xl font-bold text-white mb-2">7</h2>
+          <p className="text-gray-400 text-lg">Years of Experience</p>
+        </div>
+        <div className="md:border-l border-dotted border-gray-400 md:pl-8">
+          <h2 className="text-2xl font-bold text-white mb-2">20+</h2>
+          <p className="text-gray-400 text-lg">Funds Supported</p>
+        </div>
+      </div>
+    </section>
         </div>
         <div className="relative aspect-square overflow-hidden rounded-lg">
           <Image

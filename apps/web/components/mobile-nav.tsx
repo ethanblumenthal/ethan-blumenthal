@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Twitter, Linkedin, Github, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Avatar, AvatarFallback, AvatarImage, Button, Sheet, SheetContent, SheetTrigger } from '@personal-app/ui';
+import { Avatar, AvatarFallback, AvatarImage, Sheet, SheetContent, SheetTrigger } from '@personal-app/ui';
+import { Button } from '@/components/ui/button';
 import { NAV_ITEMS, SOCIAL_LINKS } from '@/lib/constants';
 
 const MobileNav = () => {

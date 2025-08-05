@@ -1,4 +1,4 @@
-import { Button } from '@personal-app/ui';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export default function AboutHeader() {
@@ -8,18 +8,16 @@ export default function AboutHeader() {
       <div className="flex gap-4">
         <Button
           size="lg"
-          className="bg-white text-black hover:bg-gray-200"
-          asChild
+          href="/contact"
         >
-          <Link href="/contact">Get In Touch</Link>
+          Get In Touch
         </Button>
         <Button
           size="lg"
           variant="outline"
-          className="border-gray-800 hover:bg-gray-800"
-          asChild
+          href="/projects"
         >
-          <Link href="/projects">View Projects</Link>
+          View Projects
         </Button>
       </div>
     </section>

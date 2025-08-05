@@ -1,4 +1,4 @@
-import { Button } from '@personal-app/ui';
+import { Button } from '@/components/ui/button';
 import { PROJECTS } from '@/lib/constants';
 import Link from 'next/link';
 import { ExternalLink, TrendingUp, Building2, Users, Calendar } from 'lucide-react';
@@ -17,13 +17,11 @@ export default function SelectedProjects() {
           </div>
           <Button
             variant="outline"
-            className="border-gray-600 hover:border-cyan-500 hover:bg-cyan-500/10 w-fit"
-            asChild
+            href="/projects"
+            className="w-fit"
           >
-            <Link href="/projects" className="flex items-center gap-2">
-              View All Projects
-              <ExternalLink className="h-4 w-4" />
-            </Link>
+            View All Projects
+            <ExternalLink className="h-4 w-4 ml-2" />
           </Button>
         </div>
         
@@ -47,9 +45,9 @@ export default function SelectedProjects() {
                   
                   {/* Project status badge */}
                   <div className="absolute top-4 left-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-dark-primary/80 border border-cyan-500/30 rounded-full backdrop-blur-sm">
-                      <div className="h-2 w-2 bg-cyan-400 rounded-full animate-pulse" />
-                      <span className="text-xs font-medium text-cyan-400">Active</span>
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-dark-primary/80 border border-primary/30 rounded-full backdrop-blur-sm">
+                      <div className="h-2 w-2 bg-primary rounded-full animate-pulse" />
+                      <span className="text-xs font-medium text-primary">Active</span>
                     </div>
                   </div>
                   
@@ -65,10 +63,10 @@ export default function SelectedProjects() {
                 <div className="space-y-3">
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-1">
-                      <h3 className="text-xl font-semibold text-white group-hover:text-cyan-400 transition-colors">
+                      <h3 className="text-xl font-semibold text-white group-hover:text-primary transition-colors">
                         {project.title}
                       </h3>
-                      <p className="text-sm text-cyan-400 font-medium">{project.category}</p>
+                      <p className="text-sm text-primary font-medium">{project.category}</p>
                     </div>
                     <div className="text-right">
                       <div className="text-sm font-medium text-white">{project.year}</div>
@@ -102,25 +100,6 @@ export default function SelectedProjects() {
           ))}
         </div>
         
-        {/* Portfolio summary */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-dark-border">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-white mb-1">$100M+</div>
-            <div className="text-sm text-gray-400">Assets Under Management</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-white mb-1">3</div>
-            <div className="text-sm text-gray-400">Companies Founded</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-white mb-1">50K+</div>
-            <div className="text-sm text-gray-400">Users Served</div>
-          </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-white mb-1">99%</div>
-            <div className="text-sm text-gray-400">Platform Uptime</div>
-          </div>
-        </div>
       </div>
     </section>
   );
