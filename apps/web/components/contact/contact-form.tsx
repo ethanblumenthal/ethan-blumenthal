@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Button, Input, Textarea } from '@personal-app/ui';
+import { Input, Textarea } from '@personal-app/ui';
+import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Twitter } from 'lucide-react';
 import { SOCIAL_LINKS } from '@/lib/constants';
 

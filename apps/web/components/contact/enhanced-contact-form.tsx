@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Input, Textarea, Label, Checkbox, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@personal-app/ui';
+import { Input, Textarea, Label, Checkbox, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@personal-app/ui';
+import { Button } from '@/components/ui/button';
 import { createContactSchema, type CreateContact } from '@personal-app/api/schemas/client';
 import { trpc } from '@/components/providers';
 import { Github, Linkedin, Twitter, CheckCircle, AlertCircle } from 'lucide-react';

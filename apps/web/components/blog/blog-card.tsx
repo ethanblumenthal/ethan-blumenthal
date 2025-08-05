@@ -38,7 +38,7 @@ export default function BlogCard({
             day: 'numeric',
           })}</time>
           
-          <h2 className="text-xl font-semibold text-white mt-2 mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
+          <h2 className="text-xl font-semibold text-white mt-2 mb-3 group-hover:text-primary transition-colors line-clamp-2">
             {title}
           </h2>
           

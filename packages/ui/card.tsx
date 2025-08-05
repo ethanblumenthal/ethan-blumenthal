@@ -111,10 +111,7 @@ interface MetricCardProps extends CardProps {
 
 const MetricCard = React.forwardRef<HTMLDivElement, MetricCardProps>(
   ({ title, value, change, icon, subtitle, className, ...props }, ref) => (
-    <Card ref={ref} variant="metric" className={cn('group', className)} {...props}>
-      {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      
+    <Card ref={ref} variant="metric" className={cn('group', className)} {...props}>      
       <div className="relative z-10">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">

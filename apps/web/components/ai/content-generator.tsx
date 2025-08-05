@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Button, Input, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea } from '@personal-app/ui';
+import { Input, Label, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Textarea } from '@personal-app/ui';
+import { Button } from '@/components/ui/button';
 import { trpc } from '@/components/providers';
 import { Sparkles, Copy, Check, RefreshCw } from 'lucide-react';
 
@@ -88,7 +89,7 @@ export default function ContentGenerator() {
         {/* Input Form */}
         <div className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <Sparkles className="w-8 h-8 text-blue-400" />
+            <Sparkles className="w-8 h-8 text-primary" />
             <h2 className="text-2xl font-bold text-white">AI Content Generator</h2>
           </div>
 
@@ -207,7 +208,7 @@ export default function ContentGenerator() {
             <Button
               type="submit"
               disabled={isGenerating}
-              className="w-full bg-blue-600 hover:bg-blue-700"
+              className="w-full"
             >
               {isGenerating ? (
                 <>
@@ -302,7 +303,7 @@ export default function ContentGenerator() {
                   {generatedPost.tags.map((tag: string) => (
                     <span
                       key={tag}
-                      className="bg-blue-600/20 text-blue-300 px-2 py-1 rounded text-sm"
+                      className="bg-primary/20 text-primary px-2 py-1 rounded text-sm"
                     >
                       {tag}
                     </span>
