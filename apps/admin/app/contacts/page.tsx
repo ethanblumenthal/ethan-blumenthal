@@ -26,16 +26,16 @@ interface Contact {
   firstName: string;
   lastName: string;
   email: string;
-  phone?: string;
-  company?: string;
-  website?: string;
+  phone: string | null;
+  company: string | null;
+  website: string | null;
   status: 'prospect' | 'qualified' | 'engaged' | 'converted' | 'lost';
   group: 'venture_capital' | 'private_equity' | 'angel_investor' | 'lender' | 'broker' | null;
   labels: string[];
   leadScore: number;
   source: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 // Status configuration
@@ -243,7 +243,7 @@ const columns: ColumnDef<Contact>[] = [
     accessorKey: 'createdAt',
     header: 'Created',
     cell: ({ row }) => {
-      const date = row.getValue('createdAt') as Date;
+      const date = row.getValue('createdAt') as string;
       return <span className="text-sm">{format(new Date(date), 'MMM dd, yyyy')}</span>;
     },
   },

@@ -46,16 +46,15 @@ interface ContactFormData {
   firstName: string;
   lastName: string;
   email: string;
-  phone?: string;
-  company?: string;
-  title?: string;
-  website?: string;
-  linkedinProfile?: string;
-  xProfile?: string;
+  phone: string;
+  company: string;
+  website: string;
+  linkedinProfile: string;
+  xProfile: string;
   status: 'prospect' | 'qualified' | 'engaged' | 'converted' | 'lost';
   group: 'venture_capital' | 'private_equity' | 'angel_investor' | 'lender' | 'broker' | null;
   labels: string[];
-  notes?: string;
+  notes: string;
 }
 
 // Status and group configurations
@@ -97,7 +96,6 @@ export default function ContactDetailsPage() {
             email: data.email,
             phone: data.phone || '',
             company: data.company || '',
-            title: data.title || '',
             website: data.website || '',
             linkedinProfile: data.linkedinProfile || '',
             xProfile: data.xProfile || '',
@@ -151,7 +149,6 @@ export default function ContactDetailsPage() {
         email: contact.email,
         phone: contact.phone || '',
         company: contact.company || '',
-        title: contact.title || '',
         website: contact.website || '',
         linkedinProfile: contact.linkedinProfile || '',
         xProfile: contact.xProfile || '',
@@ -355,21 +352,6 @@ export default function ContactDetailsPage() {
                     <Building2 className="mr-2 h-4 w-4 text-muted-foreground" />
                     {contact.company}
                   </p>
-                ) : (
-                  <p className="text-muted-foreground">Not provided</p>
-                )}
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="title">Title</Label>
-                {isEditing ? (
-                  <Input
-                    id="title"
-                    value={formData.title}
-                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  />
-                ) : contact.title ? (
-                  <p className="text-foreground">{contact.title}</p>
                 ) : (
                   <p className="text-muted-foreground">Not provided</p>
                 )}

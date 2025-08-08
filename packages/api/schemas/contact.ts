@@ -7,7 +7,6 @@ export const contactSchema = z.object({
   email: z.string().email('Valid email is required'),
   phone: z.string().optional(),
   company: z.string().optional(),
-  title: z.string().optional(),
   website: z.string().url().optional().or(z.literal('')),
   status: z.enum(['prospect', 'qualified', 'engaged', 'converted', 'lost']).default('prospect'),
   group: z.enum(['venture_capital', 'private_equity', 'angel_investor', 'lender', 'broker']).nullable().optional(),

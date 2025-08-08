@@ -111,7 +111,6 @@ export const contactRouter = router({
           email: input.email,
           phone: input.phone,
           company: input.company,
-          title: input.title,
           website: input.website,
           status: input.status,
           group: input.group,

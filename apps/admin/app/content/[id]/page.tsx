@@ -63,9 +63,6 @@ interface BlogPostFormData {
   tags: string[];
   featuredImage: string | null;
   publishedAt: Date | null;
-  metaTitle: string;
-  metaDescription: string;
-  metaKeywords: string[];
 }
 
 // Status configuration
@@ -136,12 +133,8 @@ export default function ContentEditorPage() {
     tags: [],
     featuredImage: null,
     publishedAt: null,
-    metaTitle: '',
-    metaDescription: '',
-    metaKeywords: [],
   });
   const [newTag, setNewTag] = useState('');
-  const [newKeyword, setNewKeyword] = useState('');
   const [activeTab, setActiveTab] = useState('edit');
 
   // Fetch post data if editing existing post
@@ -160,10 +153,7 @@ export default function ContentEditorPage() {
             status: data.status,
             tags: data.tags || [],
             featuredImage: data.featuredImage,
-            publishedAt: data.publishedAt,
-            metaTitle: data.metaTitle || '',
-            metaDescription: data.metaDescription || '',
-            metaKeywords: data.metaKeywords || [],
+            publishedAt: data.publishedAt ? new Date(data.publishedAt) : null,
           });
         }
       }
@@ -277,22 +267,6 @@ export default function ContentEditorPage() {
     });
   };
 
-  const addKeyword = () => {
-    if (newKeyword && !formData.metaKeywords.includes(newKeyword)) {
-      setFormData({
-        ...formData,
-        metaKeywords: [...formData.metaKeywords, newKeyword],
-      });
-      setNewKeyword('');
-    }
-  };
-
-  const removeKeyword = (keyword: string) => {
-    setFormData({
-      ...formData,
-      metaKeywords: formData.metaKeywords.filter(k => k !== keyword),
-    });
-  };
 
   const handleMarkdownAction = (action: string, value?: string) => {
     const textarea = document.getElementById('content') as HTMLTextAreaElement;
@@ -530,58 +504,6 @@ export default function ContentEditorPage() {
               </div>
             </div>
 
-            {/* SEO Settings */}
-            <div className="perplexity-card">
-              <h3 className="text-lg font-semibold text-primary mb-4">SEO Settings</h3>
-              <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="metaTitle">Meta Title</Label>
-                  <Input
-                    id="metaTitle"
-                    value={formData.metaTitle}
-                    onChange={(e) => setFormData({ ...formData, metaTitle: e.target.value })}
-                    placeholder="SEO title (defaults to post title)"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="metaDescription">Meta Description</Label>
-                  <Textarea
-                    id="metaDescription"
-                    value={formData.metaDescription}
-                    onChange={(e) => setFormData({ ...formData, metaDescription: e.target.value })}
-                    placeholder="SEO description (defaults to excerpt)"
-                    rows={3}
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label>Meta Keywords</Label>
-                  <div className="flex items-center space-x-2">
-                    <Input
-                      value={newKeyword}
-                      onChange={(e) => setNewKeyword(e.target.value)}
-                      placeholder="Add a keyword"
-                      onKeyPress={(e) => e.key === 'Enter' && addKeyword()}
-                    />
-                    <Button onClick={addKeyword} size="sm">
-                      Add
-                    </Button>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    {formData.metaKeywords.map((keyword) => (
-                      <Badge key={keyword} variant="secondary" className="flex items-center space-x-1">
-                        <span>{keyword}</span>
-                        <X
-                          className="h-3 w-3 cursor-pointer"
-                          onClick={() => removeKeyword(keyword)}
-                        />
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Sidebar */}

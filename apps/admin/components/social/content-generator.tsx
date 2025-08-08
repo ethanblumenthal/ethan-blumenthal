@@ -53,7 +53,6 @@ interface GeneratedContent {
   estimatedEngagement: number;
   tone: string;
   focus: string;
-  inspirationPosts?: any[];
 }
 
 export default function ContentGenerator({ open, onOpenChange, onContentApproved }: ContentGeneratorProps) {
@@ -82,12 +81,11 @@ export default function ContentGenerator({ open, onOpenChange, onContentApproved
           estimatedEngagement: data.post.estimatedEngagement || 0,
           tone: data.post.tone,
           focus: data.post.focus,
-          inspirationPosts: data.post.inspirationPosts,
         });
         setActiveView('preview');
         toast.success('Content generated successfully!');
       } else {
-        toast.error(data.error || 'Failed to generate content');
+        toast.error('error' in data ? data.error : 'Failed to generate content');
       }
     },
     onError: (error) => {
@@ -106,7 +104,7 @@ export default function ContentGenerator({ open, onOpenChange, onContentApproved
         handleReset();
         onOpenChange(false);
       } else {
-        toast.error(data.error || 'Failed to approve post');
+        toast.error('error' in data ? data.error : 'Failed to approve post');
       }
     },
     onError: (error) => {

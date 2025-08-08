@@ -216,8 +216,8 @@ export const socialRouter = router({
 
         // Select random content based on parameters
         const platformTemplates = contentTemplates[input.platform];
-        const focusTemplates = platformTemplates?.[input.focus];
-        const toneTemplates = focusTemplates?.[input.tone] || focusTemplates?.['professional'] || [];
+        const focusTemplates = platformTemplates?.[input.focus as keyof typeof platformTemplates];
+        const toneTemplates = focusTemplates?.[input.tone as keyof typeof focusTemplates] || focusTemplates?.['professional' as keyof typeof focusTemplates] || [];
         
         const selectedContent = toneTemplates[Math.floor(Math.random() * toneTemplates.length)] || 
           "Exciting developments in commercial real estate! The intersection of technology and property investment is creating unprecedented opportunities. What trends are you following? #CRE #Innovation";

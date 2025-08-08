@@ -7,10 +7,11 @@ import ProjectMetadata from '@/components/projects/project-metadata';
 import FadeIn from '@/components/fade-in';
 import { PROJECTS } from '@/lib/constants';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 
 export default function ProjectPage() {
   const params = useParams();
+  const router = useRouter();
   const project = PROJECTS.find((project) => project.slug === params.slug);
 
   if (!project) {
@@ -21,11 +22,15 @@ export default function ProjectPage() {
     <div className="space-y-8">
       <FadeIn>
         <div className="flex justify-between items-center">
-          <Button variant="outline" className="border-gray-800" asChild>
-            <Link href="/projects">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              All projects
-            </Link>
+          <Button
+            variant="outline"
+            className="border-gray-800"
+            onClick={() => {
+              router.back();
+            }}
+          >
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            Back
           </Button>
           <Button variant="outline" className="border-gray-800" asChild>
             <a

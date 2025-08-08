@@ -3,38 +3,15 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input, Textarea, Label, Checkbox, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@personal-app/ui';
+import { Input, Textarea, Label } from '@personal-app/ui';
 import { Button } from '@/components/ui/button';
 import { createContactSchema, type CreateContact } from '@personal-app/api/schemas/client';
 import { trpc } from '@/components/providers';
 import { Github, Linkedin, Twitter, CheckCircle, AlertCircle } from 'lucide-react';
 import { SOCIAL_LINKS } from '@/lib/constants';
 
-const industryLabels = [
-  { value: 'multifamily', label: 'Multifamily' },
-  { value: 'office', label: 'Office' },
-  { value: 'retail', label: 'Retail' },
-  { value: 'industrial', label: 'Industrial' },
-  { value: 'prop_tech', label: 'PropTech' },
-  { value: 'crypto', label: 'Crypto' },
-  { value: 'bitcoin', label: 'Bitcoin' },
-  { value: 'vertical_saas', label: 'Vertical SaaS' },
-  { value: 'early_stage', label: 'Early Stage' },
-  { value: 'generalist', label: 'Generalist' },
-  { value: 'accelerator', label: 'Accelerator' },
-];
-
-const investorGroups = [
-  { value: 'venture_capital', label: 'Venture Capital' },
-  { value: 'private_equity', label: 'Private Equity' },
-  { value: 'angel_investor', label: 'Angel Investor' },
-  { value: 'lender', label: 'Lender' },
-  { value: 'broker', label: 'Broker' },
-];
-
 export default function EnhancedContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [selectedLabels, setSelectedLabels] = useState<string[]>([]);
 
   const {
     register,
@@ -42,18 +19,12 @@ export default function EnhancedContactForm() {
     formState: { errors, isSubmitting },
     reset,
     setValue,
-    // watch,
   } = useForm<CreateContact>({
     resolver: zodResolver(createContactSchema),
     defaultValues: {
       firstName: '',
       lastName: '',
       email: '',
-      phone: '',
-      company: '',
-      website: '',
-      group: undefined,
-      labels: [],
       notes: '',
       source: 'website',
     },
@@ -63,29 +34,17 @@ export default function EnhancedContactForm() {
     onSuccess: () => {
       setIsSubmitted(true);
       reset();
-      setSelectedLabels([]);
     },
   });
-
-  // const watchedGroup = watch('group');
 
   const onSubmit = async (data: CreateContact) => {
     try {
       await createContact.mutateAsync({
         ...data,
-        labels: selectedLabels as any,
       });
     } catch (error) {
       console.error('Form submission error:', error);
     }
-  };
-
-  const handleLabelChange = (label: string, checked: boolean) => {
-    const newLabels = checked
-      ? [...selectedLabels, label]
-      : selectedLabels.filter(l => l !== label);
-    setSelectedLabels(newLabels);
-    setValue('labels', newLabels);
   };
 
   if (isSubmitted) {
@@ -182,89 +141,6 @@ export default function EnhancedContactForm() {
                 )}
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label htmlFor="phone" className="text-white mb-2 block">
-                    Phone
-                  </Label>
-                  <Input
-                    id="phone"
-                    placeholder="+1 (555) 123-4567"
-                    className="bg-gray-900/50 border-gray-800"
-                    {...register('phone')}
-                  />
-                </div>
-                
-                <div>
-                  <Label htmlFor="company" className="text-white mb-2 block">
-                    Company
-                  </Label>
-                  <Input
-                    id="company"
-                    placeholder="Company Name"
-                    className="bg-gray-900/50 border-gray-800"
-                    {...register('company')}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <Label htmlFor="website" className="text-white mb-2 block">
-                  Website
-                </Label>
-                <Input
-                  id="website"
-                  placeholder="https://example.com"
-                  className="bg-gray-900/50 border-gray-800"
-                  {...register('website')}
-                />
-                {errors.website && (
-                  <p className="text-red-500 text-sm mt-1">{errors.website.message}</p>
-                )}
-              </div>
-
-              <div>
-                <Label className="text-white mb-2 block">
-                  Investor Type
-                </Label>
-                <Select onValueChange={(value) => setValue('group', value as any)}>
-                  <SelectTrigger className="bg-gray-900/50 border-gray-800">
-                    <SelectValue placeholder="Select investor type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {investorGroups.map((group) => (
-                      <SelectItem key={group.value} value={group.value}>
-                        {group.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <Label className="text-white mb-2 block">
-                  Areas of Interest
-                </Label>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {industryLabels.map((label) => (
-                    <div key={label.value} className="flex items-center space-x-2">
-                      <Checkbox
-                        id={label.value}
-                        checked={selectedLabels.includes(label.value)}
-                        onCheckedChange={(checked) => 
-                          handleLabelChange(label.value, checked as boolean)
-                        }
-                      />
-                      <Label 
-                        htmlFor={label.value} 
-                        className="text-sm text-gray-300 cursor-pointer"
-                      >
-                        {label.label}
-                      </Label>
-                    </div>
-                  ))}
-                </div>
-              </div>
 
               <div>
                 <Label htmlFor="notes" className="text-white mb-2 block">
@@ -290,23 +166,6 @@ export default function EnhancedContactForm() {
         </div>
 
         <div className="space-y-8">
-          <div>
-            <h2 className="text-2xl font-bold text-white mb-6">
-              Let's Connect
-            </h2>
-            <div className="space-y-4">
-              <Button
-                variant="outline"
-                className="w-full border-gray-800 bg-gray-900/50 justify-start"
-                asChild
-              >
-                <a href="mailto:ethan.blumenthal@gmail.com">
-                  <span className="truncate">Email Me</span>
-                </a>
-              </Button>
-            </div>
-          </div>
-
           <div>
             <h2 className="text-2xl font-bold text-white mb-6">Follow Me</h2>
             <div className="space-y-4">

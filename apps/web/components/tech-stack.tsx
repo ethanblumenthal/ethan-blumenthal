@@ -161,7 +161,7 @@ const technologies = {
 };
 
 export default function TechStack() {
-  const categories = Object.keys(technologies);
+  const categories = Object.keys(technologies) as (keyof typeof technologies)[];
   const totalTechnologies = Object.values(technologies).flat().length;
   
   return (

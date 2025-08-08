@@ -151,7 +151,7 @@ export default function WorkExperience() {
                           key={bulletIndex} 
                           className="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors"
                         >
-                          <span className="text-primary mt-1.5">•</span>
+                          <span className="text-primary">•</span>
                           <span className="text-sm leading-relaxed">{bullet}</span>
                         </li>
                       ))}

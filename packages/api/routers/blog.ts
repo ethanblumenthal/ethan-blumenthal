@@ -107,9 +107,6 @@ export const blogRouter = router({
           status: input.status,
           tags: input.tags,
           featuredImage: input.featuredImage,
-          metaTitle: input.metaTitle,
-          metaDescription: input.metaDescription,
-          metaKeywords: input.metaKeywords,
           publishedAt: input.publishedAt,
         })
         .returning();

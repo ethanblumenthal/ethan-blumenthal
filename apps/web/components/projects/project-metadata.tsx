@@ -12,7 +12,7 @@ export default function ProjectMetadata({
   location,
 }: ProjectMetadataProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 rounded-lg bg-gray-900/50 p-8">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-8 rounded-lg bg-zinc-800 p-8">
       <div>
         <h3 className="text-lg text-gray-400 mb-2">Year</h3>
         <p className="text-xl text-white">{year}</p>

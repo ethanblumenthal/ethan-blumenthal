@@ -43,9 +43,9 @@ interface BlogPost {
   status: 'draft' | 'published' | 'archived';
   tags: string[];
   featuredImage: string | null;
-  publishedAt: Date | null;
-  createdAt: Date;
-  updatedAt: Date;
+  publishedAt: string | null;
+  createdAt: string;
+  updatedAt: string;
 }
 
 // Status configuration
