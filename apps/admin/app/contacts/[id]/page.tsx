@@ -229,12 +229,12 @@ export default function ContactDetailsPage() {
               {isEditing ? 'Edit Contact' : `${contact.firstName} ${contact.lastName}`}
             </h1>
             <div className="flex items-center space-x-2 mt-1">
-              <Badge variant="secondary" className={`${statusConfig[contact.status].color} text-white`}>
-                {statusConfig[contact.status].label}
+              <Badge variant="secondary" className={`${statusConfig[contact.status as keyof typeof statusConfig]?.color || 'bg-gray-500'} text-white`}>
+                {statusConfig[contact.status as keyof typeof statusConfig]?.label || contact.status}
               </Badge>
               {contact.group && (
-                <Badge variant="outline" className={`${groupConfig[contact.group].color} text-white border-0`}>
-                  {groupConfig[contact.group].label}
+                <Badge variant="outline" className={`${groupConfig[contact.group as keyof typeof groupConfig]?.color || 'bg-gray-500'} text-white border-0`}>
+                  {groupConfig[contact.group as keyof typeof groupConfig]?.label || contact.group}
                 </Badge>
               )}
               <span className="text-sm text-muted-foreground">
@@ -394,8 +394,8 @@ export default function ContactDetailsPage() {
                     </SelectContent>
                   </Select>
                 ) : (
-                  <Badge variant="secondary" className={`${statusConfig[contact.status].color} text-white`}>
-                    {statusConfig[contact.status].label}
+                  <Badge variant="secondary" className={`${statusConfig[contact.status as keyof typeof statusConfig]?.color || 'bg-gray-500'} text-white`}>
+                    {statusConfig[contact.status as keyof typeof statusConfig]?.label || contact.status}
                   </Badge>
                 )}
               </div>
@@ -420,8 +420,8 @@ export default function ContactDetailsPage() {
                     </SelectContent>
                   </Select>
                 ) : contact.group ? (
-                  <Badge variant="outline" className={`${groupConfig[contact.group].color} text-white border-0`}>
-                    {groupConfig[contact.group].label}
+                  <Badge variant="outline" className={`${groupConfig[contact.group as keyof typeof groupConfig]?.color || 'bg-gray-500'} text-white border-0`}>
+                    {groupConfig[contact.group as keyof typeof groupConfig]?.label || contact.group}
                   </Badge>
                 ) : (
                   <p className="text-muted-foreground">Not assigned</p>
@@ -502,7 +502,7 @@ export default function ContactDetailsPage() {
               ) : (
                 <div className="flex flex-wrap gap-2">
                   {contact.labels.length > 0 ? (
-                    contact.labels.map((label) => (
+                    contact.labels.map((label: string) => (
                       <Badge key={label} variant="secondary">
                         {label}
                       </Badge>

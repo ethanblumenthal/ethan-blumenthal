@@ -173,7 +173,7 @@ const columns: ColumnDef<BlogPost>[] = [
       if (!tags || tags.length === 0) return null;
       return (
         <div className="flex flex-wrap gap-1">
-          {tags.slice(0, 2).map((tag) => (
+          {tags.slice(0, 2).map((tag: string) => (
             <Badge key={tag} variant="outline" className="text-xs">
               {tag}
             </Badge>
@@ -235,9 +235,9 @@ const columns: ColumnDef<BlogPost>[] = [
 // Quick Stats Component
 function ContentStats({ posts }: { posts: BlogPost[] }) {
   const totalPosts = posts.length;
-  const publishedPosts = posts.filter(p => p.status === 'published').length;
-  const draftPosts = posts.filter(p => p.status === 'draft').length;
-  const totalWords = posts.reduce((sum, post) => sum + post.content.split(/\s+/).length, 0);
+  const publishedPosts = posts.filter((p: BlogPost) => p.status === 'published').length;
+  const draftPosts = posts.filter((p: BlogPost) => p.status === 'draft').length;
+  const totalWords = posts.reduce((sum: number, post: BlogPost) => sum + post.content.split(/\s+/).length, 0);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -263,8 +263,8 @@ function ContentStats({ posts }: { posts: BlogPost[] }) {
 
 // Content Calendar Component (simplified)
 function ContentCalendar({ posts }: { posts: BlogPost[] }) {
-  const publishedPosts = posts.filter(p => p.status === 'published' && p.publishedAt);
-  const upcomingPosts = posts.filter(p => p.status === 'draft');
+  const publishedPosts = posts.filter((p: BlogPost) => p.status === 'published' && p.publishedAt);
+  const upcomingPosts = posts.filter((p: BlogPost) => p.status === 'draft');
 
   return (
     <div className="perplexity-card">
@@ -280,7 +280,7 @@ function ContentCalendar({ posts }: { posts: BlogPost[] }) {
         <div>
           <h4 className="text-sm font-medium text-muted-foreground mb-2">Recently Published</h4>
           <div className="space-y-2">
-            {publishedPosts.slice(0, 3).map((post) => (
+            {publishedPosts.slice(0, 3).map((post: BlogPost) => (
               <div key={post.id} className="flex items-center justify-between p-2 rounded-lg bg-muted/50">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
@@ -297,7 +297,7 @@ function ContentCalendar({ posts }: { posts: BlogPost[] }) {
         <div>
           <h4 className="text-sm font-medium text-muted-foreground mb-2">Drafts in Progress</h4>
           <div className="space-y-2">
-            {upcomingPosts.slice(0, 3).map((post) => (
+            {upcomingPosts.slice(0, 3).map((post: BlogPost) => (
               <div key={post.id} className="flex items-center justify-between p-2 rounded-lg bg-muted/50">
                 <div className="flex items-center space-x-2">
                   <Clock className="h-4 w-4 text-yellow-500" />
@@ -402,7 +402,7 @@ export default function ContentPage() {
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Avg. Reading Time</span>
                 <span className="font-medium">
-                  {Math.round(posts.reduce((sum, p) => sum + calculateReadingTime(p.content), 0) / posts.length || 0)} min
+                  {Math.round(posts.reduce((sum: number, p: BlogPost) => sum + calculateReadingTime(p.content), 0) / posts.length || 0)} min
                 </span>
               </div>
               <div className="flex justify-between text-sm">
@@ -412,7 +412,7 @@ export default function ContentPage() {
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">This Month</span>
                 <span className="font-medium">
-                  {posts.filter(p => {
+                  {posts.filter((p: BlogPost) => {
                     const publishedAt = p.publishedAt;
                     if (!publishedAt) return false;
                     const month = new Date().getMonth();

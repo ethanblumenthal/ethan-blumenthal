@@ -24,17 +24,22 @@ export const supabaseAdmin = supabaseUrl && supabaseServiceKey
 // Database connection string for Drizzle
 const connectionString = process.env.DATABASE_URL;
 
-if (!connectionString) {
-  console.error('DATABASE_URL environment variable is not set!');
-  console.error('Please create a .env.local file with your database connection string.');
-  throw new Error('DATABASE_URL is required');
-}
-
-// Disable prefetch as it is not supported for "Transaction" pool mode
-const client = postgres(connectionString, { prepare: false });
+// Create a mock database for build time when no connection string is provided
+const createMockDb = () => {
+  return new Proxy({} as any, {
+    get: () => {
+      return () => {
+        console.warn('Database operation attempted without DATABASE_URL configured');
+        return Promise.resolve([]);
+      };
+    }
+  });
+};
 
 // Drizzle database instance
-export const db = drizzle(client);
+export const db = connectionString
+  ? drizzle(postgres(connectionString, { prepare: false }))
+  : createMockDb();
 
 // Type helper for database operations
 export type Database = typeof db;

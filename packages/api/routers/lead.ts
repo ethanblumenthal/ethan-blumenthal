@@ -199,7 +199,7 @@ export const leadRouter = router({
 
         return {
           total: totalLeads[0]?.count || 0,
-          byPlatform: platformStats.reduce((acc, stat) => ({
+          byPlatform: platformStats.reduce((acc: any, stat: any) => ({
             ...acc,
             [stat.platform]: stat.count
           }), {

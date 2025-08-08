@@ -102,8 +102,8 @@ export const newsletterRouter = router({
 
       // Calculate topic frequencies
       const topicCounts: Record<string, number> = {};
-      topicStats.forEach(stat => {
-        stat.labels.forEach(label => {
+      topicStats.forEach((stat: any) => {
+        stat.labels.forEach((label: string) => {
           topicCounts[label] = (topicCounts[label] || 0) + stat.count;
         });
       });

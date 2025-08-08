@@ -36,7 +36,7 @@ export default function RecentPosts() {
             </div>
           ))
         ) : posts.length > 0 ? (
-          posts.map((post) => (
+          posts.map((post: any) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}

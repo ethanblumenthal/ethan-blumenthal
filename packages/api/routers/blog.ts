@@ -218,8 +218,8 @@ export const blogRouter = router({
 
         // Count tag frequencies
         const tagCounts: Record<string, number> = {};
-        tagResults.forEach(result => {
-          result.tags.forEach(tag => {
+        tagResults.forEach((result: any) => {
+          result.tags.forEach((tag: string) => {
             tagCounts[tag] = (tagCounts[tag] || 0) + 1;
           });
         });
@@ -232,7 +232,7 @@ export const blogRouter = router({
 
         return {
           total: totalPosts[0]?.count || 0,
-          byStatus: statusStats.reduce((acc, stat) => ({
+          byStatus: statusStats.reduce((acc: any, stat: any) => ({
             ...acc,
             [stat.status]: stat.count
           }), {
@@ -240,7 +240,7 @@ export const blogRouter = router({
             published: 0,
             archived: 0,
           }),
-          byAuthor: authorStats.reduce((acc, stat) => ({
+          byAuthor: authorStats.reduce((acc: any, stat: any) => ({
             ...acc,
             [stat.author]: stat.count
           }), {}),

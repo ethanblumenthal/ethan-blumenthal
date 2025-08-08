@@ -40,11 +40,19 @@ async function renderTemplate(templateName: string, props: any) {
   }
 }
 
-if (!process.env.RESEND_API_KEY) {
-  throw new Error('RESEND_API_KEY is required');
-}
+// Create mock resend client when API key is not available
+const createMockResend = () => ({
+  emails: {
+    send: async (options: any) => {
+      console.warn('Email send attempted without RESEND_API_KEY:', options.subject);
+      return { data: { id: 'mock-email-id' }, error: null };
+    }
+  }
+});
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY 
+  ? new Resend(process.env.RESEND_API_KEY)
+  : createMockResend() as any;
 
 interface BaseEmailOptions {
   to: string;

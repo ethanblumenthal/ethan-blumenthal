@@ -1,12 +1,11 @@
 import { notFound } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { formatDate } from '@/lib/blog';
+import { getPublishedPostSlugs, getBlogPostBySlug, getRelatedPostsFromDb } from '@/lib/blog-server';
 import { ArrowLeft, Calendar, Clock, User, Tag } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import SocialShare from '@/components/blog/social-share';
-import { db, blogPosts } from '@personal-app/db';
-import { eq } from 'drizzle-orm';
 import ReactMarkdown from 'react-markdown';
 
 interface BlogPostPageProps {
@@ -17,8 +16,8 @@ interface BlogPostPageProps {
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {
-  const posts = await db.select({ slug: blogPosts.slug }).from(blogPosts).where(eq(blogPosts.status, 'published'));
-  return posts.map((post) => ({
+  const posts = await getPublishedPostSlugs();
+  return posts.map((post: any) => ({
     slug: post.slug,
   }));
 }
@@ -26,7 +25,7 @@ export async function generateStaticParams() {
 // Generate metadata for SEO
 export async function generateMetadata({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const [post] = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug)).limit(1);
+  const post = await getBlogPostBySlug(slug);
   
   if (!post) {
     return {
@@ -139,32 +138,14 @@ const markdownComponents = {
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const [post] = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug)).limit(1);
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
   // Get related posts based on tags
-  const relatedPostsQuery = await db.select()
-    .from(blogPosts)
-    .where(eq(blogPosts.status, 'published'))
-    .limit(10);
-  
-  const relatedPosts = relatedPostsQuery
-    .filter(p => p.slug !== slug)
-    .map(p => {
-      const commonTags = p.tags.filter(tag => 
-        post.tags.some(currentTag => currentTag.toLowerCase() === tag.toLowerCase())
-      );
-      return {
-        ...p,
-        relevanceScore: commonTags.length,
-      };
-    })
-    .filter(p => p.relevanceScore > 0)
-    .sort((a, b) => b.relevanceScore - a.relevanceScore)
-    .slice(0, 3);
+  const relatedPosts = await getRelatedPostsFromDb(slug, post.tags, 3);
 
   return (
     <article className="max-w-4xl mx-auto">
@@ -213,7 +194,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <div className="flex items-center gap-2 mb-8">
             <Tag className="w-4 h-4 text-gray-400" />
             <div className="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
+              {post.tags.map((tag: string) => (
                 <span
                   key={tag}
                   className="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm"
@@ -263,7 +244,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="border-t border-gray-800 pt-12">
           <h2 className="text-2xl font-bold text-white mb-6">Related Articles</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {relatedPosts.map((relatedPost) => (
+            {relatedPosts.map((relatedPost: any) => (
               <Link
                 key={relatedPost.slug}
                 href={`/blog/${relatedPost.slug}`}

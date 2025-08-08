@@ -226,7 +226,7 @@ export const contactRouter = router({
 
         return {
           total: totalContacts[0]?.count || 0,
-          byStatus: statusStats.reduce((acc, stat) => ({
+          byStatus: statusStats.reduce((acc: any, stat: any) => ({
             ...acc,
             [stat.status]: stat.count
           }), {
@@ -236,7 +236,7 @@ export const contactRouter = router({
             converted: 0,
             lost: 0,
           }),
-          byGroup: groupStats.reduce((acc, stat) => ({
+          byGroup: groupStats.reduce((acc: any, stat: any) => ({
             ...acc,
             [stat.group || 'unknown']: stat.count
           }), {

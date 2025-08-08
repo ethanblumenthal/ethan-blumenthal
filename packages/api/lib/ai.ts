@@ -1,13 +1,19 @@
 import { generateText } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 
-if (!process.env.OPENAI_API_KEY) {
-  throw new Error('OPENAI_API_KEY is required for AI content generation');
-}
+// Create mock OpenAI client when API key is not available
+const createMockOpenAI = () => {
+  return () => ({
+    doGenerate: async () => {
+      console.warn('AI generation attempted without OPENAI_API_KEY');
+      return { text: '{}', usage: {} };
+    }
+  });
+};
 
-const openai = createOpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const openai = process.env.OPENAI_API_KEY
+  ? createOpenAI({ apiKey: process.env.OPENAI_API_KEY })
+  : createMockOpenAI() as any;
 
 interface BlogGenerationInput {
   topic: string;

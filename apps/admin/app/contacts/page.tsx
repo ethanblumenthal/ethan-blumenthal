@@ -212,7 +212,7 @@ const columns: ColumnDef<Contact>[] = [
       if (!labels || labels.length === 0) return null;
       return (
         <div className="flex flex-wrap gap-1">
-          {labels.slice(0, 2).map((label) => (
+          {labels.slice(0, 2).map((label: string) => (
             <Badge key={label} variant="secondary" className="text-xs">
               {label}
             </Badge>
@@ -296,19 +296,19 @@ export default function ContactsPage() {
         </div>
         <div className="metric-card">
           <div className="dashboard-stat">
-            {contacts.filter(c => c.status === 'qualified').length}
+            {contacts.filter((c: Contact) => c.status === 'qualified').length}
           </div>
           <div className="dashboard-stat-label">Qualified Leads</div>
         </div>
         <div className="metric-card">
           <div className="dashboard-stat">
-            {contacts.filter(c => c.status === 'converted').length}
+            {contacts.filter((c: Contact) => c.status === 'converted').length}
           </div>
           <div className="dashboard-stat-label">Converted</div>
         </div>
         <div className="metric-card">
           <div className="dashboard-stat">
-            {Math.round(contacts.reduce((sum, c) => sum + c.leadScore, 0) / contacts.length) || 0}
+            {Math.round(contacts.reduce((sum: number, c: Contact) => sum + c.leadScore, 0) / contacts.length) || 0}
           </div>
           <div className="dashboard-stat-label">Avg Lead Score</div>
         </div>

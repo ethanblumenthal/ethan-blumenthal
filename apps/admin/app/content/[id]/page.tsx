@@ -351,7 +351,7 @@ export default function ContentEditorPage() {
     );
   }
 
-  const StatusIcon = post ? statusConfig[post.status].icon : Clock;
+  const StatusIcon = post ? statusConfig[post.status as keyof typeof statusConfig]?.icon || Clock : Clock;
 
   return (
     <div className="space-y-6">
@@ -372,8 +372,8 @@ export default function ContentEditorPage() {
             </h1>
             {post && (
               <div className="flex items-center space-x-2 mt-1">
-                <Badge variant="secondary" className={`${statusConfig[post.status].color} text-white`}>
-                  {statusConfig[post.status].label}
+                <Badge variant="secondary" className={`${statusConfig[post.status as keyof typeof statusConfig]?.color || 'bg-gray-500'} text-white`}>
+                  {statusConfig[post.status as keyof typeof statusConfig]?.label || post.status}
                 </Badge>
                 <span className="text-sm text-muted-foreground">
                   Last updated: {format(new Date(post.updatedAt), 'MMM dd, yyyy h:mm a')}
@@ -658,8 +658,8 @@ export default function ContentEditorPage() {
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Status</span>
-                  <Badge variant="secondary" className={`${post ? statusConfig[post.status].color : ''} text-white`}>
-                    {post ? statusConfig[post.status].label : 'Draft'}
+                  <Badge variant="secondary" className={`${post ? statusConfig[post.status as keyof typeof statusConfig]?.color || 'bg-gray-500' : ''} text-white`}>
+                    {post ? statusConfig[post.status as keyof typeof statusConfig]?.label || post.status : 'Draft'}
                   </Badge>
                 </div>
                 <div className="flex items-center justify-between">

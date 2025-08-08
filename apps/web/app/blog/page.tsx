@@ -13,7 +13,7 @@ export default function BlogPage() {
     offset: 0,
   });
 
-  const posts = blogData?.posts?.map(post => addReadingTimeToMeta({
+  const posts = blogData?.posts?.map((post: any) => addReadingTimeToMeta({
     ...post,
     excerpt: post.excerpt || '',
     featuredImage: post.featuredImage || undefined,
@@ -62,7 +62,7 @@ export default function BlogPage() {
       </FadeIn>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {posts.length > 0 ? (
-          posts.map((post, index) => (
+          posts.map((post: any, index: number) => (
             <FadeIn key={post.slug} delay={0.2 * (index + 1)}>
               <BlogCard 
                 title={post.title}
