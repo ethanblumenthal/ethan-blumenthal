@@ -1,4 +1,4 @@
-# CRE Platform - AI-Powered Commercial Real Estate CMS & CRM
+# Ethan Blumenthal's Personal App - Website, CMS, & CRM
 
 A comprehensive commercial real estate platform specializing in AI, Bitcoin, and Tokenization applications. Built as a modern monorepo with advanced social media automation, intelligent lead discovery, and AI-powered content generation.
 
