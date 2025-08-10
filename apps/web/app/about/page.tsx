@@ -1,7 +1,8 @@
 import FadeIn from '@/components/fade-in';
 import AboutHeader from '@/components/about/about-header';
-import AboutBio from '@//components/about/about-bio';
+import AboutBio from '@/components/about/about-bio';
 import WorkExperience from '@/components/about/work-experience';
+import Education from '@/components/about/education';
 import TechStack from '@/components/tech-stack';
 
 export default function About() {
@@ -17,6 +18,9 @@ export default function About() {
         <WorkExperience />
       </FadeIn>
       <FadeIn delay={0.8}>
+        <Education />
+      </FadeIn>
+      <FadeIn delay={1.0}>
         <TechStack />
       </FadeIn>
     </div>
