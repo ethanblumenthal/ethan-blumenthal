@@ -1,7 +1,14 @@
 import { MapPin, Briefcase } from 'lucide-react';
+import Link from 'next/link';
 import { WORK_EXPERIENCES, type WorkExperience } from '@/lib/constants';
 
 export default function WorkExperience() {
+  // Map company names to project slugs
+  const projectLinks: Record<string, string> = {
+    'Flow AI': '/projects/liquid-finance',
+    'Nada Finance': '/projects/cityfunds',
+    'OwnProp': '/projects/ownprop',
+  };
   return (
     <section className="py-16">
       <div className="space-y-4 mb-12">
@@ -37,44 +44,87 @@ export default function WorkExperience() {
               
               {/* Content card */}
               <div className="md:w-1/2 ml-8 md:ml-0">
-                <div className="group perplexity-card hover:scale-[1.02] transition-all duration-200">
-                  <div className="space-y-4">
-                    {/* Header */}
-                    <div className="space-y-2">
-                      <div>
-                        <h3 className="text-2xl font-bold text-white group-hover:text-primary transition-colors">
-                          {experience.company}
-                        </h3>
-                        {experience.tagline && (
-                          <p className="text-sm text-gray-500 mt-1">{experience.tagline}</p>
-                        )}
-                      </div>
-                      <div className="flex flex-wrap items-center gap-4 text-sm">
-                        <div className="flex items-center gap-2 text-gray-400">
-                          <Briefcase className="h-4 w-4" />
-                          <span className="font-medium">{experience.title}</span>
+                {projectLinks[experience.company] ? (
+                  <Link href={projectLinks[experience.company]} className="block">
+                    <div className="group perplexity-card hover:scale-[1.02] transition-all duration-200 cursor-pointer">
+                      <div className="space-y-4">
+                        {/* Header */}
+                        <div className="space-y-2">
+                          <div>
+                            <h3 className="text-2xl font-bold text-white group-hover:text-primary transition-colors">
+                              {experience.company}
+                            </h3>
+                            {experience.tagline && (
+                              <p className="text-sm text-gray-500 mt-1">{experience.tagline}</p>
+                            )}
+                          </div>
+                          <div className="flex flex-wrap items-center gap-4 text-sm">
+                            <div className="flex items-center gap-2 text-gray-400">
+                              <Briefcase className="h-4 w-4" />
+                              <span className="font-medium">{experience.title}</span>
+                            </div>
+                            <div className="flex items-center gap-2 text-gray-500">
+                              <MapPin className="h-4 w-4" />
+                              <span>{experience.location}</span>
+                            </div>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-2 text-gray-500">
-                          <MapPin className="h-4 w-4" />
-                          <span>{experience.location}</span>
-                        </div>
+                        
+                        {/* Bullets */}
+                        <ul className="space-y-2">
+                          {experience.bullets.map((bullet, bulletIndex) => (
+                            <li 
+                              key={bulletIndex} 
+                              className="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors"
+                            >
+                              <span className="text-primary">•</span>
+                              <span className="text-sm leading-relaxed">{bullet}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     </div>
-                    
-                    {/* Bullets */}
-                    <ul className="space-y-2">
-                      {experience.bullets.map((bullet, bulletIndex) => (
-                        <li 
-                          key={bulletIndex} 
-                          className="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors"
-                        >
-                          <span className="text-primary">•</span>
-                          <span className="text-sm leading-relaxed">{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
+                  </Link>
+                ) : (
+                  <div className="group perplexity-card hover:scale-[1.02] transition-all duration-200">
+                    <div className="space-y-4">
+                      {/* Header */}
+                      <div className="space-y-2">
+                        <div>
+                          <h3 className="text-2xl font-bold text-white group-hover:text-primary transition-colors">
+                            {experience.company}
+                          </h3>
+                          {experience.tagline && (
+                            <p className="text-sm text-gray-500 mt-1">{experience.tagline}</p>
+                          )}
+                        </div>
+                        <div className="flex flex-wrap items-center gap-4 text-sm">
+                          <div className="flex items-center gap-2 text-gray-400">
+                            <Briefcase className="h-4 w-4" />
+                            <span className="font-medium">{experience.title}</span>
+                          </div>
+                          <div className="flex items-center gap-2 text-gray-500">
+                            <MapPin className="h-4 w-4" />
+                            <span>{experience.location}</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Bullets */}
+                      <ul className="space-y-2">
+                        {experience.bullets.map((bullet, bulletIndex) => (
+                          <li 
+                            key={bulletIndex} 
+                            className="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors"
+                          >
+                            <span className="text-primary">•</span>
+                            <span className="text-sm leading-relaxed">{bullet}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           ))}
