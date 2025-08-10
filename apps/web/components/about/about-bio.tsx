@@ -1,6 +1,12 @@
 import Image from 'next/image';
+import StatsCard from '@/components/ui/stats-card';
 
 export default function AboutBio() {
+  const stats = [
+    { value: 'Austin, TX', label: 'Based In' },
+    { value: '7', label: 'Years of Experience' },
+    { value: '20+', label: 'Production Apps' },
+  ];
   return (
     <section className="py-12">
       <div className="grid md:grid-cols-[2fr,1fr] gap-12 items-start">
@@ -22,21 +28,8 @@ export default function AboutBio() {
             </p>
           </div>
           <section className="py-6">
-      <div className="inline-grid grid-cols-1 md:grid-cols-3 gap-8 rounded-lg bg-zinc-800 p-8">
-        <div>
-          <h2 className="text-2xl font-bold text-white mb-2">Austin, TX</h2>
-          <p className="text-gray-400 text-lg">Based In</p>
-        </div>
-        <div className="md:border-l border-dotted border-gray-400 md:pl-8">
-          <h2 className="text-2xl font-bold text-white mb-2">7</h2>
-          <p className="text-gray-400 text-lg">Years of Experience</p>
-        </div>
-        <div className="md:border-l border-dotted border-gray-400 md:pl-8">
-          <h2 className="text-2xl font-bold text-white mb-2">20+</h2>
-          <p className="text-gray-400 text-lg">Funds Supported</p>
-        </div>
-      </div>
-    </section>
+            <StatsCard stats={stats} />
+          </section>
         </div>
         <div className="relative aspect-square overflow-hidden rounded-lg">
           <Image
