@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 
 export default function AboutHeader() {
   return (
@@ -15,7 +14,7 @@ export default function AboutHeader() {
         <Button
           size="lg"
           variant="outline"
-          href="/projects"
+          href="/"
         >
           View Projects
         </Button>
