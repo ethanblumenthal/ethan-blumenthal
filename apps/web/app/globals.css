@@ -14,7 +14,7 @@
     --popover: 0 0% 12.2%; /* #1F2121 */
     --popover-foreground: 0 0% 91%; /* #E8E8E6 */
  
-    --primary: 187 61% 47%; /* #30B7C6 */
+    --primary: 202 84% 44%; /* #0e86d4 */
     --primary-foreground: 0 0% 91%; /* #E8E8E6 */
  
     --secondary: 188 30% 18%; /* #21393C */
@@ -23,7 +23,7 @@
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
  
-    --accent: 187 61% 47%; /* #30B7C6 */
+    --accent: 202 84% 44%; /* #0e86d4 */
     --accent-foreground: 0 0% 91%; /* #E8E8E6 */
  
     --destructive: 0 84% 55%; /* #FF4444 */
@@ -31,12 +31,12 @@
 
     --border: 0 0% 20%;
     --input: 0 0% 12.2%; /* #1F2121 */
-    --ring: 187 61% 47%; /* #30B7C6 */
+    --ring: 202 84% 44%; /* #0e86d4 */
  
     --radius: 0.75rem;
     
     /* Chart colors for data visualization */
-    --chart-1: 187 61% 47%; /* #30B7C6 primary */
+    --chart-1: 202 84% 44%; /* #0e86d4 primary */
     --chart-2: 142 71% 45%; /* success green */
     --chart-3: 0 84% 55%; /* danger red */
     --chart-4: 39 100% 50%; /* warning yellow */
@@ -54,7 +54,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
  
-    --primary: 168 77% 39%;
+    --primary: 202 84% 44%; /* #0e86d4 */
     --primary-foreground: 0 0% 100%;
  
     --secondary: 240 4.8% 95.9%;
@@ -111,7 +111,7 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #30B7C6;
+    background: hsl(var(--primary));
     border-radius: 9999px;
   }
   
@@ -131,7 +131,7 @@
   }
   
   .perplexity-card:hover {
-    border-color: rgba(48, 183, 198, 0.3);
+    border-color: hsl(var(--primary) / 0.3);
   }
   
   /* Metric card styling */
@@ -149,7 +149,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(48, 183, 198, 0.05) 0%, transparent 100%);
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.05) 0%, transparent 100%);
     opacity: 0;
     transition: opacity 300ms;
   }
@@ -159,12 +159,12 @@
   }
   
   .metric-card:hover {
-    border-color: rgba(48, 183, 198, 0.3);
+    border-color: hsl(var(--primary) / 0.3);
   }
   
   /* Button variants */
   .btn-primary {
-    background: #30B7C6;
+    background: hsl(var(--primary));
     color: #E8E8E6;
     border: none;
     transition: all 200ms;
@@ -172,7 +172,7 @@
   
   .btn-primary:hover {
     background: #21393C;
-    box-shadow: 0 10px 25px rgba(48, 183, 198, 0.25);
+    box-shadow: 0 10px 25px hsl(var(--primary) / 0.25);
   }
   
   .btn-ghost {
@@ -200,8 +200,8 @@
   }
   
   .search-input:focus {
-    border-color: #30B7C6;
+    border-color: hsl(var(--primary));
     outline: none;
-    box-shadow: 0 0 0 3px rgba(48, 183, 198, 0.1);
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
   }
 }

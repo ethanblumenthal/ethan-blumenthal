@@ -20,7 +20,7 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Primary Perplexity Finance colors
+        // Primary colors
         primary: {
           DEFAULT: "#0e86d4", // Blue
           foreground: "#FFFFFF",
