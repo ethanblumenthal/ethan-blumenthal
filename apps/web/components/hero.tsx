@@ -28,7 +28,7 @@ export default function Hero() {
           
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed">
             Combining AI, Bitcoin, and tokenization to revolutionize how we invest in commercial real estate. 
-            5 years of experience in PropTech and emerging technologies.
+            7 years of experience in PropTech and emerging technologies.
           </p>
         </div>
         
