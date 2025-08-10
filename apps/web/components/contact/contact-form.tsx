@@ -7,11 +7,13 @@ import { Input, Textarea, Label } from '@personal-app/ui';
 import { Button } from '@/components/ui/button';
 import { createContactSchema, type CreateContact } from '@personal-app/api/schemas/client';
 import { trpc } from '@/components/providers';
-import { Github, Linkedin, Twitter, CheckCircle, AlertCircle } from 'lucide-react';
+import { CheckCircle, AlertCircle } from 'lucide-react';
+import Image from 'next/image';
 import { SOCIAL_LINKS } from '@/lib/constants';
 
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [subject, setSubject] = useState('');
 
   const {
     register,
@@ -39,8 +41,10 @@ export default function ContactForm() {
 
   const onSubmit = async (data: CreateContact) => {
     try {
+      const notesWithSubject = subject ? `Subject: ${subject}\n\n${data.notes || ''}` : data.notes;
       await createContact.mutateAsync({
         ...data,
+        notes: notesWithSubject,
       });
     } catch (error) {
       console.error('Form submission error:', error);
@@ -101,7 +105,7 @@ export default function ContactForm() {
                   <Input
                     id="firstName"
                     placeholder="John"
-                    className="bg-gray-900/50 border-gray-800"
+                    className="bg-primary/10 text-white border-0 ring-1 ring-inset ring-primary/30 backdrop-blur-sm placeholder:text-gray-400 focus:ring-2 focus:ring-primary/50"
                     {...register('firstName')}
                   />
                   {errors.firstName && (
@@ -116,7 +120,7 @@ export default function ContactForm() {
                   <Input
                     id="lastName"
                     placeholder="Doe"
-                    className="bg-gray-900/50 border-gray-800"
+                    className="bg-primary/10 text-white border-0 ring-1 ring-inset ring-primary/30 backdrop-blur-sm placeholder:text-gray-400 focus:ring-2 focus:ring-primary/50"
                     {...register('lastName')}
                   />
                   {errors.lastName && (
@@ -133,7 +137,7 @@ export default function ContactForm() {
                   id="email"
                   type="email"
                   placeholder="john@example.com"
-                  className="bg-gray-900/50 border-gray-800"
+                  className="bg-primary/10 text-white border-0 ring-1 ring-inset ring-primary/30 backdrop-blur-sm placeholder:text-gray-400 focus:ring-2 focus:ring-primary/50"
                   {...register('email')}
                 />
                 {errors.email && (
@@ -141,6 +145,18 @@ export default function ContactForm() {
                 )}
               </div>
 
+              <div>
+                <Label htmlFor="subject" className="text-white mb-2 block">
+                  Subject
+                </Label>
+                <Input
+                  id="subject"
+                  placeholder="What's this about?"
+                  className="bg-primary/10 text-white border-0 ring-1 ring-inset ring-primary/30 backdrop-blur-sm placeholder:text-gray-400 focus:ring-2 focus:ring-primary/50"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
+              </div>
 
               <div>
                 <Label htmlFor="notes" className="text-white mb-2 block">
@@ -149,7 +165,7 @@ export default function ContactForm() {
                 <Textarea
                   id="notes"
                   placeholder="Tell me about your project or investment interests..."
-                  className="bg-gray-900/50 border-gray-800 min-h-[120px]"
+                  className="bg-primary/10 text-white border-0 ring-1 ring-inset ring-primary/30 backdrop-blur-sm min-h-[120px] placeholder:text-gray-400 focus:ring-2 focus:ring-primary/50"
                   {...register('notes')}
                 />
               </div>
@@ -157,7 +173,7 @@ export default function ContactForm() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-white text-black hover:bg-gray-200 disabled:opacity-50"
+                className="w-full bg-primary text-white hover:bg-primary/90 disabled:opacity-50"
               >
                 {isSubmitting ? 'Submitting...' : 'Send Inquiry'}
               </Button>
@@ -168,49 +184,34 @@ export default function ContactForm() {
         <div className="space-y-8">
           <div className="perplexity-card">
             <h2 className="text-2xl font-bold text-white mb-6">Follow Me</h2>
-            <div className="space-y-4">
-              <Button
-                variant="outline"
-                className="w-full border-gray-800 bg-gray-900/50 justify-start"
-                asChild
+            <div className="grid grid-cols-3 gap-3">
+              <a
+                href={SOCIAL_LINKS.TWITTER}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-primary/10 ring-1 ring-inset ring-primary/30 backdrop-blur-sm hover:bg-primary/20 transition-colors"
               >
-                <a
-                  href={SOCIAL_LINKS.TWITTER}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Twitter className="mr-2 h-4 w-4" />
-                  X
-                </a>
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full border-gray-800 bg-gray-900/50 justify-start"
-                asChild
+                <Image src="/icons/x.svg" alt="X" width={28} height={28} className="brightness-0 invert" />
+                <span className="text-sm font-medium text-white">X</span>
+              </a>
+              <a
+                href={SOCIAL_LINKS.LINKEDIN}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-primary/10 ring-1 ring-inset ring-primary/30 backdrop-blur-sm hover:bg-primary/20 transition-colors"
               >
-                <a
-                  href={SOCIAL_LINKS.LINKEDIN}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Linkedin className="mr-2 h-4 w-4" />
-                  LinkedIn
-                </a>
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full border-gray-800 bg-gray-900/50 justify-start"
-                asChild
+                <Image src="/icons/linkedin.svg" alt="LinkedIn" width={28} height={28} className="brightness-0 invert" />
+                <span className="text-sm font-medium text-white">LinkedIn</span>
+              </a>
+              <a
+                href={SOCIAL_LINKS.GITHUB}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-primary/10 ring-1 ring-inset ring-primary/30 backdrop-blur-sm hover:bg-primary/20 transition-colors"
               >
-                <a
-                  href={SOCIAL_LINKS.GITHUB}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Github className="mr-2 h-4 w-4" />
-                  GitHub
-                </a>
-              </Button>
+                <Image src="/icons/github.svg" alt="GitHub" width={28} height={28} className="brightness-0 invert" />
+                <span className="text-sm font-medium text-white">GitHub</span>
+              </a>
             </div>
           </div>
         </div>
