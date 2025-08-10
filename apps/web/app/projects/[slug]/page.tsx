@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ProjectMetadata from '@/components/projects/project-metadata';
 import FadeIn from '@/components/fade-in';
@@ -38,7 +37,8 @@ export default function ProjectPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Live Application
+              Go To App
+              <ArrowRight className="ml-2 h-4 w-4" />
             </a>
           </Button>
         </div>
@@ -71,7 +71,7 @@ export default function ProjectPage() {
                   src={image}
                   alt={`${project.title} screenshot ${index + 1}`}
                   fill
-                  className="object-contain rounded-lg border border-gray-800"
+                  className="object-contain rounded-lg"
                 />
               </div>
             ))}
@@ -83,12 +83,12 @@ export default function ProjectPage() {
         <FadeIn delay={0.6}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {project?.desktopImages.map((image, index) => (
-              <div key={index} className="relative h-[600px]">
+              <div key={index} className="relative h-[400px]">
                 <Image
                   src={image}
                   alt={`${project.title} screenshot ${index + 1}`}
                   fill
-                  className="object-contain rounded-lg border border-gray-800"
+                  className="object-contain rounded-lg"
                 />
               </div>
             ))}
