@@ -18,12 +18,12 @@ export const PROJECTS = [
     {
       title: 'Flow AI',
       category: 'Agentic CRE Workflows',
-      image: '/placeholder.svg',
-      slug: 'liquid-finance',
+      image: '/flow.jpg',
+      slug: 'flow',
       gradient: 'from-primary/20',
       description:
         'Flow AI is revolutionizing commercial real estate with its agentic workforce. Designed to streamline the formulaic yet human-dependent processes of private equity firms, Flow replaces investor relations and financial modeling teams by answering complex queries, analyzing deal data, and enabling a unique "Vibe Modeling" experience. Flow AI addresses inefficiencies in a historically opaque market, reducing costs, closing times, and errors while unlocking untapped data potential.',
-      year: '2024-Present',
+      year: '2024-2025',
       position: 'Co-Founder, CTO',
       location: 'Austin, TX',
       previewUrl: 'https://flowcre.ai',
@@ -76,110 +76,119 @@ export const TECHNOLOGIES = {
     {
       name: 'TypeScript',
       iconName: 'typescript',
-      proficiency: 92,
     },
     {
       name: 'Python',
       iconName: 'python',
-      proficiency: 80,
     },
     {
       name: 'Golang',
       iconName: 'go',
-      proficiency: 75,
     },
     {
       name: 'Rust',
       iconName: 'rust',
-      proficiency: 65,
+      variant: 'dark',
     },
     {
       name: 'Solidity',
       iconName: 'solidity',
-      proficiency: 70,
+      variant: 'dark',
     },
   ],
   'Web Dev': [
     {
       name: 'Next.js',
       iconName: 'nextjs2',
-      proficiency: 90,
     },
     {
       name: 'React',
       iconName: 'react',
-      proficiency: 95,
     },
     {
       name: 'Node.js',
       iconName: 'nodejs',
-      proficiency: 88,
     },
     {
       name: 'Express',
       iconName: 'expressjs',
-      proficiency: 85,
+      variant: 'dark',
     },
     {
       name: 'GraphQL',
       iconName: 'graphql',
-      proficiency: 82,
     },
   ],
   Databases: [
     {
       name: 'PostgreSQL',
       iconName: 'postgresql',
-      proficiency: 85,
     },
     {
       name: 'MongoDB',
       iconName: 'mongodb',
-      proficiency: 80,
     },
     {
       name: 'Redis',
       iconName: 'redis',
-      proficiency: 78,
     },
     {
       name: 'Neo4j',
       iconName: 'neo4j',
-      proficiency: 70,
+      customIcon: '/icons/neo4j.svg',
+    },
+    {
+      name: 'GitHub Actions',
+      iconName: 'github',
     },
   ],
   DevOps: [
     {
-      name: 'GitHub Actions',
-      iconName: 'github',
-      proficiency: 85,
-    },
-    {
       name: 'Vercel',
       iconName: 'vercel',
-      proficiency: 88,
     },
     {
       name: 'Docker',
       iconName: 'docker',
-      proficiency: 82,
     },
     {
       name: 'Kubernetes',
       iconName: 'kubernetes',
-      proficiency: 75,
-    },
-  ],
-  Cloud: [
-    {
-      name: 'Google Cloud',
-      iconName: 'gcloud',
-      proficiency: 80,
     },
     {
       name: 'Amazon AWS',
       iconName: 'aws',
-      proficiency: 85,
+      variant: 'dark',
+    },
+    {
+      name: 'Google Cloud',
+      iconName: 'gcloud',
+    },
+  ],
+  'AI & Crypto': [
+    {
+      name: 'OpenAI',
+      iconName: 'openai',
+      variant: 'dark',
+    },
+    {
+      name: 'Claude',
+      iconName: 'claude',
+    },
+    {
+      name: 'Bitcoin',
+      iconName: 'bitcoin',
+      customIcon: '/icons/bitcoin.svg',
+    },
+    {
+      name: 'Ethereum',
+      iconName: 'ethereum',
+      customIcon: '/icons/ethereum.svg',
+    },
+    {
+      name: 'Solana',
+      iconName: 'solana',
+      customIcon: '/icons/solana.svg',
     },
   ],
 };
