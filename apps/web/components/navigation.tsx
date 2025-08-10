@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Twitter, Linkedin, Github } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarFallback, AvatarImage } from '@personal-app/ui';
 import { NAV_ITEMS, SOCIAL_LINKS } from '@/lib/constants';
@@ -60,25 +60,25 @@ const Navigation = () => {
               href={SOCIAL_LINKS.TWITTER}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-accent-foreground"
+              className="hover:opacity-80 transition-opacity"
             >
-              <Twitter className="h-5 w-5" />
+              <Image src="/icons/x.svg" alt="X" width={24} height={24} className="brightness-0 invert" />
             </a>
             <a
               href={SOCIAL_LINKS.LINKEDIN}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-accent-foreground"
+              className="hover:opacity-80 transition-opacity"
             >
-              <Linkedin className="h-5 w-5" />
+              <Image src="/icons/linkedin.svg" alt="LinkedIn" width={24} height={24} className="brightness-0 invert" />
             </a>
             <a
               href={SOCIAL_LINKS.GITHUB}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-accent-foreground"
+              className="hover:opacity-80 transition-opacity"
             >
-              <Github className="h-5 w-5" />
+              <Image src="/icons/github.svg" alt="GitHub" width={24} height={24} className="brightness-0 invert" />
             </a>
           </div>
         </div>
