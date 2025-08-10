@@ -15,14 +15,6 @@ export default function SelectedProjects() {
               Commercial real estate technology solutions at scale
             </p>
           </div>
-          <Button
-            variant="outline"
-            href="/projects"
-            className="w-fit"
-          >
-            View All Projects
-            <ExternalLink className="h-4 w-4 ml-2" />
-          </Button>
         </div>
         
         {/* Projects grid */}

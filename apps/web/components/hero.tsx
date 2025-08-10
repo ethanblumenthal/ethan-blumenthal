@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { TrendingUp, Zap, Building2, Bitcoin } from 'lucide-react';
+import { Code, Database, Bitcoin, Server, Brain } from 'lucide-react';
 
 export default function Hero() {
   return (
@@ -35,25 +34,25 @@ export default function Hero() {
         
         {/* Key focus areas */}
         <div className="flex flex-wrap gap-3">
-          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-dark-border">
-            <TrendingUp className="h-4 w-4 text-primary" />
-            <span className="text-sm text-gray-300 font-medium">Frontend Development</span>
+          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-white/10">
+            <Code className="h-4 w-4 text-primary" />
+            <span className="text-sm text-gray-300 font-medium">Frontend</span>
           </div>
-          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-dark-border">
-            <Bitcoin className="h-4 w-4 text-yellow-400" />
-            <span className="text-sm text-gray-300 font-medium">Backend Development</span>
+          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-white/10">
+            <Server className="h-4 w-4 text-primary" />
+            <span className="text-sm text-gray-300 font-medium">Backend</span>
           </div>
-          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-dark-border">
-            <Zap className="h-4 w-4 text-purple-400" />
-            <span className="text-sm text-gray-300 font-medium">Cloud Infrastructure</span>
+          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-white/10">
+            <Database className="h-4 w-4 text-primary" />
+            <span className="text-sm text-gray-300 font-medium">Infrastructure</span>
           </div>
-          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-dark-border">
-            <Zap className="h-4 w-4 text-purple-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-white/10">
+            <Brain className="h-4 w-4 text-primary" />
             <span className="text-sm text-gray-300 font-medium">AI Agents</span>
           </div>
-          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-dark-border">
-            <Building2 className="h-4 w-4 text-green-400" />
-            <span className="text-sm text-gray-300 font-medium">Crypto & Bitcoin</span>
+          <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-white/10">
+            <Bitcoin className="h-4 w-4 text-primary" />
+            <span className="text-sm text-gray-300 font-medium">Crypto</span>
           </div>
         </div>
         
