@@ -1,6 +1,6 @@
 import FadeIn from '@/components/fade-in';
 import ContactHeader from '@/components/contact/contact-header';
-import EnhancedContactForm from '@/components/contact/enhanced-contact-form';
+import ContactForm from '@/components/contact/contact-form';
 
 export default function Contact() {
   return (
@@ -9,7 +9,7 @@ export default function Contact() {
         <ContactHeader />
       </FadeIn>
       <FadeIn delay={0.2}>
-        <EnhancedContactForm />
+        <ContactForm />
       </FadeIn>
     </div>
   );
