@@ -1,11 +1,11 @@
 'use client';
 
-import { 
-  TrendingUp, 
+import {
+  TrendingUp,
   TrendingDown,
-  Users, 
-  FileText, 
-  Target, 
+  Users,
+  FileText,
+  Target,
   Activity,
   Calendar,
   BarChart3,
@@ -16,22 +16,22 @@ import {
   MessageSquare,
   Share2,
   Mail,
-  ChevronDown
+  ChevronDown,
 } from 'lucide-react';
 import { useState } from 'react';
 import { format, subDays, startOfWeek, endOfWeek } from 'date-fns';
 
-import { 
-  Button, 
-  BarChart, 
-  LineChart, 
+import {
+  Button,
+  BarChart,
+  LineChart,
   ProgressRing,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-  Badge
+  Badge,
 } from '@personal-app/ui';
 import { trpc } from '@/components/providers';
 
@@ -48,7 +48,13 @@ interface MetricCardProps {
   format?: 'number' | 'percentage' | 'currency';
 }
 
-function AnalyticsMetricCard({ title, value, change, icon: Icon, format = 'number' }: MetricCardProps) {
+function AnalyticsMetricCard({
+  title,
+  value,
+  change,
+  icon: Icon,
+  format = 'number',
+}: MetricCardProps) {
   const formatValue = (val: number | string) => {
     if (typeof val === 'string') return val;
     switch (format) {
@@ -67,21 +73,26 @@ function AnalyticsMetricCard({ title, value, change, icon: Icon, format = 'numbe
         <div className="p-2 rounded-lg bg-primary/10 border border-primary/20">
           <Icon className="h-5 w-5 text-primary" />
         </div>
-        <div className={`flex items-center gap-1 text-xs font-medium ${
-          change.positive ? 'text-green-400' : 'text-red-400'
-        }`}>
-          {change.positive ? <ArrowUpRight className="h-3 w-3" /> : <ArrowDownRight className="h-3 w-3" />}
+        <div
+          className={`flex items-center gap-1 text-xs font-medium ${
+            change.positive ? 'text-green-400' : 'text-red-400'
+          }`}
+        >
+          {change.positive ? (
+            <ArrowUpRight className="h-3 w-3" />
+          ) : (
+            <ArrowDownRight className="h-3 w-3" />
+          )}
           {Math.abs(change.value)}%
         </div>
       </div>
-      
+
       <div className="space-y-2">
         <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>
-        <div className="text-2xl font-bold text-foreground">
-          {formatValue(value)}
-        </div>
+        <div className="text-2xl font-bold text-foreground">{formatValue(value)}</div>
         <p className="text-xs text-muted-foreground">
-          {change.positive ? '+' : '-'}{Math.abs(change.value)}% from {change.period}
+          {change.positive ? '+' : '-'}
+          {Math.abs(change.value)}% from {change.period}
         </p>
       </div>
     </div>
@@ -114,7 +125,7 @@ export default function AnalyticsPage() {
 
   const contactGrowthData = generateTimeSeriesData(contactStats?.total ?? 25);
   const blogViewsData = generateTimeSeriesData(1200);
-  
+
   const contactsByTypeData = [
     { label: 'Investor', value: 12, color: 'bg-purple-500' },
     { label: 'Developer', value: 8, color: 'bg-orange-500' },
@@ -151,9 +162,7 @@ export default function AnalyticsPage() {
               <SelectItem value="1y">Last year</SelectItem>
             </SelectContent>
           </Select>
-          <Button variant="outline">
-            Export Report
-          </Button>
+          <Button variant="outline">Export Report</Button>
         </div>
       </div>
 
@@ -234,7 +243,9 @@ export default function AnalyticsPage() {
               <div className="text-center">
                 <ProgressRing value={convertedContacts} max={totalContacts} size={120}>
                   <div className="text-center">
-                    <div className="text-lg font-bold text-foreground">{conversionRate.toFixed(1)}%</div>
+                    <div className="text-lg font-bold text-foreground">
+                      {conversionRate.toFixed(1)}%
+                    </div>
                     <div className="text-xs text-muted-foreground">Conversion</div>
                   </div>
                 </ProgressRing>
@@ -308,7 +319,7 @@ export default function AnalyticsPage() {
           {/* Lead Scoring Distribution */}
           <div className="perplexity-card">
             <h3 className="text-lg font-semibold text-foreground mb-6">Lead Score Distribution</h3>
-            <BarChart 
+            <BarChart
               data={[
                 { label: '0-20', value: Math.round(totalContacts * 0.1), color: 'bg-red-500' },
                 { label: '21-40', value: Math.round(totalContacts * 0.2), color: 'bg-orange-500' },
@@ -369,7 +380,10 @@ export default function AnalyticsPage() {
                 { title: 'PropTech Trends 2024', views: 2400, engagement: 65 },
                 { title: 'Smart Cities and CRE', views: 1900, engagement: 52 },
               ].map((post, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-3 bg-muted/50 rounded-lg"
+                >
                   <div className="flex-1">
                     <div className="font-medium text-sm text-foreground line-clamp-1">
                       {post.title}

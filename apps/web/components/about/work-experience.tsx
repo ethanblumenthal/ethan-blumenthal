@@ -7,9 +7,9 @@ export default function WorkExperience() {
   const projectLinks: Record<string, string> = {
     'Flow AI': '/projects/flow',
     'Nada Finance': '/projects/cityfunds',
-    'OwnProp': '/projects/ownprop',
+    OwnProp: '/projects/ownprop',
   };
-  
+
   return (
     <section className="py-16">
       <div className="space-y-4 mb-12">
@@ -18,24 +18,27 @@ export default function WorkExperience() {
           Building innovative solutions at the intersection of real estate, technology, and finance
         </p>
       </div>
-      
+
       <div className="relative max-w-5xl mx-auto">
         {/* Timeline line - positioned between date and card */}
         <div className="hidden md:block absolute left-[240px] top-8 w-0.5 h-[calc(100%-2rem)] bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
-        
+
         <div className="space-y-12">
           {WORK_EXPERIENCES.map((experience, index) => (
-            <div key={index} className="relative grid grid-cols-1 md:grid-cols-[220px_1fr] gap-8 md:gap-12">
+            <div
+              key={index}
+              className="relative grid grid-cols-1 md:grid-cols-[220px_1fr] gap-8 md:gap-12"
+            >
               {/* Timeline dot - positioned on the line */}
               <div className="hidden md:block absolute left-[240px] top-8 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full ring-4 ring-dark-secondary z-10" />
-              
+
               {/* Date - aligned with top of card */}
               <div className="md:text-right md:pt-6">
                 <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-lg text-sm font-medium backdrop-blur-sm">
                   {experience.period}
                 </div>
               </div>
-              
+
               {/* Content card */}
               <div className="max-w-2xl">
                 {projectLinks[experience.company] ? (
@@ -63,12 +66,12 @@ export default function WorkExperience() {
                             </div>
                           </div>
                         </div>
-                        
+
                         {/* Bullets */}
                         <ul className="space-y-1">
                           {experience.bullets.map((bullet, bulletIndex) => (
-                            <li 
-                              key={bulletIndex} 
+                            <li
+                              key={bulletIndex}
                               className="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors"
                             >
                               <span className="text-primary leading-relaxed">•</span>
@@ -103,12 +106,12 @@ export default function WorkExperience() {
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Bullets */}
                       <ul className="space-y-1">
                         {experience.bullets.map((bullet, bulletIndex) => (
-                          <li 
-                            key={bulletIndex} 
+                          <li
+                            key={bulletIndex}
                             className="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors"
                           >
                             <span className="text-primary leading-relaxed">•</span>

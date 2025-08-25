@@ -11,11 +11,7 @@ export const metadata = {
   description: 'Advanced dashboard for Ethan Blumenthal',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
       <body className={inter.className}>
@@ -32,35 +28,46 @@ export default function RootLayout({
                         <div className="w-4 h-4 bg-white rounded-sm" />
                       </div>
                       <div>
-                        <h1 className="text-lg font-bold text-white">
-                          Ethan Blumenthal
-                        </h1>
-                        <p className="text-xs text-gray-400">
-                          Admin Dashboard
-                        </p>
+                        <h1 className="text-lg font-bold text-white">Ethan Blumenthal</h1>
+                        <p className="text-xs text-gray-400">Admin Dashboard</p>
                       </div>
                     </div>
                   </div>
-                  
+
                   {/* Navigation Links */}
                   <nav className="hidden md:flex items-center space-x-6">
-                    <Link href="/" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <Link
+                      href="/"
+                      className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                    >
                       Dashboard
                     </Link>
-                    <Link href="/contacts" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <Link
+                      href="/contacts"
+                      className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                    >
                       Contacts
                     </Link>
-                    <Link href="/content" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <Link
+                      href="/content"
+                      className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                    >
                       Content
                     </Link>
-                    <Link href="/social" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <Link
+                      href="/social"
+                      className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                    >
                       Social
                     </Link>
-                    <Link href="/analytics" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
+                    <Link
+                      href="/analytics"
+                      className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+                    >
                       Analytics
                     </Link>
                   </nav>
-                  
+
                   {/* Status Indicator */}
                   <div className="flex items-center gap-3">
                     <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-dark-secondary border border-dark-border rounded-full">
@@ -71,14 +78,12 @@ export default function RootLayout({
                 </div>
               </div>
             </header>
-            
+
             {/* Main Content */}
             <main className="relative">
-              <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                {children}
-              </div>
+              <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">{children}</div>
             </main>
-            
+
             {/* Footer */}
             <footer className="border-t border-dark-border bg-dark-secondary/50">
               <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">

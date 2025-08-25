@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: BlogPostPageProps) {
   const { slug } = await params;
   const post = await getBlogPostBySlug(slug);
-  
+
   if (!post) {
     return {
       title: 'Post Not Found',
@@ -93,7 +93,10 @@ const markdownComponents = {
     </li>
   ),
   blockquote: ({ children, ...props }: any) => (
-    <blockquote {...props} className="border-l-4 border-primary pl-4 py-2 mb-4 bg-gray-800/50 rounded-r-lg text-gray-300 italic">
+    <blockquote
+      {...props}
+      className="border-l-4 border-primary pl-4 py-2 mb-4 bg-gray-800/50 rounded-r-lg text-gray-300 italic"
+    >
       {children}
     </blockquote>
   ),
@@ -115,7 +118,10 @@ const markdownComponents = {
     </div>
   ),
   th: ({ children, ...props }: any) => (
-    <th {...props} className="border border-gray-700 bg-gray-800 px-4 py-2 text-left text-white font-semibold">
+    <th
+      {...props}
+      className="border border-gray-700 bg-gray-800 px-4 py-2 text-left text-white font-semibold"
+    >
       {children}
     </th>
   ),
@@ -125,7 +131,7 @@ const markdownComponents = {
     </td>
   ),
   a: ({ children, ...props }: any) => (
-    <a 
+    <a
       {...props}
       className="text-primary hover:text-primary/80 underline underline-offset-2"
       target="_blank"
@@ -182,7 +188,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
           <div className="flex items-center gap-2">
             <Calendar className="w-4 h-4" />
-            <span>{formatDate(post.publishedAt?.toISOString() || post.createdAt.toISOString())}</span>
+            <span>
+              {formatDate(post.publishedAt?.toISOString() || post.createdAt.toISOString())}
+            </span>
           </div>
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4" />
@@ -218,9 +226,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* Content */}
       <div className="prose prose-invert prose-lg max-w-none mb-8">
-        <ReactMarkdown components={markdownComponents}>
-          {post.content}
-        </ReactMarkdown>
+        <ReactMarkdown components={markdownComponents}>{post.content}</ReactMarkdown>
       </div>
 
       {/* Post Footer - Share & Engagement */}
@@ -228,7 +234,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-lg font-semibold text-white mb-2">Found this article helpful?</h3>
-            <p className="text-gray-400 text-sm">Share it with your network and help others discover valuable insights.</p>
+            <p className="text-gray-400 text-sm">
+              Share it with your network and help others discover valuable insights.
+            </p>
           </div>
           <SocialShare
             title={post.title}
@@ -254,11 +262,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <h3 className="font-semibold text-white group-hover:text-primary transition-colors mb-2">
                     {relatedPost.title}
                   </h3>
-                  <p className="text-gray-400 text-sm mb-3 line-clamp-2">
-                    {relatedPost.excerpt}
-                  </p>
+                  <p className="text-gray-400 text-sm mb-3 line-clamp-2">{relatedPost.excerpt}</p>
                   <div className="flex items-center gap-4 text-xs text-gray-500">
-                    <span>{formatDate(relatedPost.publishedAt?.toISOString() || relatedPost.createdAt.toISOString())}</span>
+                    <span>
+                      {formatDate(
+                        relatedPost.publishedAt?.toISOString() ||
+                          relatedPost.createdAt.toISOString()
+                      )}
+                    </span>
                     <span>{Math.ceil(relatedPost.content.split(' ').length / 200)} min read</span>
                   </div>
                 </div>
@@ -271,11 +282,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* Newsletter CTA */}
       <div className="border-t border-gray-800 pt-12 mt-12">
         <div className="bg-gradient-to-r from-primary/20 to-primary/10 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-white mb-4">
-            Enjoyed this article?
-          </h3>
+          <h3 className="text-2xl font-bold text-white mb-4">Enjoyed this article?</h3>
           <p className="text-gray-300 mb-6">
-            Subscribe to get more insights on PropTech, Bitcoin, and commercial real estate investing.
+            Subscribe to get more insights on PropTech, Bitcoin, and commercial real estate
+            investing.
           </p>
           <Button asChild>
             <Link href="/#newsletter">Subscribe to Newsletter</Link>

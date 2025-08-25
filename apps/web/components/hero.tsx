@@ -10,7 +10,7 @@ export default function Hero() {
           <span className="mr-2 h-2 w-2 rounded-full bg-primary animate-pulse"></span>
           Looking for New Opportunities
         </div>
-        
+
         {/* Main hero content */}
         <div className="space-y-6">
           <div className="space-y-2">
@@ -21,17 +21,16 @@ export default function Hero() {
               </span>
             </h1>
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-gray-300 tracking-tight">
-              Full stack product engineer - 
-              <span className="text-white"> always shipping</span>
+              Full stack product engineer -<span className="text-white"> always shipping</span>
             </h2>
           </div>
-          
+
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed">
-            Combining AI, Bitcoin, and tokenization to revolutionize how we invest in commercial real estate. 
-            7 years of experience in PropTech and emerging technologies.
+            Combining Bitcoin, Crypto, and AI to build revolutionary FinTech and PropTech products.
+            7 years of experience engineering with emerging technologies.
           </p>
         </div>
-        
+
         {/* Key focus areas */}
         <div className="flex flex-wrap gap-3">
           <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-white/10">
@@ -55,20 +54,13 @@ export default function Hero() {
             <span className="text-sm text-gray-300 font-medium">Crypto</span>
           </div>
         </div>
-        
+
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 pt-6">
-          <Button
-            size="lg"
-            href="/contact"
-          >
+          <Button size="lg" href="/contact">
             Get In Touch
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            href="/about"
-          >
+          <Button size="lg" variant="outline" href="/about">
             Learn More
           </Button>
         </div>

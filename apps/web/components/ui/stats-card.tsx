@@ -9,13 +9,14 @@ interface StatsCardProps {
 }
 
 export default function StatsCard({ stats, className = '' }: StatsCardProps) {
-  const gridCols = {
-    1: 'md:grid-cols-1',
-    2: 'md:grid-cols-2',
-    3: 'md:grid-cols-3',
-    4: 'md:grid-cols-4',
-    5: 'md:grid-cols-5',
-  }[stats.length] || 'md:grid-cols-3';
+  const gridCols =
+    {
+      1: 'md:grid-cols-1',
+      2: 'md:grid-cols-2',
+      3: 'md:grid-cols-3',
+      4: 'md:grid-cols-4',
+      5: 'md:grid-cols-5',
+    }[stats.length] || 'md:grid-cols-3';
 
   return (
     <div className={`inline-grid grid-cols-1 ${gridCols} gap-8 perplexity-card ${className}`}>

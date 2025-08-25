@@ -24,7 +24,7 @@ export default function NewsletterWelcome({
   topics = ['proptech'],
 }: NewsletterWelcomeProps) {
   const formatTopic = (topic: string) =>
-    topic.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    topic.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
 
   return (
     <Html>
@@ -43,16 +43,16 @@ export default function NewsletterWelcome({
             {/* Main Content */}
             <Section className="bg-white rounded-b-lg p-8 shadow-lg">
               <Text className="text-lg text-gray-800 mb-4">Hi {firstName},</Text>
-              
+
               <Text className="text-gray-700 mb-6">
-                Thank you for joining our exclusive network of investors and professionals 
+                Thank you for joining our exclusive network of investors and professionals
                 interested in PropTech and Bitcoin innovations in commercial real estate.
               </Text>
 
               <Text className="text-gray-800 font-semibold mb-3">
                 You've subscribed to insights on:
               </Text>
-              
+
               <Section className="bg-gray-50 rounded-lg p-4 mb-6">
                 {topics.map((topic, index) => (
                   <Text key={index} className="text-gray-700 m-1">
@@ -61,15 +61,17 @@ export default function NewsletterWelcome({
                 ))}
               </Section>
 
-              <Text className="text-gray-800 font-semibold mb-3">
-                What to expect:
-              </Text>
-              
+              <Text className="text-gray-800 font-semibold mb-3">What to expect:</Text>
+
               <Section className="mb-6">
-                <Text className="text-gray-700 m-1">• Weekly market insights and trend analysis</Text>
+                <Text className="text-gray-700 m-1">
+                  • Weekly market insights and trend analysis
+                </Text>
                 <Text className="text-gray-700 m-1">• Exclusive investment opportunities</Text>
                 <Text className="text-gray-700 m-1">• Early access to new PropTech deals</Text>
-                <Text className="text-gray-700 m-1">• Expert commentary on Bitcoin + Real Estate</Text>
+                <Text className="text-gray-700 m-1">
+                  • Expert commentary on Bitcoin + Real Estate
+                </Text>
               </Section>
 
               {/* CTA Section */}
@@ -78,9 +80,9 @@ export default function NewsletterWelcome({
                   🎯 Exclusive Opportunity
                 </Heading>
                 <Text className="text-blue-700 mb-4">
-                  As a new subscriber, you have priority access to our upcoming PropTech 
-                  deal flow. Reply to this email if you're interested in learning more 
-                  about current opportunities.
+                  As a new subscriber, you have priority access to our upcoming PropTech deal flow.
+                  Reply to this email if you're interested in learning more about current
+                  opportunities.
                 </Text>
                 <Button
                   href="mailto:ethan@ethanblumenthal.com?subject=PropTech Investment Interest"
@@ -93,12 +95,10 @@ export default function NewsletterWelcome({
               {/* Signature */}
               <Text className="text-gray-700 mb-2">Best regards,</Text>
               <Text className="text-gray-800 font-bold">Ethan Blumenthal</Text>
-              <Text className="text-gray-600 text-sm">
-                Co-Founder & CTO | PropTech Investor
-              </Text>
+              <Text className="text-gray-600 text-sm">Co-Founder & CTO | PropTech Investor</Text>
 
               <Hr className="my-6" />
-              
+
               {/* Footer */}
               <Text className="text-gray-500 text-xs text-center">
                 You received this email because you subscribed to updates from ethanblumenthal.com.

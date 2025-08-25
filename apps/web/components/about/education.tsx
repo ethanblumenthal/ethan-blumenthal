@@ -29,6 +29,7 @@ const educationData: EducationItem[] = [
     degree: 'Cert',
     field: 'Software Engineering',
     period: 'Jan 2019 - Apr 2019',
+    logo: '/fullstack.png',
   },
 ];
 

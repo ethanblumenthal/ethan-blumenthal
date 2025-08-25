@@ -177,54 +177,72 @@ export const mockDb = {
       where: (condition?: any) => ({
         orderBy: (order?: any) => ({
           limit: (limit: number) => ({
-            offset: (offset: number) => Promise.resolve(
-              table === 'contacts' ? mockContacts.slice(offset, offset + limit) :
-              table === 'blog_posts' ? mockBlogPosts.slice(offset, offset + limit) :
-              table === 'leads' ? mockLeads.slice(offset, offset + limit) :
-              []
-            ),
+            offset: (offset: number) =>
+              Promise.resolve(
+                table === 'contacts'
+                  ? mockContacts.slice(offset, offset + limit)
+                  : table === 'blog_posts'
+                    ? mockBlogPosts.slice(offset, offset + limit)
+                    : table === 'leads'
+                      ? mockLeads.slice(offset, offset + limit)
+                      : []
+              ),
           }),
         }),
-        limit: (limit: number) => Promise.resolve(
-          table === 'contacts' ? mockContacts.slice(0, limit) :
-          table === 'blog_posts' ? mockBlogPosts.slice(0, limit) :
-          table === 'leads' ? mockLeads.slice(0, limit) :
-          []
-        ),
-        groupBy: (column: any) => Promise.resolve(
-          table === 'contacts' && column === 'status' ? 
-            [
-              { status: 'prospect', count: 1 },
-              { status: 'qualified', count: 2 },
-              { status: 'engaged', count: 1 },
-              { status: 'converted', count: 1 },
-              { status: 'lost', count: 0 },
-            ] :
-          table === 'contacts' && column === 'group' ?
-            [
-              { group: 'venture_capital', count: 1 },
-              { group: 'private_equity', count: 1 },
-              { group: 'angel_investor', count: 1 },
-              { group: 'broker', count: 1 },
-              { group: 'lender', count: 1 },
-            ] :
-          table === 'blog_posts' && column === 'status' ?
-            [
-              { status: 'draft', count: 1 },
-              { status: 'published', count: 2 },
-              { status: 'archived', count: 0 },
-            ] :
-          []
-        ),
+        limit: (limit: number) =>
+          Promise.resolve(
+            table === 'contacts'
+              ? mockContacts.slice(0, limit)
+              : table === 'blog_posts'
+                ? mockBlogPosts.slice(0, limit)
+                : table === 'leads'
+                  ? mockLeads.slice(0, limit)
+                  : []
+          ),
+        groupBy: (column: any) =>
+          Promise.resolve(
+            table === 'contacts' && column === 'status'
+              ? [
+                  { status: 'prospect', count: 1 },
+                  { status: 'qualified', count: 2 },
+                  { status: 'engaged', count: 1 },
+                  { status: 'converted', count: 1 },
+                  { status: 'lost', count: 0 },
+                ]
+              : table === 'contacts' && column === 'group'
+                ? [
+                    { group: 'venture_capital', count: 1 },
+                    { group: 'private_equity', count: 1 },
+                    { group: 'angel_investor', count: 1 },
+                    { group: 'broker', count: 1 },
+                    { group: 'lender', count: 1 },
+                  ]
+                : table === 'blog_posts' && column === 'status'
+                  ? [
+                      { status: 'draft', count: 1 },
+                      { status: 'published', count: 2 },
+                      { status: 'archived', count: 0 },
+                    ]
+                  : []
+          ),
       }),
-      groupBy: (column: any) => Promise.resolve(
-        columns?.count ? [{ count: 
-          table === 'contacts' ? mockContacts.length :
-          table === 'blog_posts' ? mockBlogPosts.length :
-          table === 'leads' ? mockLeads.length :
-          0 
-        }] : []
-      ),
+      groupBy: (column: any) =>
+        Promise.resolve(
+          columns?.count
+            ? [
+                {
+                  count:
+                    table === 'contacts'
+                      ? mockContacts.length
+                      : table === 'blog_posts'
+                        ? mockBlogPosts.length
+                        : table === 'leads'
+                          ? mockLeads.length
+                          : 0,
+                },
+              ]
+            : []
+        ),
     }),
   }),
   insert: (table: any) => ({

@@ -6,24 +6,30 @@ async function addSocialAccounts() {
     console.log('Adding social accounts...');
 
     // Add X (Twitter) account
-    await db.insert(socialAccounts).values({
-      platform: 'twitter',
-      username: 'ethanblumenthal',
-      displayName: 'Ethan Blumenthal',
-      profileUrl: 'https://x.com/ethanblumenthal',
-      followers: 1000, // This will be updated when we fetch from API
-      isActive: true,
-    }).onConflictDoNothing();
+    await db
+      .insert(socialAccounts)
+      .values({
+        platform: 'twitter',
+        username: 'ethanblumenthal',
+        displayName: 'Ethan Blumenthal',
+        profileUrl: 'https://x.com/ethanblumenthal',
+        followers: 1000, // This will be updated when we fetch from API
+        isActive: true,
+      })
+      .onConflictDoNothing();
 
     // Add LinkedIn account
-    await db.insert(socialAccounts).values({
-      platform: 'linkedin',
-      username: 'ethanblumenthal',
-      displayName: 'Ethan Blumenthal',
-      profileUrl: 'https://www.linkedin.com/in/ethanblumenthal/',
-      followers: 500, // This will be updated when we fetch from API
-      isActive: true,
-    }).onConflictDoNothing();
+    await db
+      .insert(socialAccounts)
+      .values({
+        platform: 'linkedin',
+        username: 'ethanblumenthal',
+        displayName: 'Ethan Blumenthal',
+        profileUrl: 'https://www.linkedin.com/in/ethanblumenthal/',
+        followers: 500, // This will be updated when we fetch from API
+        isActive: true,
+      })
+      .onConflictDoNothing();
 
     console.log('Social accounts added successfully!');
 

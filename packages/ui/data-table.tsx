@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import * as React from "react";
+import * as React from 'react';
 import {
   ColumnDef,
   SortingState,
@@ -13,7 +13,7 @@ import {
   getPaginationRowModel,
   useReactTable,
   Table as TanStackTable,
-} from "@tanstack/react-table";
+} from '@tanstack/react-table';
 import {
   ChevronDown,
   ChevronUp,
@@ -24,30 +24,23 @@ import {
   Download,
   RefreshCw,
   Settings2,
-} from "lucide-react";
+} from 'lucide-react';
 
-import { cn } from "./utils";
-import { Button } from "./button";
-import { Input } from "./input";
-import { Label } from "./label";
-import { Checkbox } from "./checkbox";
-import { 
+import { cn } from './utils';
+import { Button } from './button';
+import { Input } from './input';
+import { Label } from './label';
+import { Checkbox } from './checkbox';
+import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuCheckboxItem
-} from "./dropdown-menu";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "./table";
+  DropdownMenuCheckboxItem,
+} from './dropdown-menu';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './table';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -68,7 +61,7 @@ export function DataTable<TData, TValue>({
   columns,
   data,
   searchKey,
-  searchPlaceholder = "Search...",
+  searchPlaceholder = 'Search...',
   onRefresh,
   onExport,
   isLoading = false,
@@ -82,7 +75,7 @@ export function DataTable<TData, TValue>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
-  const [globalFilter, setGlobalFilter] = React.useState("");
+  const [globalFilter, setGlobalFilter] = React.useState('');
 
   const table = useReactTable({
     data,
@@ -114,7 +107,7 @@ export function DataTable<TData, TValue>({
   const totalRowCount = table.getFilteredRowModel().rows.length;
 
   return (
-    <div className={cn("space-y-4", className)}>
+    <div className={cn('space-y-4', className)}>
       {showToolbar && (
         <DataTableToolbar
           table={table}
@@ -140,8 +133,8 @@ export function DataTable<TData, TValue>({
                     {header.isPlaceholder ? null : (
                       <div
                         className={cn(
-                          "flex items-center space-x-2",
-                          header.column.getCanSort() && "cursor-pointer select-none"
+                          'flex items-center space-x-2',
+                          header.column.getCanSort() && 'cursor-pointer select-none'
                         )}
                         onClick={header.column.getToggleSortingHandler()}
                       >
@@ -165,7 +158,7 @@ export function DataTable<TData, TValue>({
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
+                  data-state={row.getIsSelected() && 'selected'}
                   className="cursor-pointer"
                 >
                   {row.getVisibleCells().map((cell) => (
@@ -189,9 +182,7 @@ export function DataTable<TData, TValue>({
         </Table>
       </div>
 
-      {showPagination && (
-        <DataTablePagination table={table} selectedRowCount={selectedRowCount} />
-      )}
+      {showPagination && <DataTablePagination table={table} selectedRowCount={selectedRowCount} />}
     </div>
   );
 }
@@ -250,7 +241,7 @@ function DataTableToolbar<TData>({
             variant="ghost"
             onClick={() => {
               table.resetColumnFilters();
-              setGlobalFilter("");
+              setGlobalFilter('');
             }}
             className="px-2 lg:px-3"
           >
@@ -397,11 +388,11 @@ function DataTablePagination<TData>({ table, selectedRowCount }: DataTablePagina
   );
 }
 
-function SortingIcon({ sorted }: { sorted: false | "asc" | "desc" }) {
-  if (sorted === "asc") {
+function SortingIcon({ sorted }: { sorted: false | 'asc' | 'desc' }) {
+  if (sorted === 'asc') {
     return <ChevronUp className="h-4 w-4" />;
   }
-  if (sorted === "desc") {
+  if (sorted === 'desc') {
     return <ChevronDown className="h-4 w-4" />;
   }
   return <ChevronsUpDown className="h-4 w-4 opacity-50" />;
@@ -425,7 +416,7 @@ function LoadingRows({ columnCount }: { columnCount: number }) {
 
 // Export helper functions for column definitions
 export const createSelectColumn = <TData,>(): ColumnDef<TData> => ({
-  id: "select",
+  id: 'select',
   header: ({ table }) => (
     <Checkbox
       checked={table.getIsAllPageRowsSelected()}
@@ -447,8 +438,8 @@ export const createSelectColumn = <TData,>(): ColumnDef<TData> => ({
 export const createActionsColumn = <TData,>(
   actions: React.ComponentType<{ row: TData }>
 ): ColumnDef<TData> => ({
-  id: "actions",
-  header: "Actions",
+  id: 'actions',
+  header: 'Actions',
   cell: ({ row }) => {
     const ActionsComponent = actions;
     return <ActionsComponent row={row.original} />;

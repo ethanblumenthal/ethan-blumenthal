@@ -54,11 +54,8 @@ export default function SocialShare({ title, url, excerpt, className = '' }: Soc
       {isOpen && (
         <>
           {/* Backdrop */}
-          <div 
-            className="fixed inset-0 z-40" 
-            onClick={() => setIsOpen(false)}
-          />
-          
+          <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} />
+
           {/* Share menu */}
           <div className="absolute top-full left-0 mt-2 bg-gray-900 border border-gray-700 rounded-lg shadow-xl z-50 min-w-[200px]">
             <div className="p-3">

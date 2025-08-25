@@ -18,10 +18,7 @@ export default function RecentPosts() {
     <section className="py-12">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-4xl font-bold text-white">Recent Blog Posts</h2>
-        <Button
-          variant="outline"
-          href="/blog"
-        >
+        <Button variant="outline" href="/blog">
           View Blog
         </Button>
       </div>
@@ -57,9 +54,7 @@ export default function RecentPosts() {
                   {post.title}
                 </h3>
                 {post.excerpt && (
-                  <p className="text-gray-400 text-sm mt-2 line-clamp-2">
-                    {post.excerpt}
-                  </p>
+                  <p className="text-gray-400 text-sm mt-2 line-clamp-2">{post.excerpt}</p>
                 )}
               </div>
             </Link>
@@ -67,7 +62,9 @@ export default function RecentPosts() {
         ) : (
           <div className="col-span-3 text-center py-8">
             <p className="text-gray-400">No blog posts available yet.</p>
-            <p className="text-gray-500 text-sm mt-1">Check back soon for insights on PropTech and CRE.</p>
+            <p className="text-gray-500 text-sm mt-1">
+              Check back soon for insights on PropTech and CRE.
+            </p>
           </div>
         )}
       </div>

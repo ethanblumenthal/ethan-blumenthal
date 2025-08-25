@@ -81,10 +81,8 @@ export default function ContactForm() {
       <div className="grid md:grid-cols-[2fr,1fr] gap-12">
         <div className="space-y-8">
           <div className="perplexity-card">
-            <h2 className="text-2xl font-bold text-white mb-6">
-              Let's Connect
-            </h2>
-            
+            <h2 className="text-2xl font-bold text-white mb-6">Let's Connect</h2>
+
             {createContact.error && (
               <div className="mb-6 rounded-lg border border-red-200 bg-red-50 p-4 dark:border-red-800 dark:bg-red-950">
                 <div className="flex items-center">
@@ -112,7 +110,7 @@ export default function ContactForm() {
                     <p className="text-red-500 text-sm mt-1">{errors.firstName.message}</p>
                   )}
                 </div>
-                
+
                 <div>
                   <Label htmlFor="lastName" className="text-white mb-2 block">
                     Last Name *
@@ -191,7 +189,13 @@ export default function ContactForm() {
                 rel="noopener noreferrer"
                 className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-primary/10 ring-1 ring-inset ring-primary/30 backdrop-blur-sm hover:bg-primary/20 transition-colors"
               >
-                <Image src="/icons/x.svg" alt="X" width={28} height={28} className="brightness-0 invert" />
+                <Image
+                  src="/icons/x.svg"
+                  alt="X"
+                  width={28}
+                  height={28}
+                  className="brightness-0 invert"
+                />
                 <span className="text-sm font-medium text-white">X</span>
               </a>
               <a
@@ -200,7 +204,13 @@ export default function ContactForm() {
                 rel="noopener noreferrer"
                 className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-primary/10 ring-1 ring-inset ring-primary/30 backdrop-blur-sm hover:bg-primary/20 transition-colors"
               >
-                <Image src="/icons/linkedin.svg" alt="LinkedIn" width={28} height={28} className="brightness-0 invert" />
+                <Image
+                  src="/icons/linkedin.svg"
+                  alt="LinkedIn"
+                  width={28}
+                  height={28}
+                  className="brightness-0 invert"
+                />
                 <span className="text-sm font-medium text-white">LinkedIn</span>
               </a>
               <a
@@ -209,7 +219,13 @@ export default function ContactForm() {
                 rel="noopener noreferrer"
                 className="flex flex-col items-center justify-center gap-2 p-4 rounded-lg bg-primary/10 ring-1 ring-inset ring-primary/30 backdrop-blur-sm hover:bg-primary/20 transition-colors"
               >
-                <Image src="/icons/github.svg" alt="GitHub" width={28} height={28} className="brightness-0 invert" />
+                <Image
+                  src="/icons/github.svg"
+                  alt="GitHub"
+                  width={28}
+                  height={28}
+                  className="brightness-0 invert"
+                />
                 <span className="text-sm font-medium text-white">GitHub</span>
               </a>
             </div>

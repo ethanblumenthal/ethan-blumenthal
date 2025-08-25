@@ -17,11 +17,7 @@ const Navigation = () => {
         <div className="p-6">
           <div className="flex items-center gap-3">
             <Avatar className="h-12 w-12 rounded-lg overflow-hidden">
-              <AvatarImage
-                src="/ethan-profile.jpg"
-                alt="Ethan"
-                className="object-cover"
-              />
+              <AvatarImage src="/ethan-profile.jpg" alt="Ethan" className="object-cover" />
               <AvatarFallback>ET</AvatarFallback>
             </Avatar>
             <div>
@@ -52,9 +48,7 @@ const Navigation = () => {
 
         {/* Social Links */}
         <div className="border-t border-gray-800 p-6">
-          <h3 className="mb-4 text-sm font-semibold text-muted-foreground">
-            Follow Me
-          </h3>
+          <h3 className="mb-4 text-sm font-semibold text-muted-foreground">Follow Me</h3>
           <div className="flex gap-4">
             <a
               href={SOCIAL_LINKS.TWITTER}
@@ -62,7 +56,13 @@ const Navigation = () => {
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity"
             >
-              <Image src="/icons/x.svg" alt="X" width={24} height={24} className="brightness-0 invert" />
+              <Image
+                src="/icons/x.svg"
+                alt="X"
+                width={24}
+                height={24}
+                className="brightness-0 invert"
+              />
             </a>
             <a
               href={SOCIAL_LINKS.LINKEDIN}
@@ -70,7 +70,13 @@ const Navigation = () => {
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity"
             >
-              <Image src="/icons/linkedin.svg" alt="LinkedIn" width={24} height={24} className="brightness-0 invert" />
+              <Image
+                src="/icons/linkedin.svg"
+                alt="LinkedIn"
+                width={24}
+                height={24}
+                className="brightness-0 invert"
+              />
             </a>
             <a
               href={SOCIAL_LINKS.GITHUB}
@@ -78,7 +84,13 @@ const Navigation = () => {
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity"
             >
-              <Image src="/icons/github.svg" alt="GitHub" width={24} height={24} className="brightness-0 invert" />
+              <Image
+                src="/icons/github.svg"
+                alt="GitHub"
+                width={24}
+                height={24}
+                className="brightness-0 invert"
+              />
             </a>
           </div>
         </div>

@@ -29,7 +29,8 @@ PropTech investments have grown from $1 billion in 2010 to over $32 billion in 2
 ## Conclusion
 
 The future of commercial real estate is digital. Investors who embrace PropTech today will be the market leaders of tomorrow.`,
-    excerpt: 'Explore how PropTech is revolutionizing commercial real estate through AI, blockchain, and smart building technologies.',
+    excerpt:
+      'Explore how PropTech is revolutionizing commercial real estate through AI, blockchain, and smart building technologies.',
     author: 'Ethan Blumenthal',
     status: 'published' as const,
     tags: ['PropTech', 'Commercial Real Estate', 'Innovation', 'Technology'],
@@ -37,7 +38,7 @@ The future of commercial real estate is digital. Investors who embrace PropTech 
     publishedAt: new Date('2024-01-15'),
     createdAt: new Date('2024-01-15'),
     updatedAt: new Date('2024-01-15'),
-  }
+  },
 ];
 
 // Helper to check if database is available
@@ -48,33 +49,36 @@ function isDatabaseAvailable(): boolean {
 // Get all published blog posts for static generation
 export async function getPublishedPostSlugs() {
   if (!isDatabaseAvailable()) {
-    return mockBlogPosts.filter(post => post.status === 'published').map(post => ({ slug: post.slug }));
+    return mockBlogPosts
+      .filter((post) => post.status === 'published')
+      .map((post) => ({ slug: post.slug }));
   }
-  
+
   try {
-    return await db.select({ slug: blogPosts.slug }).from(blogPosts).where(eq(blogPosts.status, 'published'));
+    return await db
+      .select({ slug: blogPosts.slug })
+      .from(blogPosts)
+      .where(eq(blogPosts.status, 'published'));
   } catch (error) {
     console.error('Failed to fetch blog post slugs:', error);
-    return mockBlogPosts.filter(post => post.status === 'published').map(post => ({ slug: post.slug }));
+    return mockBlogPosts
+      .filter((post) => post.status === 'published')
+      .map((post) => ({ slug: post.slug }));
   }
 }
 
 // Get a single blog post by slug for the blog page
 export async function getBlogPostBySlug(slug: string) {
   if (!isDatabaseAvailable()) {
-    return mockBlogPosts.find(post => post.slug === slug) || null;
+    return mockBlogPosts.find((post) => post.slug === slug) || null;
   }
-  
+
   try {
-    const [post] = await db
-      .select()
-      .from(blogPosts)
-      .where(eq(blogPosts.slug, slug))
-      .limit(1);
+    const [post] = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug)).limit(1);
     return post || null;
   } catch (error) {
     console.error('Failed to fetch blog post:', error);
-    return mockBlogPosts.find(post => post.slug === slug) || null;
+    return mockBlogPosts.find((post) => post.slug === slug) || null;
   }
 }
 
@@ -82,22 +86,22 @@ export async function getBlogPostBySlug(slug: string) {
 export async function getRelatedPostsFromDb(currentSlug: string, tags: string[], limit = 3) {
   if (!isDatabaseAvailable()) {
     return mockBlogPosts
-      .filter(post => post.slug !== currentSlug && post.status === 'published')
+      .filter((post) => post.slug !== currentSlug && post.status === 'published')
       .slice(0, limit);
   }
-  
+
   try {
     const posts = await db
       .select()
       .from(blogPosts)
       .where(eq(blogPosts.status, 'published'))
       .limit(10);
-    
+
     // Filter and sort by relevance
     const relatedPosts = posts
       .filter((p: any) => p.slug !== currentSlug)
       .map((p: any) => {
-        const commonTags = p.tags.filter((tag: string) => 
+        const commonTags = p.tags.filter((tag: string) =>
           tags.some((currentTag: string) => currentTag.toLowerCase() === tag.toLowerCase())
         );
         return {
@@ -108,12 +112,12 @@ export async function getRelatedPostsFromDb(currentSlug: string, tags: string[],
       .filter((p: any) => p.relevanceScore > 0)
       .sort((a: any, b: any) => b.relevanceScore - a.relevanceScore)
       .slice(0, limit);
-      
+
     return relatedPosts;
   } catch (error) {
     console.error('Failed to fetch related posts:', error);
     return mockBlogPosts
-      .filter(post => post.slug !== currentSlug && post.status === 'published')
+      .filter((post) => post.slug !== currentSlug && post.status === 'published')
       .slice(0, limit);
   }
 }

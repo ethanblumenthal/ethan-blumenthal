@@ -16,7 +16,7 @@ export default function SelectedProjects() {
             </p>
           </div>
         </div>
-        
+
         {/* Projects grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {PROJECTS.map((project, index) => (
@@ -34,7 +34,7 @@ export default function SelectedProjects() {
                     className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  
+
                   {/* Project status badge */}
                   <div className="absolute top-4 left-4">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-dark-primary/80 border border-primary/30 rounded-full backdrop-blur-sm">
@@ -42,7 +42,7 @@ export default function SelectedProjects() {
                       <span className="text-xs font-medium text-primary">Active</span>
                     </div>
                   </div>
-                  
+
                   {/* External link indicator */}
                   <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="p-2 bg-dark-primary/80 border border-gray-600 rounded-lg backdrop-blur-sm">
@@ -50,7 +50,7 @@ export default function SelectedProjects() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Project details */}
                 <div className="space-y-3">
                   <div className="flex items-start justify-between gap-4">
@@ -65,12 +65,12 @@ export default function SelectedProjects() {
                       <div className="text-xs text-gray-400">{project.position}</div>
                     </div>
                   </div>
-                  
+
                   {/* Project description */}
                   <p className="text-sm text-gray-400 leading-relaxed line-clamp-3">
                     {project.description}
                   </p>
-                  
+
                   {/* Project metrics */}
                   <div className="flex items-center gap-4 pt-2">
                     <div className="flex items-center gap-1.5">
@@ -91,7 +91,6 @@ export default function SelectedProjects() {
             </Link>
           ))}
         </div>
-        
       </div>
     </section>
   );

@@ -11,14 +11,14 @@ interface BlogCardProps {
   tags?: string[];
 }
 
-export default function BlogCard({ 
-  title, 
-  date, 
-  image, 
-  slug, 
+export default function BlogCard({
+  title,
+  date,
+  image,
+  slug,
   excerpt,
   readingTime,
-  tags 
+  tags,
 }: BlogCardProps) {
   return (
     <Link href={`/blog/${slug}`} className="group block">
@@ -32,34 +32,29 @@ export default function BlogCard({
           />
         </div>
         <div className="p-6">
-          <time className="text-sm text-gray-400">{new Date(date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}</time>
-          
+          <time className="text-sm text-gray-400">
+            {new Date(date).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </time>
+
           <h2 className="text-xl font-semibold text-white mt-2 mb-3 group-hover:text-primary transition-colors line-clamp-2">
             {title}
           </h2>
-          
+
           {excerpt && (
-            <p className="text-gray-400 text-sm mb-4 line-clamp-3 leading-relaxed">
-              {excerpt}
-            </p>
+            <p className="text-gray-400 text-sm mb-4 line-clamp-3 leading-relaxed">{excerpt}</p>
           )}
-          
+
           <div className="flex items-center justify-between">
-            {readingTime && (
-              <span className="text-xs text-gray-500">{readingTime}</span>
-            )}
-            
+            {readingTime && <span className="text-xs text-gray-500">{readingTime}</span>}
+
             {tags && tags.length > 0 && (
               <div className="flex flex-wrap gap-1">
                 {tags.slice(0, 2).map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-gray-800 text-gray-400 px-2 py-1 rounded text-xs"
-                  >
+                  <span key={tag} className="bg-gray-800 text-gray-400 px-2 py-1 rounded text-xs">
                     {tag}
                   </span>
                 ))}

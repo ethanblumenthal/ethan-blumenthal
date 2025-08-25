@@ -62,12 +62,9 @@ const campaignConfigs: Record<string, CampaignConfig> = {
   },
 };
 
-export default function CampaignFollowUp({
-  firstName,
-  campaign,
-}: CampaignFollowUpProps) {
+export default function CampaignFollowUp({ firstName, campaign }: CampaignFollowUpProps) {
   const config = campaignConfigs[campaign] || campaignConfigs.proptech;
-  
+
   return (
     <Html>
       <Head />
@@ -85,11 +82,10 @@ export default function CampaignFollowUp({
             {/* Main Content */}
             <Section className="bg-white rounded-b-lg p-8 shadow-lg">
               <Text className="text-lg text-gray-800 mb-4">Hi {firstName},</Text>
-              
+
               <Text className="text-gray-700 mb-6">
-                Thank you for your interest in {config.name.toLowerCase()} investment 
-                opportunities. Based on your profile, I have some exclusive deals that 
-                might interest you.
+                Thank you for your interest in {config.name.toLowerCase()} investment opportunities.
+                Based on your profile, I have some exclusive deals that might interest you.
               </Text>
 
               {/* Deals Section */}
@@ -116,23 +112,41 @@ export default function CampaignFollowUp({
                 <Section>
                   {campaign === 'proptech' && (
                     <>
-                      <Text className="text-gray-700 mb-2">• PropTech funding is up 40% year-over-year</Text>
-                      <Text className="text-gray-700 mb-2">• Early-stage deals offer 10x+ return potential</Text>
-                      <Text className="text-gray-700 mb-2">• AI adoption in real estate is accelerating rapidly</Text>
+                      <Text className="text-gray-700 mb-2">
+                        • PropTech funding is up 40% year-over-year
+                      </Text>
+                      <Text className="text-gray-700 mb-2">
+                        • Early-stage deals offer 10x+ return potential
+                      </Text>
+                      <Text className="text-gray-700 mb-2">
+                        • AI adoption in real estate is accelerating rapidly
+                      </Text>
                     </>
                   )}
                   {campaign === 'bitcoin' && (
                     <>
-                      <Text className="text-gray-700 mb-2">• Institutional Bitcoin adoption continues growing</Text>
-                      <Text className="text-gray-700 mb-2">• Real estate tokenization market expanding 35% annually</Text>
-                      <Text className="text-gray-700 mb-2">• DeFi protocols offer higher yields than traditional finance</Text>
+                      <Text className="text-gray-700 mb-2">
+                        • Institutional Bitcoin adoption continues growing
+                      </Text>
+                      <Text className="text-gray-700 mb-2">
+                        • Real estate tokenization market expanding 35% annually
+                      </Text>
+                      <Text className="text-gray-700 mb-2">
+                        • DeFi protocols offer higher yields than traditional finance
+                      </Text>
                     </>
                   )}
                   {campaign === 'cre' && (
                     <>
-                      <Text className="text-gray-700 mb-2">• Commercial real estate values stabilizing after rate hikes</Text>
-                      <Text className="text-gray-700 mb-2">• Industrial and logistics sectors showing strong fundamentals</Text>
-                      <Text className="text-gray-700 mb-2">• Opportunistic buying window may be closing soon</Text>
+                      <Text className="text-gray-700 mb-2">
+                        • Commercial real estate values stabilizing after rate hikes
+                      </Text>
+                      <Text className="text-gray-700 mb-2">
+                        • Industrial and logistics sectors showing strong fundamentals
+                      </Text>
+                      <Text className="text-gray-700 mb-2">
+                        • Opportunistic buying window may be closing soon
+                      </Text>
                     </>
                   )}
                 </Section>
@@ -144,8 +158,8 @@ export default function CampaignFollowUp({
                   Ready to Learn More?
                 </Heading>
                 <Text className="text-white mb-4">
-                  Schedule a 15-minute call to discuss current opportunities and 
-                  how they align with your investment goals.
+                  Schedule a 15-minute call to discuss current opportunities and how they align with
+                  your investment goals.
                 </Text>
                 <Button
                   href="mailto:ethan@ethanblumenthal.com?subject=Investment Opportunity Discussion"
@@ -158,15 +172,14 @@ export default function CampaignFollowUp({
               {/* Signature */}
               <Text className="text-gray-700 mb-2">Best regards,</Text>
               <Text className="text-gray-800 font-bold">Ethan Blumenthal</Text>
-              <Text className="text-gray-600 text-sm">
-                Co-Founder & CTO | PropTech Investor
-              </Text>
+              <Text className="text-gray-600 text-sm">Co-Founder & CTO | PropTech Investor</Text>
 
               <Hr className="my-6" />
-              
+
               {/* Footer */}
               <Text className="text-gray-500 text-xs text-center">
-                You received this email because you expressed interest in {config.name.toLowerCase()} opportunities.
+                You received this email because you expressed interest in{' '}
+                {config.name.toLowerCase()} opportunities.
                 <br />
                 <Link href="mailto:ethan@ethanblumenthal.com" className="text-gray-500">
                   Contact Us

@@ -68,9 +68,11 @@ export default function SocialContentApproval({
               <Section className="border-2 border-gray-200 rounded-lg p-6 mb-6">
                 <Section className="flex items-center justify-between mb-4">
                   <Section className="flex items-center gap-3">
-                    <Section className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                      platform === 'twitter' ? 'bg-blue-500' : 'bg-blue-700'
-                    }`}>
+                    <Section
+                      className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                        platform === 'twitter' ? 'bg-blue-500' : 'bg-blue-700'
+                      }`}
+                    >
                       <Text className="text-white font-bold text-sm m-0">
                         {platform === 'twitter' ? '𝕏' : 'in'}
                       </Text>
@@ -139,7 +141,7 @@ export default function SocialContentApproval({
                 <Heading className="text-gray-800 text-lg font-semibold mb-4">
                   Choose Your Action
                 </Heading>
-                
+
                 <Section className="flex gap-3 justify-center mb-4">
                   <Button
                     href={approveUrl}
@@ -174,13 +176,13 @@ export default function SocialContentApproval({
               <Section className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
                 <Text className="text-yellow-800 font-semibold mb-2">🔍 Quality Check:</Text>
                 <Text className="text-yellow-700 text-sm mb-0">
-                  This content was generated using AI based on trending topics and your content strategy. 
-                  Please review for accuracy, tone, and brand alignment before posting.
+                  This content was generated using AI based on trending topics and your content
+                  strategy. Please review for accuracy, tone, and brand alignment before posting.
                 </Text>
               </Section>
 
               <Hr className="my-6" />
-              
+
               {/* Footer */}
               <Text className="text-gray-500 text-xs text-center">
                 This notification was sent from your CRE Platform social media automation system.

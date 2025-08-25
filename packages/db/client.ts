@@ -8,18 +8,18 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn('Supabase environment variables not found. Running in development mode without Supabase.');
+  console.warn(
+    'Supabase environment variables not found. Running in development mode without Supabase.'
+  );
 }
 
 // Supabase client for authentication and storage
-export const supabase = supabaseUrl && supabaseAnonKey 
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : null as any;
+export const supabase =
+  supabaseUrl && supabaseAnonKey ? createClient(supabaseUrl, supabaseAnonKey) : (null as any);
 
 // Admin client for server-side operations
-export const supabaseAdmin = supabaseUrl && supabaseServiceKey
-  ? createClient(supabaseUrl, supabaseServiceKey)
-  : null as any;
+export const supabaseAdmin =
+  supabaseUrl && supabaseServiceKey ? createClient(supabaseUrl, supabaseServiceKey) : (null as any);
 
 // Database connection string for Drizzle
 const connectionString = process.env.DATABASE_URL;
@@ -32,7 +32,7 @@ const createMockDb = () => {
         console.warn('Database operation attempted without DATABASE_URL configured');
         return Promise.resolve([]);
       };
-    }
+    },
   });
 };
 

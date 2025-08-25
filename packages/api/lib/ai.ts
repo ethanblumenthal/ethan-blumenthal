@@ -7,13 +7,13 @@ const createMockOpenAI = () => {
     doGenerate: async () => {
       console.warn('AI generation attempted without OPENAI_API_KEY');
       return { text: '{}', usage: {} };
-    }
+    },
   });
 };
 
 const openai = process.env.OPENAI_API_KEY
   ? createOpenAI({ apiKey: process.env.OPENAI_API_KEY })
-  : createMockOpenAI() as any;
+  : (createMockOpenAI() as any);
 
 interface BlogGenerationInput {
   topic: string;
@@ -49,7 +49,7 @@ export async function generateBlogPost(input: BlogGenerationInput): Promise<Gene
 
     // Parse the generated content
     const parsedContent = parseBlogContent(text);
-    
+
     return {
       ...parsedContent,
       prompt,
@@ -164,15 +164,19 @@ function parseBlogContent(generatedText: string): Omit<GeneratedBlogPost, 'promp
 
 function getMaxTokens(length: string): number {
   switch (length) {
-    case 'short': return 2000;
-    case 'medium': return 4000;
-    case 'long': return 6000;
-    default: return 4000;
+    case 'short':
+      return 2000;
+    case 'medium':
+      return 4000;
+    case 'long':
+      return 6000;
+    default:
+      return 4000;
   }
 }
 
 function countWords(text: string): number {
-  return text.split(/\s+/).filter(word => word.length > 0).length;
+  return text.split(/\s+/).filter((word) => word.length > 0).length;
 }
 
 // Generate blog post ideas based on trending topics

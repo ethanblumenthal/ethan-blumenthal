@@ -6,12 +6,14 @@ export const createContactSchema = z.object({
   lastName: z.string().min(1, 'Last name is required'),
   email: z.string().email('Invalid email address'),
   company: z.string().optional(),
-  phone: z.string().optional(),  
+  phone: z.string().optional(),
   website: z.string().optional(),
   linkedinUrl: z.string().optional(),
   twitterHandle: z.string().optional(),
   message: z.string().min(1, 'Message is required'),
-  group: z.enum(['venture_capital', 'private_equity', 'angel_investor', 'lender', 'broker']).optional(),
+  group: z
+    .enum(['venture_capital', 'private_equity', 'angel_investor', 'lender', 'broker'])
+    .optional(),
   labels: z.array(z.string()).default([]),
   notes: z.string().optional(),
   allowMarketing: z.boolean().default(false),

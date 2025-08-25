@@ -11,10 +11,12 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "start": "turbo start",
+    "format": "biome format --write .",
     "type-check": "turbo type-check",
     "clean": "turbo clean"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.2.2",
     "@turbo/gen": "^2.5.5",
     "turbo": "^2.5.5"
   },

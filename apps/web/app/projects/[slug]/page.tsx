@@ -32,11 +32,7 @@ export default function ProjectPage() {
             Back
           </Button>
           <Button variant="outline" className="border-gray-800" asChild>
-            <a
-              href={project.previewUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={project.previewUrl} target="_blank" rel="noopener noreferrer">
               Go To App
               <ArrowRight className="ml-2 h-4 w-4" />
             </a>
@@ -47,9 +43,7 @@ export default function ProjectPage() {
       <FadeIn delay={0.2}>
         <div className="space-y-6">
           <h1 className="text-5xl font-bold text-white">{project.title}</h1>
-          <p className="text-xl text-gray-400 leading-relaxed">
-            {project.description}
-          </p>
+          <p className="text-xl text-gray-400 leading-relaxed">{project.description}</p>
         </div>
       </FadeIn>
 

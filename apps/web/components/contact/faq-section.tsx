@@ -1,11 +1,6 @@
 'use client';
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@personal-app/ui';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@personal-app/ui';
 
 const faqs = [
   {
@@ -43,9 +38,7 @@ const faqs = [
 export default function FaqSection() {
   return (
     <section className="py-12">
-      <h2 className="text-4xl font-bold text-white mb-8">
-        Frequently Asked Questions
-      </h2>
+      <h2 className="text-4xl font-bold text-white mb-8">Frequently Asked Questions</h2>
       <Accordion type="single" collapsible className="space-y-4">
         {faqs.map((faq, index) => (
           <AccordionItem
@@ -56,9 +49,7 @@ export default function FaqSection() {
             <AccordionTrigger className="text-lg font-medium text-white hover:no-underline">
               {faq.question}
             </AccordionTrigger>
-            <AccordionContent className="text-gray-400">
-              {faq.answer}
-            </AccordionContent>
+            <AccordionContent className="text-gray-400">{faq.answer}</AccordionContent>
           </AccordionItem>
         ))}
       </Accordion>

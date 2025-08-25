@@ -1,34 +1,34 @@
 'use client';
 
 import { ColumnDef } from '@tanstack/react-table';
-import { 
-  MoreHorizontal, 
-  Plus, 
-  Calendar, 
-  Eye, 
-  Edit, 
-  Trash2, 
-  FileText, 
-  Clock, 
+import {
+  MoreHorizontal,
+  Plus,
+  Calendar,
+  Eye,
+  Edit,
+  Trash2,
+  FileText,
+  Clock,
   CheckCircle,
   AlertCircle,
-  XCircle
+  XCircle,
 } from 'lucide-react';
 import { useState } from 'react';
 import { format } from 'date-fns';
 import { useRouter } from 'next/navigation';
 
-import { 
-  DataTable, 
-  createSelectColumn, 
-  Button, 
+import {
+  DataTable,
+  createSelectColumn,
+  Button,
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  Badge 
+  Badge,
 } from '@personal-app/ui';
 import { trpc } from '@/components/providers';
 
@@ -58,7 +58,7 @@ const statusConfig = {
 // Content Actions Component
 function ContentActions({ post }: { post: BlogPost }) {
   const router = useRouter();
-  
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -115,17 +115,13 @@ const columns: ColumnDef<BlogPost>[] = [
       const StatusIcon = statusConfig[post.status].icon;
       const router = useRouter();
       return (
-        <div 
+        <div
           className="flex items-start space-x-3 cursor-pointer hover:opacity-80"
           onClick={() => router.push(`/content/${post.id}`)}
         >
           <div className="flex-shrink-0 mt-1">
             {post.featuredImage ? (
-              <img 
-                src={post.featuredImage} 
-                alt="" 
-                className="w-12 h-12 rounded-lg object-cover"
-              />
+              <img src={post.featuredImage} alt="" className="w-12 h-12 rounded-lg object-cover" />
             ) : (
               <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
                 <FileText className="h-6 w-6 text-muted-foreground" />
@@ -133,13 +129,9 @@ const columns: ColumnDef<BlogPost>[] = [
             )}
           </div>
           <div className="flex-1">
-            <div className="font-medium text-primary line-clamp-1">
-              {post.title}
-            </div>
+            <div className="font-medium text-primary line-clamp-1">{post.title}</div>
             {post.excerpt && (
-              <div className="text-sm text-muted-foreground line-clamp-2 mt-1">
-                {post.excerpt}
-              </div>
+              <div className="text-sm text-muted-foreground line-clamp-2 mt-1">{post.excerpt}</div>
             )}
             <div className="flex items-center space-x-2 mt-2">
               <StatusIcon className="h-3 w-3 text-muted-foreground" />
@@ -201,7 +193,7 @@ const columns: ColumnDef<BlogPost>[] = [
     cell: ({ row }) => {
       const publishedAt = row.getValue('publishedAt') as Date | null;
       const createdAt = row.original.createdAt;
-      
+
       if (publishedAt) {
         return (
           <div className="text-sm">
@@ -212,13 +204,11 @@ const columns: ColumnDef<BlogPost>[] = [
           </div>
         );
       }
-      
+
       return (
         <div className="text-sm text-muted-foreground">
           <div>Draft</div>
-          <div className="text-xs">
-            Created {format(new Date(createdAt), 'MMM dd')}
-          </div>
+          <div className="text-xs">Created {format(new Date(createdAt), 'MMM dd')}</div>
         </div>
       );
     },
@@ -237,7 +227,10 @@ function ContentStats({ posts }: { posts: BlogPost[] }) {
   const totalPosts = posts.length;
   const publishedPosts = posts.filter((p: BlogPost) => p.status === 'published').length;
   const draftPosts = posts.filter((p: BlogPost) => p.status === 'draft').length;
-  const totalWords = posts.reduce((sum: number, post: BlogPost) => sum + post.content.split(/\s+/).length, 0);
+  const totalWords = posts.reduce(
+    (sum: number, post: BlogPost) => sum + post.content.split(/\s+/).length,
+    0
+  );
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -275,13 +268,16 @@ function ContentCalendar({ posts }: { posts: BlogPost[] }) {
           View Full Calendar
         </Button>
       </div>
-      
+
       <div className="space-y-4">
         <div>
           <h4 className="text-sm font-medium text-muted-foreground mb-2">Recently Published</h4>
           <div className="space-y-2">
             {publishedPosts.slice(0, 3).map((post: BlogPost) => (
-              <div key={post.id} className="flex items-center justify-between p-2 rounded-lg bg-muted/50">
+              <div
+                key={post.id}
+                className="flex items-center justify-between p-2 rounded-lg bg-muted/50"
+              >
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   <span className="text-sm font-medium">{post.title}</span>
@@ -293,12 +289,15 @@ function ContentCalendar({ posts }: { posts: BlogPost[] }) {
             ))}
           </div>
         </div>
-        
+
         <div>
           <h4 className="text-sm font-medium text-muted-foreground mb-2">Drafts in Progress</h4>
           <div className="space-y-2">
             {upcomingPosts.slice(0, 3).map((post: BlogPost) => (
-              <div key={post.id} className="flex items-center justify-between p-2 rounded-lg bg-muted/50">
+              <div
+                key={post.id}
+                className="flex items-center justify-between p-2 rounded-lg bg-muted/50"
+              >
                 <div className="flex items-center space-x-2">
                   <Clock className="h-4 w-4 text-yellow-500" />
                   <span className="text-sm font-medium">{post.title}</span>
@@ -320,7 +319,11 @@ export default function ContentPage() {
   const [selectedPosts, setSelectedPosts] = useState<BlogPost[]>([]);
 
   // Fetch blog posts data
-  const { data: blogData, isLoading, refetch } = trpc.blog.getAll.useQuery({
+  const {
+    data: blogData,
+    isLoading,
+    refetch,
+  } = trpc.blog.getAll.useQuery({
     limit: 1000,
     offset: 0,
   });
@@ -333,9 +336,7 @@ export default function ContentPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-primary">Content Management</h1>
-          <p className="text-muted-foreground">
-            Create, manage, and publish your blog content
-          </p>
+          <p className="text-muted-foreground">Create, manage, and publish your blog content</p>
         </div>
         <div className="flex items-center space-x-2">
           <Button variant="outline">
@@ -375,12 +376,16 @@ export default function ContentPage() {
         {/* Sidebar */}
         <div className="space-y-6">
           <ContentCalendar posts={posts} />
-          
+
           {/* Quick Actions */}
           <div className="perplexity-card">
             <h3 className="text-lg font-semibold text-primary mb-4">Quick Actions</h3>
             <div className="space-y-2">
-              <Button variant="outline" className="w-full justify-start" onClick={() => router.push('/content/new')}>
+              <Button
+                variant="outline"
+                className="w-full justify-start"
+                onClick={() => router.push('/content/new')}
+              >
                 <Plus className="mr-2 h-4 w-4" />
                 Create Draft
               </Button>
@@ -402,7 +407,13 @@ export default function ContentPage() {
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Avg. Reading Time</span>
                 <span className="font-medium">
-                  {Math.round(posts.reduce((sum: number, p: BlogPost) => sum + calculateReadingTime(p.content), 0) / posts.length || 0)} min
+                  {Math.round(
+                    posts.reduce(
+                      (sum: number, p: BlogPost) => sum + calculateReadingTime(p.content),
+                      0
+                    ) / posts.length || 0
+                  )}{' '}
+                  min
                 </span>
               </div>
               <div className="flex justify-between text-sm">
@@ -412,14 +423,17 @@ export default function ContentPage() {
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">This Month</span>
                 <span className="font-medium">
-                  {posts.filter((p: BlogPost) => {
-                    const publishedAt = p.publishedAt;
-                    if (!publishedAt) return false;
-                    const month = new Date().getMonth();
-                    const year = new Date().getFullYear();
-                    const postDate = new Date(publishedAt);
-                    return postDate.getMonth() === month && postDate.getFullYear() === year;
-                  }).length} published
+                  {
+                    posts.filter((p: BlogPost) => {
+                      const publishedAt = p.publishedAt;
+                      if (!publishedAt) return false;
+                      const month = new Date().getMonth();
+                      const year = new Date().getFullYear();
+                      const postDate = new Date(publishedAt);
+                      return postDate.getMonth() === month && postDate.getFullYear() === year;
+                    }).length
+                  }{' '}
+                  published
                 </span>
               </div>
             </div>

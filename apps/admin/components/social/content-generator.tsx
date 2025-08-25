@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { 
+import {
   Sheet,
   SheetContent,
   Button,
@@ -16,11 +16,11 @@ import {
   Badge,
   Checkbox,
 } from '@personal-app/ui';
-import { 
-  Sparkles, 
-  Twitter, 
-  Linkedin, 
-  Loader2, 
+import {
+  Sparkles,
+  Twitter,
+  Linkedin,
+  Loader2,
   Send,
   Calendar,
   Eye,
@@ -32,7 +32,7 @@ import {
   TrendingUp,
   Hash,
   MessageSquare,
-  Target
+  Target,
 } from 'lucide-react';
 import { trpc } from '@/components/providers';
 import { toast } from 'sonner';
@@ -55,11 +55,19 @@ interface GeneratedContent {
   focus: string;
 }
 
-export default function ContentGenerator({ open, onOpenChange, onContentApproved }: ContentGeneratorProps) {
+export default function ContentGenerator({
+  open,
+  onOpenChange,
+  onContentApproved,
+}: ContentGeneratorProps) {
   const [activeView, setActiveView] = useState<'generate' | 'preview' | 'schedule'>('generate');
   const [platform, setPlatform] = useState<'twitter' | 'linkedin'>('twitter');
-  const [tone, setTone] = useState<'professional' | 'casual' | 'thought-leadership'>('professional');
-  const [focus, setFocus] = useState<'proptech' | 'bitcoin' | 'tokenization' | 'cre-trends'>('proptech');
+  const [tone, setTone] = useState<'professional' | 'casual' | 'thought-leadership'>(
+    'professional'
+  );
+  const [focus, setFocus] = useState<'proptech' | 'bitcoin' | 'tokenization' | 'cre-trends'>(
+    'proptech'
+  );
   const [includeData, setIncludeData] = useState(true);
   const [includeCTA, setIncludeCTA] = useState(true);
   const [customTopic, setCustomTopic] = useState('');
@@ -134,7 +142,7 @@ export default function ContentGenerator({ open, onOpenChange, onContentApproved
 
   const handleApprove = async () => {
     if (!generatedContent) return;
-    
+
     setIsScheduling(true);
     try {
       await approvePost.mutateAsync({
@@ -167,7 +175,10 @@ export default function ContentGenerator({ open, onOpenChange, onContentApproved
   const toneOptions = {
     professional: { label: 'Professional', description: 'Formal, data-driven, industry-focused' },
     casual: { label: 'Casual', description: 'Conversational, relatable, engaging' },
-    'thought-leadership': { label: 'Thought Leadership', description: 'Insightful, forward-thinking, authoritative' },
+    'thought-leadership': {
+      label: 'Thought Leadership',
+      description: 'Insightful, forward-thinking, authoritative',
+    },
   };
 
   const focusOptions = {
@@ -306,7 +317,9 @@ export default function ContentGenerator({ open, onOpenChange, onContentApproved
                 <div className="flex items-center justify-between">
                   <div className="space-y-0.5">
                     <Label htmlFor="include-data">Include Data & Statistics</Label>
-                    <p className="text-xs text-muted-foreground">Add relevant metrics and numbers</p>
+                    <p className="text-xs text-muted-foreground">
+                      Add relevant metrics and numbers
+                    </p>
                   </div>
                   <Checkbox
                     id="include-data"
@@ -341,8 +354,8 @@ export default function ContentGenerator({ open, onOpenChange, onContentApproved
               </div>
 
               {/* Generate Button */}
-              <Button 
-                onClick={handleGenerate} 
+              <Button
+                onClick={handleGenerate}
                 className="w-full btn-primary"
                 disabled={isGenerating}
               >
@@ -386,7 +399,7 @@ export default function ContentGenerator({ open, onOpenChange, onContentApproved
               {/* Content Preview */}
               <div className="bg-muted/50 rounded-lg p-4 space-y-3">
                 <p className="whitespace-pre-wrap">{generatedContent.content}</p>
-                
+
                 {generatedContent.hashtags.length > 0 && (
                   <div className="flex flex-wrap gap-2">
                     {generatedContent.hashtags.map((tag, index) => (
@@ -419,7 +432,9 @@ export default function ContentGenerator({ open, onOpenChange, onContentApproved
                 </div>
                 <div className="space-y-1">
                   <p className="text-xs text-muted-foreground">Focus</p>
-                  <p className="text-sm font-medium">{focusOptions[generatedContent.focus as keyof typeof focusOptions]?.label}</p>
+                  <p className="text-sm font-medium">
+                    {focusOptions[generatedContent.focus as keyof typeof focusOptions]?.label}
+                  </p>
                 </div>
               </div>
 
@@ -461,7 +476,7 @@ export default function ContentGenerator({ open, onOpenChange, onContentApproved
             <div className="space-y-6">
               <div className="space-y-4">
                 <h3 className="font-medium">When should this be posted?</h3>
-                
+
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     onClick={() => setScheduledDate(null)}
@@ -475,7 +490,7 @@ export default function ContentGenerator({ open, onOpenChange, onContentApproved
                     <p className="text-sm font-medium">Post Now</p>
                     <p className="text-xs text-muted-foreground">Immediately publish</p>
                   </button>
-                  
+
                   <button
                     onClick={() => setScheduledDate(new Date(Date.now() + 24 * 60 * 60 * 1000))}
                     className={`p-3 rounded-lg border-2 transition-all ${

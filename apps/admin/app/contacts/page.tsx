@@ -1,22 +1,31 @@
 'use client';
 
 import { ColumnDef } from '@tanstack/react-table';
-import { MoreHorizontal, Mail, Phone, ExternalLink, Eye, Edit, Trash2, UserPlus } from 'lucide-react';
+import {
+  MoreHorizontal,
+  Mail,
+  Phone,
+  ExternalLink,
+  Eye,
+  Edit,
+  Trash2,
+  UserPlus,
+} from 'lucide-react';
 import { useState } from 'react';
 import { format } from 'date-fns';
 import { useRouter } from 'next/navigation';
 
-import { 
-  DataTable, 
-  createSelectColumn, 
-  Button, 
+import {
+  DataTable,
+  createSelectColumn,
+  Button,
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  Badge 
+  Badge,
 } from '@personal-app/ui';
 import { trpc } from '@/components/providers';
 
@@ -58,7 +67,7 @@ const groupTypeConfig = {
 // Contact Actions Component
 function ContactActions({ contact }: { contact: Contact }) {
   const router = useRouter();
-  
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -81,7 +90,7 @@ function ContactActions({ contact }: { contact: Contact }) {
           <Edit className="mr-2 h-4 w-4" />
           Edit contact
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => window.location.href = `mailto:${contact.email}`}>
+        <DropdownMenuItem onClick={() => (window.location.href = `mailto:${contact.email}`)}>
           <Mail className="mr-2 h-4 w-4" />
           Send email
         </DropdownMenuItem>
@@ -125,7 +134,7 @@ const columns: ColumnDef<Contact>[] = [
       const contact = row.original;
       const router = useRouter();
       return (
-        <div 
+        <div
           className="flex flex-col cursor-pointer hover:opacity-80"
           onClick={() => router.push(`/contacts/${contact.id}`)}
         >
@@ -260,7 +269,11 @@ export default function ContactsPage() {
   const [selectedContacts, setSelectedContacts] = useState<Contact[]>([]);
 
   // Fetch contacts data
-  const { data: contactsData, isLoading, refetch } = trpc.contact.getAll.useQuery({
+  const {
+    data: contactsData,
+    isLoading,
+    refetch,
+  } = trpc.contact.getAll.useQuery({
     limit: 1000,
     offset: 0,
   });
@@ -273,14 +286,10 @@ export default function ContactsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-primary">Contacts</h1>
-          <p className="text-muted-foreground">
-            Manage your CRM contacts and leads
-          </p>
+          <p className="text-muted-foreground">Manage your CRM contacts and leads</p>
         </div>
         <div className="flex items-center space-x-2">
-          <Button variant="outline">
-            Import Contacts
-          </Button>
+          <Button variant="outline">Import Contacts</Button>
           <Button className="btn-primary">
             <UserPlus className="mr-2 h-4 w-4" />
             Add Contact
@@ -308,7 +317,9 @@ export default function ContactsPage() {
         </div>
         <div className="metric-card">
           <div className="dashboard-stat">
-            {Math.round(contacts.reduce((sum: number, c: Contact) => sum + c.leadScore, 0) / contacts.length) || 0}
+            {Math.round(
+              contacts.reduce((sum: number, c: Contact) => sum + c.leadScore, 0) / contacts.length
+            ) || 0}
           </div>
           <div className="dashboard-stat-label">Avg Lead Score</div>
         </div>

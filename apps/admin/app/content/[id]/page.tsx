@@ -3,9 +3,9 @@
 import { useParams, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-import { 
-  ArrowLeft, 
-  Save, 
+import {
+  ArrowLeft,
+  Save,
   Eye,
   Edit2,
   X,
@@ -27,14 +27,14 @@ import {
   Heading1,
   Heading2,
   Undo,
-  Redo
+  Redo,
 } from 'lucide-react';
 
-import { 
-  Button, 
-  Input, 
-  Label, 
-  Textarea, 
+import {
+  Button,
+  Input,
+  Label,
+  Textarea,
   Select,
   SelectContent,
   SelectItem,
@@ -46,7 +46,7 @@ import {
   TabsList,
   TabsTrigger,
   Toggle,
-  Separator
+  Separator,
 } from '@personal-app/ui';
 import { trpc } from '@/components/providers';
 import { toast } from 'sonner';
@@ -121,7 +121,7 @@ export default function ContentEditorPage() {
   const params = useParams();
   const router = useRouter();
   const postId = params.id === 'new' ? null : parseInt(params.id as string);
-  
+
   const [isEditing, setIsEditing] = useState(!postId);
   const [formData, setFormData] = useState<BlogPostFormData>({
     title: '',
@@ -138,9 +138,13 @@ export default function ContentEditorPage() {
   const [activeTab, setActiveTab] = useState('edit');
 
   // Fetch post data if editing existing post
-  const { data: post, isLoading, refetch } = trpc.blog.getById.useQuery(
+  const {
+    data: post,
+    isLoading,
+    refetch,
+  } = trpc.blog.getById.useQuery(
     { id: postId! },
-    { 
+    {
       enabled: !!postId,
       onSuccess: (data) => {
         if (data) {
@@ -156,7 +160,7 @@ export default function ContentEditorPage() {
             publishedAt: data.publishedAt ? new Date(data.publishedAt) : null,
           });
         }
-      }
+      },
     }
   );
 
@@ -263,10 +267,9 @@ export default function ContentEditorPage() {
   const removeTag = (tag: string) => {
     setFormData({
       ...formData,
-      tags: formData.tags.filter(t => t !== tag),
+      tags: formData.tags.filter((t) => t !== tag),
     });
   };
-
 
   const handleMarkdownAction = (action: string, value?: string) => {
     const textarea = document.getElementById('content') as HTMLTextAreaElement;
@@ -312,14 +315,15 @@ export default function ContentEditorPage() {
         break;
     }
 
-    const newContent = formData.content.substring(0, start) + replacement + formData.content.substring(end);
+    const newContent =
+      formData.content.substring(0, start) + replacement + formData.content.substring(end);
     setFormData({ ...formData, content: newContent });
   };
 
   // Auto-generate slug when title changes
   useEffect(() => {
     if (!postId && formData.title) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         slug: generateSlug(prev.title),
       }));
@@ -351,18 +355,16 @@ export default function ContentEditorPage() {
     );
   }
 
-  const StatusIcon = post ? statusConfig[post.status as keyof typeof statusConfig]?.icon || Clock : Clock;
+  const StatusIcon = post
+    ? statusConfig[post.status as keyof typeof statusConfig]?.icon || Clock
+    : Clock;
 
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => router.push('/content')}
-          >
+          <Button variant="ghost" size="sm" onClick={() => router.push('/content')}>
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
           </Button>
@@ -372,7 +374,10 @@ export default function ContentEditorPage() {
             </h1>
             {post && (
               <div className="flex items-center space-x-2 mt-1">
-                <Badge variant="secondary" className={`${statusConfig[post.status as keyof typeof statusConfig]?.color || 'bg-gray-500'} text-white`}>
+                <Badge
+                  variant="secondary"
+                  className={`${statusConfig[post.status as keyof typeof statusConfig]?.color || 'bg-gray-500'} text-white`}
+                >
                   {statusConfig[post.status as keyof typeof statusConfig]?.label || post.status}
                 </Badge>
                 <span className="text-sm text-muted-foreground">
@@ -401,7 +406,10 @@ export default function ContentEditorPage() {
           )}
           {isEditing ? (
             <>
-              <Button variant="outline" onClick={() => postId ? setIsEditing(false) : router.push('/content')}>
+              <Button
+                variant="outline"
+                onClick={() => (postId ? setIsEditing(false) : router.push('/content'))}
+              >
                 <X className="mr-2 h-4 w-4" />
                 Cancel
               </Button>
@@ -412,7 +420,11 @@ export default function ContentEditorPage() {
             </>
           ) : (
             <>
-              <Button variant="outline" onClick={handleDelete} className="text-red-600 hover:text-red-700">
+              <Button
+                variant="outline"
+                onClick={handleDelete}
+                className="text-red-600 hover:text-red-700"
+              >
                 <Trash2 className="mr-2 h-4 w-4" />
                 Delete
               </Button>
@@ -452,7 +464,7 @@ export default function ContentEditorPage() {
                       placeholder="post-url-slug"
                     />
                   </div>
-                  
+
                   <div className="space-y-2">
                     <Label htmlFor="author">Author</Label>
                     <Input
@@ -503,7 +515,6 @@ export default function ContentEditorPage() {
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* Sidebar */}
@@ -516,7 +527,9 @@ export default function ContentEditorPage() {
                   <Label htmlFor="status">Status</Label>
                   <Select
                     value={formData.status}
-                    onValueChange={(value) => setFormData({ ...formData, status: value as BlogPostFormData['status'] })}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, status: value as BlogPostFormData['status'] })
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue />
@@ -530,14 +543,23 @@ export default function ContentEditorPage() {
                     </SelectContent>
                   </Select>
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="publishedAt">Publish Date</Label>
                   <Input
                     id="publishedAt"
                     type="datetime-local"
-                    value={formData.publishedAt ? format(new Date(formData.publishedAt), "yyyy-MM-dd'T'HH:mm") : ''}
-                    onChange={(e) => setFormData({ ...formData, publishedAt: e.target.value ? new Date(e.target.value) : null })}
+                    value={
+                      formData.publishedAt
+                        ? format(new Date(formData.publishedAt), "yyyy-MM-dd'T'HH:mm")
+                        : ''
+                    }
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        publishedAt: e.target.value ? new Date(e.target.value) : null,
+                      })
+                    }
                   />
                 </div>
               </div>
@@ -549,9 +571,9 @@ export default function ContentEditorPage() {
               <div className="space-y-4">
                 {formData.featuredImage ? (
                   <div className="relative">
-                    <img 
-                      src={formData.featuredImage} 
-                      alt="Featured" 
+                    <img
+                      src={formData.featuredImage}
+                      alt="Featured"
                       className="w-full h-48 object-cover rounded-lg"
                     />
                     <Button
@@ -597,10 +619,7 @@ export default function ContentEditorPage() {
                   {formData.tags.map((tag) => (
                     <Badge key={tag} variant="secondary" className="flex items-center space-x-1">
                       <span>{tag}</span>
-                      <X
-                        className="h-3 w-3 cursor-pointer"
-                        onClick={() => removeTag(tag)}
-                      />
+                      <X className="h-3 w-3 cursor-pointer" onClick={() => removeTag(tag)} />
                     </Badge>
                   ))}
                 </div>
@@ -614,13 +633,13 @@ export default function ContentEditorPage() {
           <div className="lg:col-span-2">
             <div className="perplexity-card">
               {formData.featuredImage && (
-                <img 
-                  src={formData.featuredImage} 
-                  alt={formData.title} 
+                <img
+                  src={formData.featuredImage}
+                  alt={formData.title}
                   className="w-full h-64 object-cover rounded-lg mb-6"
                 />
               )}
-              
+
               <div className="prose prose-lg max-w-none dark:prose-invert">
                 <h1>{formData.title}</h1>
                 <div className="flex items-center space-x-4 text-sm text-muted-foreground not-prose mb-6">
@@ -637,7 +656,7 @@ export default function ContentEditorPage() {
                 )}
                 <ReactMarkdown>{formData.content}</ReactMarkdown>
               </div>
-              
+
               {formData.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-8 pt-8 border-t">
                   <Tag className="h-4 w-4 text-muted-foreground" />
@@ -650,7 +669,7 @@ export default function ContentEditorPage() {
               )}
             </div>
           </div>
-          
+
           <div className="space-y-6">
             {/* Post Info */}
             <div className="perplexity-card">
@@ -658,8 +677,13 @@ export default function ContentEditorPage() {
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Status</span>
-                  <Badge variant="secondary" className={`${post ? statusConfig[post.status as keyof typeof statusConfig]?.color || 'bg-gray-500' : ''} text-white`}>
-                    {post ? statusConfig[post.status as keyof typeof statusConfig]?.label || post.status : 'Draft'}
+                  <Badge
+                    variant="secondary"
+                    className={`${post ? statusConfig[post.status as keyof typeof statusConfig]?.color || 'bg-gray-500' : ''} text-white`}
+                  >
+                    {post
+                      ? statusConfig[post.status as keyof typeof statusConfig]?.label || post.status
+                      : 'Draft'}
                   </Badge>
                 </div>
                 <div className="flex items-center justify-between">
@@ -668,41 +692,63 @@ export default function ContentEditorPage() {
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Created</span>
-                  <span className="text-sm">{post ? format(new Date(post.createdAt), 'MMM dd, yyyy') : 'N/A'}</span>
+                  <span className="text-sm">
+                    {post ? format(new Date(post.createdAt), 'MMM dd, yyyy') : 'N/A'}
+                  </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Updated</span>
-                  <span className="text-sm">{post ? format(new Date(post.updatedAt), 'MMM dd, yyyy') : 'N/A'}</span>
+                  <span className="text-sm">
+                    {post ? format(new Date(post.updatedAt), 'MMM dd, yyyy') : 'N/A'}
+                  </span>
                 </div>
                 {post?.publishedAt && (
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">Published</span>
-                    <span className="text-sm">{format(new Date(post.publishedAt), 'MMM dd, yyyy')}</span>
+                    <span className="text-sm">
+                      {format(new Date(post.publishedAt), 'MMM dd, yyyy')}
+                    </span>
                   </div>
                 )}
               </div>
             </div>
-            
+
             {/* Quick Actions */}
             <div className="perplexity-card">
               <h3 className="text-lg font-semibold text-primary mb-4">Quick Actions</h3>
               <div className="space-y-2">
-                <Button variant="outline" className="w-full justify-start" onClick={() => window.open(`/blog/${formData.slug}`, '_blank')}>
+                <Button
+                  variant="outline"
+                  className="w-full justify-start"
+                  onClick={() => window.open(`/blog/${formData.slug}`, '_blank')}
+                >
                   <Eye className="mr-2 h-4 w-4" />
                   View on Site
                 </Button>
-                <Button variant="outline" className="w-full justify-start" onClick={() => setIsEditing(true)}>
+                <Button
+                  variant="outline"
+                  className="w-full justify-start"
+                  onClick={() => setIsEditing(true)}
+                >
                   <Edit2 className="mr-2 h-4 w-4" />
                   Edit Post
                 </Button>
                 {post?.status === 'draft' && (
-                  <Button variant="outline" className="w-full justify-start" onClick={handlePublish}>
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start"
+                    onClick={handlePublish}
+                  >
                     <CheckCircle className="mr-2 h-4 w-4" />
                     Publish Post
                   </Button>
                 )}
                 {post?.status === 'published' && (
-                  <Button variant="outline" className="w-full justify-start" onClick={handleArchive}>
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start"
+                    onClick={handleArchive}
+                  >
                     <X className="mr-2 h-4 w-4" />
                     Archive Post
                   </Button>

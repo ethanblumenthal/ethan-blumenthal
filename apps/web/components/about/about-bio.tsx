@@ -13,18 +13,15 @@ export default function AboutBio() {
         <div className="space-y-6">
           <div className="text-gray-400 space-y-4 text-lg leading-relaxed">
             <p>
-              Ethan is a full-stack product developer with a focus on real
-              estate investment marketplaces leveraging smart contracts and
-              large language models (LLMs). As CEO of OwnProp, Ethan led the
-              technical development of industry-first tokenization and
-              fractionalization capabilities for CRE deals. Recently, as VP of
-              Engineering at Nada Finance, he built the first home equity
-              investment (HEI) origination platform and its associated retail
-              investment product, Cityfunds. His technical acumen and
-              understanding of blockchain’s impact on real-world assets position
-              him uniquely to advance technology-driven solutions. Ethan holds a
-              BA in Economics from the University of Illinois and pursued an MS
-              in Computer Science at the University of Texas.
+              Ethan is a full-stack product developer with a focus on FinTech and PropTech platforms
+              that expand economic opportunity for all. Recently, as VP of Engineering at Nada
+              Finance, he built the first home equity investment (HEI) origination platform and its
+              associated retail investment product, Cityfunds. As founding engineer at OwnProp,
+              Ethan led the development of an industry-first tokenization and fractionalization
+              platform for commercial real estate deals. His technical acumen and understanding of
+              emerging technologies' impact on real-world assets position him uniquely to advance
+              innovative solutions. Ethan holds a BA in Economics from the University of Illinois
+              and pursued an MS in Computer Science at the University of Texas.
             </p>
           </div>
           <section className="py-6">

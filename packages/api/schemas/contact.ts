@@ -9,7 +9,10 @@ export const contactSchema = z.object({
   company: z.string().optional(),
   website: z.string().url().optional().or(z.literal('')),
   status: z.enum(['prospect', 'qualified', 'engaged', 'converted', 'lost']).default('prospect'),
-  group: z.enum(['venture_capital', 'private_equity', 'angel_investor', 'lender', 'broker']).nullable().optional(),
+  group: z
+    .enum(['venture_capital', 'private_equity', 'angel_investor', 'lender', 'broker'])
+    .nullable()
+    .optional(),
   labels: z.array(z.string()).default([]),
   notes: z.string().optional(),
   xProfile: z.string().optional(),

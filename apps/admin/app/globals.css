@@ -10,31 +10,31 @@
 
     --card: 0 0% 12.2%; /* #1F2121 */
     --card-foreground: 0 0% 91%; /* #E8E8E6 */
- 
+
     --popover: 0 0% 12.2%; /* #1F2121 */
     --popover-foreground: 0 0% 91%; /* #E8E8E6 */
- 
+
     --primary: 187 61% 47%; /* #30B7C6 */
     --primary-foreground: 0 0% 91%; /* #E8E8E6 */
- 
+
     --secondary: 188 30% 18%; /* #21393C */
     --secondary-foreground: 0 0% 91%; /* #E8E8E6 */
- 
+
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
- 
+
     --accent: 187 61% 47%; /* #30B7C6 */
     --accent-foreground: 0 0% 91%; /* #E8E8E6 */
- 
+
     --destructive: 0 84% 55%; /* #FF4444 */
     --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 20%;
     --input: 0 0% 12.2%; /* #1F2121 */
     --ring: 187 61% 47%; /* #30B7C6 */
- 
+
     --radius: 0.75rem;
-    
+
     /* Chart colors for data visualization */
     --chart-1: 187 61% 47%; /* #30B7C6 primary */
     --chart-2: 142 71% 45%; /* success green */
@@ -42,7 +42,7 @@
     --chart-4: 39 100% 50%; /* warning yellow */
     --chart-5: 280 100% 70%; /* purple accent */
   }
- 
+
   .light {
     /* Light theme (optional fallback) */
     --background: 0 0% 100%;
@@ -50,22 +50,22 @@
 
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
- 
+
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
- 
+
     --primary: 168 77% 39%;
     --primary-foreground: 0 0% 100%;
- 
+
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
- 
+
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
- 
+
     --accent: 240 4.8% 95.9%;
     --accent-foreground: 240 5.9% 10%;
- 
+
     --destructive: 0 84% 55%;
     --destructive-foreground: 0 0% 100%;
 
@@ -79,64 +79,81 @@
   * {
     @apply border-border;
   }
-  
+
   html {
     @apply scroll-smooth;
   }
-  
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background: #191A1A;
+    background: #191a1a;
   }
-  
+
   /* Enhanced Typography */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-semibold tracking-tight;
   }
-  
-  h1 { @apply text-4xl md:text-5xl lg:text-6xl; }
-  h2 { @apply text-3xl md:text-4xl lg:text-5xl; }
-  h3 { @apply text-2xl md:text-3xl lg:text-4xl; }
-  h4 { @apply text-xl md:text-2xl lg:text-3xl; }
-  h5 { @apply text-lg md:text-xl lg:text-2xl; }
-  h6 { @apply text-base md:text-lg lg:text-xl; }
-  
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+  h4 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+  h5 {
+    @apply text-lg md:text-xl lg:text-2xl;
+  }
+  h6 {
+    @apply text-base md:text-lg lg:text-xl;
+  }
+
   /* Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
-    background: #1F2121;
+    background: #1f2121;
   }
-  
+
   ::-webkit-scrollbar-thumb {
-    background: #30B7C6;
+    background: #30b7c6;
     border-radius: 9999px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
-    background: #2A9EAD;
+    background: #2a9ead;
   }
 }
 
 @layer components {
   /* Updated card component */
   .perplexity-card {
-    background: #1F2121;
+    background: #1f2121;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 0.75rem;
     padding: 1.5rem;
     transition: all 200ms;
   }
-  
+
   .perplexity-card:hover {
     border-color: rgba(48, 183, 198, 0.3);
   }
-  
+
   /* Metric card styling */
   .metric-card {
-    background: #1F2121;
+    background: #1f2121;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 0.75rem;
     padding: 1.5rem;
@@ -144,101 +161,101 @@
     overflow: hidden;
     transition: all 200ms;
   }
-  
+
   .metric-card::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, rgba(48, 183, 198, 0.05) 0%, transparent 100%);
     opacity: 0;
     transition: opacity 300ms;
   }
-  
+
   .metric-card:hover::before {
     opacity: 1;
   }
-  
+
   .metric-card:hover {
     border-color: rgba(48, 183, 198, 0.3);
   }
-  
+
   /* Dashboard specific styles */
   .dashboard-stat {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #E8E8E6;
+    color: #e8e8e6;
     margin-bottom: 0.25rem;
   }
-  
+
   .dashboard-stat-label {
     font-size: 0.875rem;
     color: rgba(232, 232, 230, 0.7);
   }
-  
+
   .dashboard-stat-change {
     font-size: 0.875rem;
     font-weight: 500;
   }
-  
+
   .dashboard-stat-change.positive {
     color: #22c55e;
   }
-  
+
   .dashboard-stat-change.negative {
     color: #ef4444;
   }
-  
+
   /* Button variants */
   .btn-primary {
-    background: #30B7C6;
-    color: #E8E8E6;
+    background: #30b7c6;
+    color: #e8e8e6;
     border: none;
     transition: all 200ms;
   }
-  
+
   .btn-primary:hover {
-    background: #21393C;
+    background: #21393c;
     box-shadow: 0 10px 25px rgba(48, 183, 198, 0.25);
   }
-  
+
   .btn-ghost {
     background: transparent;
     color: rgba(232, 232, 230, 0.7);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 200ms;
   }
-  
+
   .btn-ghost:hover {
-    background: #1F2121;
-    color: #E8E8E6;
+    background: #1f2121;
+    color: #e8e8e6;
   }
-  
+
   /* Search input styling */
   .search-input {
-    background: #1F2121;
+    background: #1f2121;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #E8E8E6;
+    color: #e8e8e6;
     transition: all 200ms;
   }
-  
+
   .search-input::placeholder {
     color: rgba(232, 232, 230, 0.5);
   }
-  
+
   .search-input:focus {
-    border-color: #30B7C6;
+    border-color: #30b7c6;
     outline: none;
     box-shadow: 0 0 0 3px rgba(48, 183, 198, 0.1);
   }
-  
+
   /* Data table styling */
   .data-table {
-    background: #1F2121;
+    background: #1f2121;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 0.75rem;
     overflow: hidden;
   }
-  
+
   .data-table th {
     background: rgba(255, 255, 255, 0.05);
     color: rgba(232, 232, 230, 0.8);
@@ -247,13 +264,13 @@
     padding: 0.75rem 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  
+
   .data-table td {
-    color: #E8E8E6;
+    color: #e8e8e6;
     padding: 0.75rem 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
-  
+
   .data-table tr:hover {
     background: rgba(48, 183, 198, 0.05);
   }

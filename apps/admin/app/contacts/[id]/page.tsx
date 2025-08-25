@@ -3,13 +3,13 @@
 import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { format } from 'date-fns';
-import { 
-  ArrowLeft, 
-  Save, 
-  Mail, 
-  Phone, 
-  Globe, 
-  Building2, 
+import {
+  ArrowLeft,
+  Save,
+  Mail,
+  Phone,
+  Globe,
+  Building2,
   Calendar,
   TrendingUp,
   Edit2,
@@ -19,14 +19,14 @@ import {
   Trash2,
   MessageSquare,
   FileText,
-  DollarSign
+  DollarSign,
 } from 'lucide-react';
 
-import { 
-  Button, 
-  Input, 
-  Label, 
-  Textarea, 
+import {
+  Button,
+  Input,
+  Label,
+  Textarea,
   Select,
   SelectContent,
   SelectItem,
@@ -78,15 +78,19 @@ export default function ContactDetailsPage() {
   const params = useParams();
   const router = useRouter();
   const contactId = parseInt(params.id as string);
-  
+
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState<ContactFormData | null>(null);
   const [newLabel, setNewLabel] = useState('');
 
   // Fetch contact data
-  const { data: contact, isLoading, refetch } = trpc.contact.getById.useQuery(
+  const {
+    data: contact,
+    isLoading,
+    refetch,
+  } = trpc.contact.getById.useQuery(
     { id: contactId },
-    { 
+    {
       enabled: !!contactId,
       onSuccess: (data) => {
         if (data) {
@@ -105,7 +109,7 @@ export default function ContactDetailsPage() {
             notes: data.notes || '',
           });
         }
-      }
+      },
     }
   );
 
@@ -134,7 +138,7 @@ export default function ContactDetailsPage() {
 
   const handleSave = () => {
     if (!formData || !contact) return;
-    
+
     updateContact.mutate({
       id: contactId,
       ...formData,
@@ -181,7 +185,7 @@ export default function ContactDetailsPage() {
     if (formData) {
       setFormData({
         ...formData,
-        labels: formData.labels.filter(l => l !== label),
+        labels: formData.labels.filter((l) => l !== label),
       });
     }
   };
@@ -216,11 +220,7 @@ export default function ContactDetailsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => router.push('/contacts')}
-          >
+          <Button variant="ghost" size="sm" onClick={() => router.push('/contacts')}>
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back
           </Button>
@@ -229,17 +229,21 @@ export default function ContactDetailsPage() {
               {isEditing ? 'Edit Contact' : `${contact.firstName} ${contact.lastName}`}
             </h1>
             <div className="flex items-center space-x-2 mt-1">
-              <Badge variant="secondary" className={`${statusConfig[contact.status as keyof typeof statusConfig]?.color || 'bg-gray-500'} text-white`}>
+              <Badge
+                variant="secondary"
+                className={`${statusConfig[contact.status as keyof typeof statusConfig]?.color || 'bg-gray-500'} text-white`}
+              >
                 {statusConfig[contact.status as keyof typeof statusConfig]?.label || contact.status}
               </Badge>
               {contact.group && (
-                <Badge variant="outline" className={`${groupConfig[contact.group as keyof typeof groupConfig]?.color || 'bg-gray-500'} text-white border-0`}>
+                <Badge
+                  variant="outline"
+                  className={`${groupConfig[contact.group as keyof typeof groupConfig]?.color || 'bg-gray-500'} text-white border-0`}
+                >
                   {groupConfig[contact.group as keyof typeof groupConfig]?.label || contact.group}
                 </Badge>
               )}
-              <span className="text-sm text-muted-foreground">
-                Lead Score: {contact.leadScore}
-              </span>
+              <span className="text-sm text-muted-foreground">Lead Score: {contact.leadScore}</span>
             </div>
           </div>
         </div>
@@ -257,7 +261,11 @@ export default function ContactDetailsPage() {
             </>
           ) : (
             <>
-              <Button variant="outline" onClick={handleDelete} className="text-red-600 hover:text-red-700">
+              <Button
+                variant="outline"
+                onClick={handleDelete}
+                className="text-red-600 hover:text-red-700"
+              >
                 <Trash2 className="mr-2 h-4 w-4" />
                 Delete
               </Button>
@@ -276,7 +284,7 @@ export default function ContactDetailsPage() {
         <div className="lg:col-span-2 space-y-6">
           <div className="perplexity-card">
             <h2 className="text-lg font-semibold text-primary mb-6">Contact Information</h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="firstName">First Name</Label>
@@ -290,7 +298,7 @@ export default function ContactDetailsPage() {
                   <p className="text-foreground">{contact.firstName}</p>
                 )}
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="lastName">Last Name</Label>
                 {isEditing ? (
@@ -303,7 +311,7 @@ export default function ContactDetailsPage() {
                   <p className="text-foreground">{contact.lastName}</p>
                 )}
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 {isEditing ? (
@@ -314,13 +322,16 @@ export default function ContactDetailsPage() {
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
                 ) : (
-                  <a href={`mailto:${contact.email}`} className="text-primary hover:underline flex items-center">
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="text-primary hover:underline flex items-center"
+                  >
                     <Mail className="mr-2 h-4 w-4" />
                     {contact.email}
                   </a>
                 )}
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone</Label>
                 {isEditing ? (
@@ -330,7 +341,10 @@ export default function ContactDetailsPage() {
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   />
                 ) : contact.phone ? (
-                  <a href={`tel:${contact.phone}`} className="text-primary hover:underline flex items-center">
+                  <a
+                    href={`tel:${contact.phone}`}
+                    className="text-primary hover:underline flex items-center"
+                  >
                     <Phone className="mr-2 h-4 w-4" />
                     {contact.phone}
                   </a>
@@ -338,7 +352,7 @@ export default function ContactDetailsPage() {
                   <p className="text-muted-foreground">Not provided</p>
                 )}
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="company">Company</Label>
                 {isEditing ? (
@@ -356,7 +370,7 @@ export default function ContactDetailsPage() {
                   <p className="text-muted-foreground">Not provided</p>
                 )}
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="website">Website</Label>
                 {isEditing ? (
@@ -366,7 +380,12 @@ export default function ContactDetailsPage() {
                     onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                   />
                 ) : contact.website ? (
-                  <a href={contact.website} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline flex items-center">
+                  <a
+                    href={contact.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:underline flex items-center"
+                  >
                     <Globe className="mr-2 h-4 w-4" />
                     {contact.website}
                   </a>
@@ -374,13 +393,15 @@ export default function ContactDetailsPage() {
                   <p className="text-muted-foreground">Not provided</p>
                 )}
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="status">Status</Label>
                 {isEditing ? (
                   <Select
                     value={formData.status}
-                    onValueChange={(value) => setFormData({ ...formData, status: value as ContactFormData['status'] })}
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, status: value as ContactFormData['status'] })
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue />
@@ -394,18 +415,27 @@ export default function ContactDetailsPage() {
                     </SelectContent>
                   </Select>
                 ) : (
-                  <Badge variant="secondary" className={`${statusConfig[contact.status as keyof typeof statusConfig]?.color || 'bg-gray-500'} text-white`}>
-                    {statusConfig[contact.status as keyof typeof statusConfig]?.label || contact.status}
+                  <Badge
+                    variant="secondary"
+                    className={`${statusConfig[contact.status as keyof typeof statusConfig]?.color || 'bg-gray-500'} text-white`}
+                  >
+                    {statusConfig[contact.status as keyof typeof statusConfig]?.label ||
+                      contact.status}
                   </Badge>
                 )}
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="group">Group</Label>
                 {isEditing ? (
                   <Select
                     value={formData.group || 'none'}
-                    onValueChange={(value) => setFormData({ ...formData, group: value === 'none' ? null : value as ContactFormData['group'] })}
+                    onValueChange={(value) =>
+                      setFormData({
+                        ...formData,
+                        group: value === 'none' ? null : (value as ContactFormData['group']),
+                      })
+                    }
                   >
                     <SelectTrigger>
                       <SelectValue />
@@ -420,7 +450,10 @@ export default function ContactDetailsPage() {
                     </SelectContent>
                   </Select>
                 ) : contact.group ? (
-                  <Badge variant="outline" className={`${groupConfig[contact.group as keyof typeof groupConfig]?.color || 'bg-gray-500'} text-white border-0`}>
+                  <Badge
+                    variant="outline"
+                    className={`${groupConfig[contact.group as keyof typeof groupConfig]?.color || 'bg-gray-500'} text-white border-0`}
+                  >
                     {groupConfig[contact.group as keyof typeof groupConfig]?.label || contact.group}
                   </Badge>
                 ) : (
@@ -428,7 +461,7 @@ export default function ContactDetailsPage() {
                 )}
               </div>
             </div>
-            
+
             {/* Social Profiles */}
             <div className="mt-6 space-y-4">
               <h3 className="text-md font-semibold text-foreground">Social Profiles</h3>
@@ -439,18 +472,25 @@ export default function ContactDetailsPage() {
                     <Input
                       id="linkedinProfile"
                       value={formData.linkedinProfile}
-                      onChange={(e) => setFormData({ ...formData, linkedinProfile: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, linkedinProfile: e.target.value })
+                      }
                       placeholder="linkedin.com/in/username"
                     />
                   ) : contact.linkedinProfile ? (
-                    <a href={contact.linkedinProfile} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    <a
+                      href={contact.linkedinProfile}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline"
+                    >
                       {contact.linkedinProfile}
                     </a>
                   ) : (
                     <p className="text-muted-foreground">Not provided</p>
                   )}
                 </div>
-                
+
                 <div className="space-y-2">
                   <Label htmlFor="xProfile">X (Twitter) Profile</Label>
                   {isEditing ? (
@@ -461,7 +501,12 @@ export default function ContactDetailsPage() {
                       placeholder="x.com/username"
                     />
                   ) : contact.xProfile ? (
-                    <a href={contact.xProfile} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    <a
+                      href={contact.xProfile}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline"
+                    >
                       {contact.xProfile}
                     </a>
                   ) : (
@@ -470,7 +515,7 @@ export default function ContactDetailsPage() {
                 </div>
               </div>
             </div>
-            
+
             {/* Labels */}
             <div className="mt-6 space-y-4">
               <h3 className="text-md font-semibold text-foreground">Labels</h3>
@@ -489,12 +534,13 @@ export default function ContactDetailsPage() {
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {formData.labels.map((label) => (
-                      <Badge key={label} variant="secondary" className="flex items-center space-x-1">
+                      <Badge
+                        key={label}
+                        variant="secondary"
+                        className="flex items-center space-x-1"
+                      >
                         <span>{label}</span>
-                        <X
-                          className="h-3 w-3 cursor-pointer"
-                          onClick={() => removeLabel(label)}
-                        />
+                        <X className="h-3 w-3 cursor-pointer" onClick={() => removeLabel(label)} />
                       </Badge>
                     ))}
                   </div>
@@ -513,7 +559,7 @@ export default function ContactDetailsPage() {
                 </div>
               )}
             </div>
-            
+
             {/* Notes */}
             <div className="mt-6 space-y-4">
               <h3 className="text-md font-semibold text-foreground">Notes</h3>
@@ -551,14 +597,18 @@ export default function ContactDetailsPage() {
                   <Calendar className="h-4 w-4 text-muted-foreground" />
                   <span className="text-sm text-muted-foreground">Created</span>
                 </div>
-                <span className="text-sm">{format(new Date(contact.createdAt), 'MMM dd, yyyy')}</span>
+                <span className="text-sm">
+                  {format(new Date(contact.createdAt), 'MMM dd, yyyy')}
+                </span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <Calendar className="h-4 w-4 text-muted-foreground" />
                   <span className="text-sm text-muted-foreground">Last Updated</span>
                 </div>
-                <span className="text-sm">{format(new Date(contact.updatedAt), 'MMM dd, yyyy')}</span>
+                <span className="text-sm">
+                  {format(new Date(contact.updatedAt), 'MMM dd, yyyy')}
+                </span>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
@@ -574,12 +624,20 @@ export default function ContactDetailsPage() {
           <div className="perplexity-card">
             <h3 className="text-lg font-semibold text-primary mb-4">Quick Actions</h3>
             <div className="space-y-2">
-              <Button variant="outline" className="w-full justify-start" onClick={() => window.location.href = `mailto:${contact.email}`}>
+              <Button
+                variant="outline"
+                className="w-full justify-start"
+                onClick={() => (window.location.href = `mailto:${contact.email}`)}
+              >
                 <Mail className="mr-2 h-4 w-4" />
                 Send Email
               </Button>
               {contact.phone && (
-                <Button variant="outline" className="w-full justify-start" onClick={() => window.location.href = `tel:${contact.phone}`}>
+                <Button
+                  variant="outline"
+                  className="w-full justify-start"
+                  onClick={() => (window.location.href = `tel:${contact.phone}`)}
+                >
                   <Phone className="mr-2 h-4 w-4" />
                   Call Contact
                 </Button>
@@ -603,7 +661,9 @@ export default function ContactDetailsPage() {
                 <div className="w-2 h-2 rounded-full bg-primary mt-1.5"></div>
                 <div className="flex-1">
                   <p className="text-sm">Contact created</p>
-                  <p className="text-xs text-muted-foreground">{format(new Date(contact.createdAt), 'MMM dd, yyyy h:mm a')}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {format(new Date(contact.createdAt), 'MMM dd, yyyy h:mm a')}
+                  </p>
                 </div>
               </div>
               {contact.updatedAt !== contact.createdAt && (
@@ -611,7 +671,9 @@ export default function ContactDetailsPage() {
                   <div className="w-2 h-2 rounded-full bg-blue-500 mt-1.5"></div>
                   <div className="flex-1">
                     <p className="text-sm">Contact updated</p>
-                    <p className="text-xs text-muted-foreground">{format(new Date(contact.updatedAt), 'MMM dd, yyyy h:mm a')}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {format(new Date(contact.updatedAt), 'MMM dd, yyyy h:mm a')}
+                    </p>
                   </div>
                 </div>
               )}

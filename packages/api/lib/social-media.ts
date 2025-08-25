@@ -107,9 +107,9 @@ export class SocialMediaService {
       });
 
       const posts: SocialMediaPost[] = [];
-      
+
       for (const tweet of timeline.data.data || []) {
-        const author = timeline.includes?.users?.find(u => u.id === tweet.author_id);
+        const author = timeline.includes?.users?.find((u) => u.id === tweet.author_id);
         if (!author) continue;
 
         posts.push({
@@ -245,7 +245,7 @@ Focus on:
 
     const inspirationText = inspiration
       .slice(0, 5)
-      .map(p => p.content)
+      .map((p) => p.content)
       .join('\n---\n');
 
     const prompt = `Based on these trending social media posts about commercial real estate and PropTech, create an engaging ${platform} post:
@@ -289,7 +289,7 @@ Make it engaging, informative, and optimized for ${platform}'s audience.`;
       });
 
       const generated = JSON.parse(text);
-      
+
       return {
         content: generated.content,
         platform,
@@ -339,14 +339,14 @@ Make it engaging, informative, and optimized for ${platform}'s audience.`;
       const processedUsers = new Set<string>();
 
       for (const tweet of searchResults.data.data || []) {
-        const author = searchResults.includes?.users?.find(u => u.id === tweet.author_id);
+        const author = searchResults.includes?.users?.find((u) => u.id === tweet.author_id);
         if (!author || processedUsers.has(author.id)) continue;
-        
+
         processedUsers.add(author.id);
 
         // Use AI to analyze the user's profile and recent content
         const analysis = await this.analyzeLeadProfile(author, [tweet.text]);
-        
+
         leads.push({
           platform: 'twitter',
           username: author.username,
@@ -389,7 +389,10 @@ Make it engaging, informative, and optimized for ${platform}'s audience.`;
     ];
   }
 
-  private async analyzeLeadProfile(user: any, recentPosts: string[]): Promise<{
+  private async analyzeLeadProfile(
+    user: any,
+    recentPosts: string[]
+  ): Promise<{
     topics: string[];
     sentiment: 'positive' | 'negative' | 'neutral';
     leadScore: number;

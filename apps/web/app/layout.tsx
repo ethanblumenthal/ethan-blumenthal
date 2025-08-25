@@ -13,11 +13,7 @@ export const metadata = {
   description: 'Portfolio website for a Ethan Blumenthal, Co-Founder and CTO',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={inter.className}>

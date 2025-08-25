@@ -15,20 +15,25 @@ export const NAV_ITEMS = [
 ];
 
 export const PROJECTS = [
-    {
-      title: 'Flow AI',
-      category: 'Agentic CRE Workflows',
-      image: '/flow.jpg',
-      slug: 'flow',
-      gradient: 'from-primary/20',
-      description:
-        'Flow AI is revolutionizing commercial real estate with its agentic workforce. Designed to streamline the formulaic yet human-dependent processes of private equity firms, Flow replaces investor relations and financial modeling teams by answering complex queries, analyzing deal data, and enabling a unique "Vibe Modeling" experience. Flow AI addresses inefficiencies in a historically opaque market, reducing costs, closing times, and errors while unlocking untapped data potential.',
-      year: '2024-2025',
-      position: 'Co-Founder, CTO',
-      location: 'Austin, TX',
-      previewUrl: 'https://flowcre.ai',
-      desktopImages: ['/liquid/flow-1.png', '/liquid/flow-2.png', '/liquid/flow-3.png', '/liquid/flow-4.png'],
-    },
+  {
+    title: 'Flow AI',
+    category: 'Agentic CRE Workflows',
+    image: '/flow.jpg',
+    slug: 'flow',
+    gradient: 'from-primary/20',
+    description:
+      'Flow AI is revolutionizing commercial real estate with its agentic workforce. Designed to streamline the formulaic yet human-dependent processes of private equity firms, Flow replaces investor relations and financial modeling teams by answering complex queries, analyzing deal data, and enabling a unique "Vibe Modeling" experience. Flow AI addresses inefficiencies in a historically opaque market, reducing costs, closing times, and errors while unlocking untapped data potential.',
+    year: '2024-2025',
+    position: 'Co-Founder, CTO',
+    location: 'Austin, TX',
+    previewUrl: 'https://flowcre.ai',
+    desktopImages: [
+      '/liquid/flow-1.png',
+      '/liquid/flow-2.png',
+      '/liquid/flow-3.png',
+      '/liquid/flow-4.png',
+    ],
+  },
   {
     title: 'Cityfunds',
     category: 'Home Equity Originations',
@@ -218,7 +223,7 @@ export const WORK_EXPERIENCES: WorkExperience[] = [
       'Built RAG pipelines and chatbot interface allowing firms to interact with their deals',
       'Architected first of its kind context management system for large Excel workbooks',
       'Executed go-to-market strategy bringing product and business from zero to one',
-      'Setup funnels and event tracking for marketing conversions and product analytics'
+      'Setup funnels and event tracking for marketing conversions and product analytics',
     ],
   },
   {
@@ -234,7 +239,7 @@ export const WORK_EXPERIENCES: WorkExperience[] = [
       'Built web app, mobile app, and APIs for the Cityfunds investment platform',
       'Integrated CRM and AI powered tools to scale origination processing',
       'Made 2200+ contributions including pull requests, commits, and code reviews',
-      'Managed a cross-functional engineering team of three individuals'
+      'Managed a cross-functional engineering team of three individuals',
     ],
   },
   {
@@ -249,8 +254,8 @@ export const WORK_EXPERIENCES: WorkExperience[] = [
       'Tokenized $850k in institutional grade commercial real estate assets',
       'Grew user base to 3500+ investors and signed up five private equity clients',
       'Architected ERC-1404 standard security token offerings on Arbitrum',
-      'Designed automated market maker based on SushiSwap\'s Trident framework',
-      'Pitched potential investors and spoke at conferences to evangelize business'
+      "Designed automated market maker based on SushiSwap's Trident framework",
+      'Pitched potential investors and spoke at conferences to evangelize business',
     ],
   },
   {
@@ -266,7 +271,7 @@ export const WORK_EXPERIENCES: WorkExperience[] = [
       'Performed code reviews and oversaw documentation & deployment pipelines',
       'Implemented credit and ACH payments using Stripe billing APIs for Verizon',
       'Integrated a CMS with transit readerboards for Outfront Media in Miami',
-      'Led frontend development for an Intranet build for Southwest Airlines'
+      'Led frontend development for an Intranet build for Southwest Airlines',
     ],
   },
   {
@@ -280,7 +285,7 @@ export const WORK_EXPERIENCES: WorkExperience[] = [
     bullets: [
       'Launched publicity and marketing campaigns earning 10M+ impressions',
       'Created content strategies for social media, advertising, and newsletters',
-      'Oversaw the design and development of artist websites and stores'
+      'Oversaw the design and development of artist websites and stores',
     ],
   },
 ];

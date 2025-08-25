@@ -8,9 +8,7 @@ export default function ProjectsPage() {
       <FadeIn>
         <section className="py-12">
           <h1 className="text-6xl font-bold text-white mb-4">My Projects</h1>
-          <p className="text-xl text-gray-400">
-            I build crypto and AI products for real estate.
-          </p>
+          <p className="text-xl text-gray-400">I build crypto and AI products for real estate.</p>
         </section>
       </FadeIn>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

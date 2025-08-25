@@ -2,20 +2,40 @@ import { pgTable, serial, text, integer, timestamp, pgEnum } from 'drizzle-orm/p
 import { sql } from 'drizzle-orm';
 
 export const contactStatusEnum = pgEnum('contact_status', [
-  'prospect', 'qualified', 'engaged', 'converted', 'lost'
+  'prospect',
+  'qualified',
+  'engaged',
+  'converted',
+  'lost',
 ]);
 
 export const contactGroupEnum = pgEnum('contact_group', [
-  'venture_capital', 'private_equity', 'angel_investor', 'lender', 'broker'
+  'venture_capital',
+  'private_equity',
+  'angel_investor',
+  'lender',
+  'broker',
 ]);
 
 export const contactSourceEnum = pgEnum('contact_source', [
-  'website', 'linkedin', 'twitter', 'manual'
+  'website',
+  'linkedin',
+  'twitter',
+  'manual',
 ]);
 
 export const contactLabelEnum = pgEnum('contact_label', [
-  'multifamily', 'office', 'retail', 'industrial', 'prop_tech',
-  'crypto', 'bitcoin', 'vertical_saas', 'early_stage', 'generalist', 'accelerator'
+  'multifamily',
+  'office',
+  'retail',
+  'industrial',
+  'prop_tech',
+  'crypto',
+  'bitcoin',
+  'vertical_saas',
+  'early_stage',
+  'generalist',
+  'accelerator',
 ]);
 
 export const contacts = pgTable('contacts', {

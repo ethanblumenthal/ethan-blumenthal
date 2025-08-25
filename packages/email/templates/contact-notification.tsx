@@ -35,12 +35,14 @@ export default function ContactNotification({
   labels,
 }: ContactNotificationProps) {
   const formatLabel = (label: string) =>
-    label.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    label.replace(/_/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
 
   return (
     <Html>
       <Head />
-      <Preview>New {source} contact: {firstName} {lastName}</Preview>
+      <Preview>
+        New {source} contact: {firstName} {lastName}
+      </Preview>
       <Tailwind>
         <Body className="bg-gray-100 font-sans">
           <Container className="mx-auto py-8 px-4 max-w-2xl">
@@ -57,13 +59,15 @@ export default function ContactNotification({
               <Heading className="text-gray-800 text-xl font-semibold mt-0 mb-4">
                 Contact Information
               </Heading>
-              
+
               <Section className="mb-6">
                 <table className="w-full">
                   <tbody>
                     <tr>
                       <td className="py-2 font-semibold text-gray-700 w-32">Name:</td>
-                      <td className="py-2 text-gray-800">{firstName} {lastName}</td>
+                      <td className="py-2 text-gray-800">
+                        {firstName} {lastName}
+                      </td>
                     </tr>
                     <tr>
                       <td className="py-2 font-semibold text-gray-700">Email:</td>
@@ -99,13 +103,9 @@ export default function ContactNotification({
 
               {message && (
                 <Section className="mb-6">
-                  <Heading className="text-gray-800 text-lg font-semibold mb-3">
-                    Message
-                  </Heading>
+                  <Heading className="text-gray-800 text-lg font-semibold mb-3">Message</Heading>
                   <Section className="bg-gray-50 rounded-lg p-4">
-                    <Text className="text-gray-700 whitespace-pre-wrap m-0">
-                      {message}
-                    </Text>
+                    <Text className="text-gray-700 whitespace-pre-wrap m-0">{message}</Text>
                   </Section>
                 </Section>
               )}

@@ -5,7 +5,7 @@ async function renderTemplate(templateName: string, props: any) {
   try {
     const { render } = await import('@react-email/render');
     let template;
-    
+
     switch (templateName) {
       case 'newsletter-welcome':
         template = (await import('./templates/newsletter-welcome')).default;
@@ -31,7 +31,7 @@ async function renderTemplate(templateName: string, props: any) {
       default:
         throw new Error(`Unknown template: ${templateName}`);
     }
-    
+
     return render(template(props));
   } catch (error) {
     console.error(`Failed to render template ${templateName}:`, error);
@@ -46,13 +46,13 @@ const createMockResend = () => ({
     send: async (options: any) => {
       console.warn('Email send attempted without RESEND_API_KEY:', options.subject);
       return { data: { id: 'mock-email-id' }, error: null };
-    }
-  }
+    },
+  },
 });
 
-const resend = process.env.RESEND_API_KEY 
+const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
-  : createMockResend() as any;
+  : (createMockResend() as any);
 
 interface BaseEmailOptions {
   to: string;
@@ -122,12 +122,9 @@ export class EmailService {
   private readonly defaultReplyTo = 'ethan@ethanblumenthal.com';
 
   // Newsletter welcome email
-  async sendNewsletterWelcome(
-    data: NewsletterWelcomeData,
-    options: BaseEmailOptions
-  ) {
+  async sendNewsletterWelcome(data: NewsletterWelcomeData, options: BaseEmailOptions) {
     const html = await renderTemplate('newsletter-welcome', data);
-    
+
     return this.sendEmail({
       ...options,
       subject: 'Welcome to PropTech & Bitcoin Insights',
@@ -141,7 +138,7 @@ export class EmailService {
     options: Partial<BaseEmailOptions> = {}
   ) {
     const html = await renderTemplate('contact-notification', data);
-    
+
     return this.sendEmail({
       to: options.to || this.defaultReplyTo,
       subject: `New ${data.source} contact: ${data.firstName} ${data.lastName}`,
@@ -152,12 +149,9 @@ export class EmailService {
   }
 
   // Follow-up email to new contacts
-  async sendContactFollowUp(
-    data: ContactFollowUpData,
-    options: BaseEmailOptions
-  ) {
+  async sendContactFollowUp(data: ContactFollowUpData, options: BaseEmailOptions) {
     const html = await renderTemplate('contact-followup', data);
-    
+
     return this.sendEmail({
       ...options,
       subject: 'Thank you for your interest in PropTech opportunities',
@@ -166,17 +160,14 @@ export class EmailService {
   }
 
   // Campaign-specific follow-up emails
-  async sendCampaignFollowUp(
-    data: CampaignFollowUpData,
-    options: BaseEmailOptions
-  ) {
+  async sendCampaignFollowUp(data: CampaignFollowUpData, options: BaseEmailOptions) {
     const html = await renderTemplate('campaign-followup', data);
     const campaignNames = {
       proptech: 'PropTech',
       bitcoin: 'Bitcoin + Real Estate',
       cre: 'Commercial Real Estate',
     };
-    
+
     return this.sendEmail({
       ...options,
       subject: `Your ${campaignNames[data.campaign]} investment opportunities`,
@@ -185,12 +176,9 @@ export class EmailService {
   }
 
   // Blog post notification to subscribers
-  async sendBlogNotification(
-    data: BlogNotificationData,
-    options: BaseEmailOptions
-  ) {
+  async sendBlogNotification(data: BlogNotificationData, options: BaseEmailOptions) {
     const html = await renderTemplate('blog-notification', data);
-    
+
     return this.sendEmail({
       ...options,
       subject: `${data.blogTitle} - New on CRE Insights`,
@@ -199,13 +187,10 @@ export class EmailService {
   }
 
   // Lead nurture emails based on scoring
-  async sendLeadNurture(
-    data: LeadNurtureData,
-    options: BaseEmailOptions
-  ) {
+  async sendLeadNurture(data: LeadNurtureData, options: BaseEmailOptions) {
     const html = await renderTemplate('lead-nurture', data);
     const temp = data.leadScore >= 80 ? 'Hot' : data.leadScore >= 60 ? 'Warm' : 'Cool';
-    
+
     return this.sendEmail({
       ...options,
       subject: `Your personalized CRE insights - ${temp} lead follow-up`,
@@ -220,7 +205,7 @@ export class EmailService {
   ) {
     const html = await renderTemplate('social-content-approval', data);
     const platformName = data.platform === 'twitter' ? 'Twitter/X' : 'LinkedIn';
-    
+
     return this.sendEmail({
       to: options.to || this.defaultReplyTo,
       subject: `AI-generated ${platformName} post awaiting approval`,
@@ -237,7 +222,7 @@ export class EmailService {
   ) {
     const { render } = await import('@react-email/render');
     const html = render(component);
-    
+
     return this.sendEmail({
       ...options,
       html,
@@ -272,7 +257,7 @@ export class EmailService {
         to,
         subject,
       });
-      
+
       return result;
     } catch (error) {
       console.error('Email sending failed:', {
@@ -295,10 +280,10 @@ export class EmailService {
   ) {
     const { batchSize = 50, delayBetweenBatches = 1000 } = options;
     const results = [];
-    
+
     for (let i = 0; i < emailData.length; i += batchSize) {
       const batch = emailData.slice(i, i + batchSize);
-      
+
       const batchPromises = batch.map(async (data) => {
         try {
           return await templateFunction(data);
@@ -307,16 +292,16 @@ export class EmailService {
           return { error, email: data.email };
         }
       });
-      
+
       const batchResults = await Promise.allSettled(batchPromises);
       results.push(...batchResults);
-      
+
       // Delay between batches to respect rate limits
       if (i + batchSize < emailData.length) {
-        await new Promise(resolve => setTimeout(resolve, delayBetweenBatches));
+        await new Promise((resolve) => setTimeout(resolve, delayBetweenBatches));
       }
     }
-    
+
     return results;
   }
 }

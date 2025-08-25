@@ -1,9 +1,30 @@
-import { pgTable, serial, text, timestamp, pgEnum, integer, boolean, json } from 'drizzle-orm/pg-core';
+import {
+  pgTable,
+  serial,
+  text,
+  timestamp,
+  pgEnum,
+  integer,
+  boolean,
+  json,
+} from 'drizzle-orm/pg-core';
 import { sql } from 'drizzle-orm';
 
 // Enums for social media functionality
-export const socialPlatformEnum = pgEnum('social_platform', ['twitter', 'linkedin', 'facebook', 'instagram']);
-export const postStatusEnum = pgEnum('post_status', ['pending_approval', 'approved', 'rejected', 'scheduled', 'posted', 'failed']);
+export const socialPlatformEnum = pgEnum('social_platform', [
+  'twitter',
+  'linkedin',
+  'facebook',
+  'instagram',
+]);
+export const postStatusEnum = pgEnum('post_status', [
+  'pending_approval',
+  'approved',
+  'rejected',
+  'scheduled',
+  'posted',
+  'failed',
+]);
 export const sentimentEnum = pgEnum('sentiment', ['positive', 'negative', 'neutral']);
 
 // Social media accounts table (for connecting user accounts)

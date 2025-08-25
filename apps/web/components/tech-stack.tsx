@@ -4,18 +4,16 @@ import { TECHNOLOGIES } from '@/lib/constants';
 
 export default function TechStack() {
   const categories = Object.keys(TECHNOLOGIES) as (keyof typeof TECHNOLOGIES)[];
-  
+
   return (
     <section className="py-16">
       <div className="space-y-12">
         {/* Section header */}
         <div className="space-y-2">
           <h2 className="text-3xl md:text-4xl font-bold text-white">Technology Stack</h2>
-          <p className="text-lg text-gray-400">
-            Core technologies powering modern solutions
-          </p>
+          <p className="text-lg text-gray-400">Core technologies powering modern solutions</p>
         </div>
-        
+
         {/* Technology categories */}
         {categories.map((category) => (
           <div key={category} className="space-y-4">
@@ -28,7 +26,7 @@ export default function TechStack() {
                 >
                   <div className="flex flex-col items-center text-center space-y-3 py-2">
                     {tech.customIcon ? (
-                      <Image 
+                      <Image
                         src={tech.customIcon}
                         alt={tech.name}
                         width={40}
@@ -36,15 +34,13 @@ export default function TechStack() {
                         className="object-contain"
                       />
                     ) : (
-                      <StackIcon 
-                        name={tech.iconName} 
+                      <StackIcon
+                        name={tech.iconName}
                         className="w-10 h-10"
                         {...(tech.variant ? { variant: tech.variant } : {})}
                       />
                     )}
-                    <h3 className="text-sm font-semibold text-white">
-                      {tech.name}
-                    </h3>
+                    <h3 className="text-sm font-semibold text-white">{tech.name}</h3>
                   </div>
                 </div>
               ))}

@@ -39,17 +39,15 @@ export default function ContactFollowUp({
             {/* Main Content */}
             <Section className="bg-white rounded-b-lg p-8 shadow-lg">
               <Text className="text-lg text-gray-800 mb-4">Hi {firstName},</Text>
-              
+
               <Text className="text-gray-700 mb-6">
-                Thank you for your interest in PropTech and commercial real estate 
-                investment opportunities. I've received your inquiry and will personally 
-                review it within the next 24 hours.
+                Thank you for your interest in PropTech and commercial real estate investment
+                opportunities. I've received your inquiry and will personally review it within the
+                next 24 hours.
               </Text>
 
-              <Text className="text-gray-800 font-semibold mb-3">
-                What happens next:
-              </Text>
-              
+              <Text className="text-gray-800 font-semibold mb-3">What happens next:</Text>
+
               <Section className="mb-6">
                 <Section className="flex items-start mb-3">
                   <Text className="text-gray-700 font-semibold mr-2">1.</Text>
@@ -60,7 +58,7 @@ export default function ContactFollowUp({
                     </Text>
                   </Section>
                 </Section>
-                
+
                 <Section className="flex items-start mb-3">
                   <Text className="text-gray-700 font-semibold mr-2">2.</Text>
                   <Section>
@@ -70,7 +68,7 @@ export default function ContactFollowUp({
                     </Text>
                   </Section>
                 </Section>
-                
+
                 <Section className="flex items-start">
                   <Text className="text-gray-700 font-semibold mr-2">3.</Text>
                   <Section>
@@ -88,8 +86,8 @@ export default function ContactFollowUp({
                   📈 In the Meantime
                 </Heading>
                 <Text className="text-green-700 mb-4">
-                  Check out my latest insights on PropTech trends and follow me on 
-                  LinkedIn for daily market updates.
+                  Check out my latest insights on PropTech trends and follow me on LinkedIn for
+                  daily market updates.
                 </Text>
                 <Section className="flex gap-4 justify-center">
                   <Button
@@ -112,12 +110,10 @@ export default function ContactFollowUp({
               {/* Signature */}
               <Text className="text-gray-700 mb-2">Best,</Text>
               <Text className="text-gray-800 font-bold">Ethan Blumenthal</Text>
-              <Text className="text-gray-600 text-sm">
-                Co-Founder & CTO | PropTech Investor
-              </Text>
+              <Text className="text-gray-600 text-sm">Co-Founder & CTO | PropTech Investor</Text>
 
               <Hr className="my-6" />
-              
+
               {/* Footer */}
               <Text className="text-gray-500 text-xs text-center">
                 You received this email because you contacted us through ethanblumenthal.com.

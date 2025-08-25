@@ -37,7 +37,7 @@ export default function LeadNurture({
 
   const temp = getLeadTemperature(leadScore);
   const formatTopic = (topic: string) =>
-    topic.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    topic.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
 
   return (
     <Html>
@@ -59,11 +59,11 @@ export default function LeadNurture({
             {/* Main Content */}
             <Section className="bg-white rounded-b-lg p-8 shadow-lg">
               <Text className="text-lg text-gray-800 mb-4">Hi {firstName},</Text>
-              
+
               <Text className="text-gray-700 mb-6">
                 Based on your {daysInPipeline} days in our network and your interest in{' '}
-                {topics.map(formatTopic).join(', ')}, I have some tailored insights 
-                and opportunities to share.
+                {topics.map(formatTopic).join(', ')}, I have some tailored insights and
+                opportunities to share.
               </Text>
 
               {/* Lead Score Section */}
@@ -72,9 +72,7 @@ export default function LeadNurture({
                   <Heading className={`${temp.color} text-xl font-bold mt-0 mb-0`}>
                     Your Investment Profile: {temp.label} Lead
                   </Heading>
-                  <Text className={`${temp.color} font-bold text-lg m-0`}>
-                    {leadScore}/100
-                  </Text>
+                  <Text className={`${temp.color} font-bold text-lg m-0`}>{leadScore}/100</Text>
                 </Section>
                 <Text className="text-gray-700 m-0">
                   Your engagement level and investment criteria suggest you're a{' '}
@@ -105,36 +103,37 @@ export default function LeadNurture({
                 <Heading className="text-indigo-800 text-lg font-semibold mt-0 mb-4">
                   💼 Opportunities Matching Your Interests
                 </Heading>
-                
+
                 {topics.includes('proptech') && (
                   <Section className="mb-4">
                     <Text className="text-indigo-700 font-semibold mb-2">PropTech Focus:</Text>
                     <Text className="text-gray-700 mb-0">
                       • AI property management platform raising Series A
-                      <br />
-                      • Virtual tour technology with 300% YoY growth
+                      <br />• Virtual tour technology with 300% YoY growth
                     </Text>
                   </Section>
                 )}
 
                 {topics.includes('bitcoin') && (
                   <Section className="mb-4">
-                    <Text className="text-indigo-700 font-semibold mb-2">Bitcoin + Real Estate:</Text>
+                    <Text className="text-indigo-700 font-semibold mb-2">
+                      Bitcoin + Real Estate:
+                    </Text>
                     <Text className="text-gray-700 mb-0">
                       • Tokenized commercial property offering 8.5% APY
-                      <br />
-                      • BTC-backed real estate fund with institutional backing
+                      <br />• BTC-backed real estate fund with institutional backing
                     </Text>
                   </Section>
                 )}
 
                 {topics.includes('tokenization') && (
                   <Section className="mb-4">
-                    <Text className="text-indigo-700 font-semibold mb-2">Tokenization Opportunities:</Text>
+                    <Text className="text-indigo-700 font-semibold mb-2">
+                      Tokenization Opportunities:
+                    </Text>
                     <Text className="text-gray-700 mb-0">
                       • Fractional ownership platform pre-launch tokens
-                      <br />
-                      • Real estate DeFi protocol with yield farming
+                      <br />• Real estate DeFi protocol with yield farming
                     </Text>
                   </Section>
                 )}
@@ -148,8 +147,8 @@ export default function LeadNurture({
                       🔥 Priority Access Available
                     </Heading>
                     <Text className="text-red-100 mb-4">
-                      As a hot lead, you have priority access to our exclusive deal flow.
-                      Let's schedule a call this week to discuss specific opportunities.
+                      As a hot lead, you have priority access to our exclusive deal flow. Let's
+                      schedule a call this week to discuss specific opportunities.
                     </Text>
                     <Button
                       href="mailto:ethan@ethanblumenthal.com?subject=Priority Investment Discussion"
@@ -164,8 +163,8 @@ export default function LeadNurture({
                       ⚡ Ready to Move Forward?
                     </Heading>
                     <Text className="text-orange-100 mb-4">
-                      Based on your engagement, you're ready for the next level.
-                      Let's discuss how these opportunities align with your goals.
+                      Based on your engagement, you're ready for the next level. Let's discuss how
+                      these opportunities align with your goals.
                     </Text>
                     <Button
                       href="mailto:ethan@ethanblumenthal.com?subject=Investment Opportunity Discussion"
@@ -180,8 +179,8 @@ export default function LeadNurture({
                       📚 Learn More First?
                     </Heading>
                     <Text className="text-blue-100 mb-4">
-                      I'd love to help you learn more about these opportunities.
-                      Check out my latest insights or let's have a quick intro call.
+                      I'd love to help you learn more about these opportunities. Check out my latest
+                      insights or let's have a quick intro call.
                     </Text>
                     <Section className="flex gap-4 justify-center">
                       <Button
@@ -204,12 +203,10 @@ export default function LeadNurture({
               {/* Signature */}
               <Text className="text-gray-700 mb-2">Best regards,</Text>
               <Text className="text-gray-800 font-bold">Ethan Blumenthal</Text>
-              <Text className="text-gray-600 text-sm">
-                Co-Founder & CTO | PropTech Investor
-              </Text>
+              <Text className="text-gray-600 text-sm">Co-Founder & CTO | PropTech Investor</Text>
 
               <Hr className="my-6" />
-              
+
               {/* Footer */}
               <Text className="text-gray-500 text-xs text-center">
                 This personalized email was sent based on your interests and engagement.
