@@ -19,7 +19,7 @@ export { Input } from './input';
 export { Label } from './label';
 export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './select';
 export { Separator } from './separator';
-export { Sheet, SheetContent, SheetTrigger } from './sheet';
+export { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetDescription } from './sheet';
 export {
   Table,
   TableBody,

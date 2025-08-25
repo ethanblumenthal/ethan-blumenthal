@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button';
 import { PROJECTS } from '@/lib/constants';
 import Link from 'next/link';
 import { ExternalLink, TrendingUp, Building2, Users, Calendar } from 'lucide-react';
@@ -75,15 +74,15 @@ export default function SelectedProjects() {
                   <div className="flex items-center gap-4 pt-2">
                     <div className="flex items-center gap-1.5">
                       <Building2 className="h-4 w-4 text-gray-500" />
-                      <span className="text-xs text-gray-500">PropTech</span>
+                      <span className="text-xs text-gray-500">{project.customer}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <TrendingUp className="h-4 w-4 text-gray-500" />
+                      <span className="text-xs text-gray-500">{project.stage}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <Calendar className="h-4 w-4 text-gray-500" />
                       <span className="text-xs text-gray-500">{project.location}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <TrendingUp className="h-4 w-4 text-green-400" />
-                      <span className="text-xs text-green-400">Growth Stage</span>
                     </div>
                   </div>
                 </div>

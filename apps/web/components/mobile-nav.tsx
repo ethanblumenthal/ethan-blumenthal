@@ -4,37 +4,53 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Menu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from '@personal-app/ui';
-import { Button } from '@/components/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@personal-app/ui';
 import { NAV_ITEMS, SOCIAL_LINKS } from '@/lib/constants';
 
 const MobileNav = () => {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-  const closeSheet = () => setOpen(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger asChild>
-        <Button
-          variant="ghost"
-          className="px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+    <>
+      {/* Menu Button */}
+      <button
+        onClick={toggleMenu}
+        className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg hover:bg-accent transition-colors"
+        aria-label="Toggle menu"
+      >
+        <Menu className="h-6 w-6" />
+      </button>
+
+      {/* Overlay */}
+      {isOpen && <div className="md:hidden fixed inset-0 bg-black/50 z-40" onClick={closeMenu} />}
+
+      {/* Slide-out Menu */}
+      <div
+        className={cn(
+          'md:hidden fixed top-0 left-0 h-full w-[280px] bg-background border-r border-gray-800 z-50 transform transition-transform duration-300 ease-in-out',
+          isOpen ? 'translate-x-0' : '-translate-x-full'
+        )}
+      >
+        {/* Close Button */}
+        <button
+          onClick={closeMenu}
+          className="absolute top-4 right-4 p-2 rounded-lg hover:bg-accent transition-colors"
+          aria-label="Close menu"
         >
-          <Menu className="h-6 w-6" />
-          <span className="sr-only">Toggle Menu</span>
-        </Button>
-      </SheetTrigger>
-      <SheetContent side="left" className="pr-0 bg-background">
+          <X className="h-5 w-5" />
+        </button>
+
         <div className="flex h-full flex-col">
           {/* Profile Section */}
           <div className="p-6">
@@ -58,7 +74,7 @@ const MobileNav = () => {
               <Link
                 key={item.slug}
                 href={item.slug}
-                onClick={closeSheet}
+                onClick={closeMenu}
                 className={cn(
                   'flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground',
                   pathname === item.slug && 'bg-accent text-accent-foreground'
@@ -119,8 +135,8 @@ const MobileNav = () => {
             </div>
           </div>
         </div>
-      </SheetContent>
-    </Sheet>
+      </div>
+    </>
   );
 };
 

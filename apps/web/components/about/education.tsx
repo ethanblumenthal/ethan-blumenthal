@@ -15,7 +15,7 @@ const educationData: EducationItem[] = [
     degree: 'MS',
     field: 'Computer Science',
     period: 'Aug 2021 - May 2022',
-    logo: '/icons/texas.svg',
+    logo: '/icons/texas.png',
   },
   {
     institution: 'University of Illinois',
@@ -29,7 +29,7 @@ const educationData: EducationItem[] = [
     degree: 'Cert',
     field: 'Software Engineering',
     period: 'Jan 2019 - Apr 2019',
-    logo: '/fullstack.png',
+    logo: '/icons/fullstack.png',
   },
 ];
 

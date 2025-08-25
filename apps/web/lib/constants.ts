@@ -26,6 +26,8 @@ export const PROJECTS = [
     year: '2024-2025',
     position: 'Co-Founder, CTO',
     location: 'Austin, TX',
+    stage: 'Early Stage',
+    customer: 'B2B',
     previewUrl: 'https://flowcre.ai',
     desktopImages: [
       '/liquid/flow-1.png',
@@ -45,6 +47,8 @@ export const PROJECTS = [
     year: '2023-2024',
     position: 'VP of Engineering',
     location: 'Austin, TX',
+    stage: 'Growth Stage',
+    customer: 'B2C',
     previewUrl: 'https://www.app.cityfunds.com/',
     mobileImages: [],
     desktopImages: [
@@ -65,6 +69,8 @@ export const PROJECTS = [
     year: '2021-2023',
     position: 'Founding Engineer',
     location: 'Austin, TX',
+    stage: 'Early Stage',
+    customer: 'B2C',
     previewUrl: 'https://app.ownprop.com/',
     mobileImages: [
       '/ownprop/ownprop-1.webp',
