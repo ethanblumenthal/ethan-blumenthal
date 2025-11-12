@@ -77,7 +77,7 @@ export default function ProjectPage() {
         <FadeIn delay={0.6}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {project?.desktopImages.map((image, index) => (
-              <div key={index} className="relative h-[400px]">
+              <div key={index} className="relative h-[280px] md:h-[400px]">
                 <Image
                   src={image}
                   alt={`${project.title} screenshot ${index + 1}`}
