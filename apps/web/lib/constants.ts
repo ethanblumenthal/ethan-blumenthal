@@ -245,7 +245,7 @@ export const WORK_EXPERIENCES: WorkExperience[] = [
     company: 'Castle',
     tagline: 'Bitcoin treasury management for SMBs',
     location: 'Miami, FL',
-    period: '2025-Present',
+    period: 'Oct 2025 - Present',
     startDate: '2025',
     endDate: 'Present',
     title: 'Founding Engineer',
