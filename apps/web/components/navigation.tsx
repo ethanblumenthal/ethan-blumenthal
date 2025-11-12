@@ -22,7 +22,7 @@ const Navigation = () => {
             </Avatar>
             <div>
               <h2 className="text-xl font-semibold text-foreground">Ethan</h2>
-              <p className="text-sm text-muted-foreground">Co-Founder, CTO</p>
+              <p className="text-sm text-muted-foreground">Founding Engineer</p>
             </div>
           </div>
         </div>

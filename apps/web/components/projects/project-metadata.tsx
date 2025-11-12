@@ -3,20 +3,20 @@ import StatsCard from '@/components/ui/stats-card';
 interface ProjectMetadataProps {
   year: string;
   position: string;
-  category: string;
+  tagline: string;
   location: string;
 }
 
 export default function ProjectMetadata({
   year,
   position,
-  category,
+  tagline,
   location,
 }: ProjectMetadataProps) {
   const stats = [
     { value: year, label: 'Year' },
     { value: position, label: 'Position' },
-    { value: category, label: 'Category' },
+    { value: tagline, label: 'Category' },
     { value: location, label: 'Location' },
   ];
 

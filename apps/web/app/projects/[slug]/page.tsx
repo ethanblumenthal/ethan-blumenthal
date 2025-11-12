@@ -51,7 +51,7 @@ export default function ProjectPage() {
         <ProjectMetadata
           year={project.year}
           position={project.position}
-          category={project.category}
+          tagline={project.tagline}
           location={project.location}
         />
       </FadeIn>

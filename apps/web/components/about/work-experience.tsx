@@ -5,6 +5,7 @@ import { WORK_EXPERIENCES, type WorkExperience } from '@/lib/constants';
 export default function WorkExperience() {
   // Map company names to project slugs
   const projectLinks: Record<string, string> = {
+    Castle: '/projects/castle',
     'Flow AI': '/projects/flow',
     'Nada Finance': '/projects/cityfunds',
     OwnProp: '/projects/ownprop',
@@ -68,17 +69,19 @@ export default function WorkExperience() {
                         </div>
 
                         {/* Bullets */}
-                        <ul className="space-y-1">
-                          {experience.bullets.map((bullet, bulletIndex) => (
-                            <li
-                              key={bulletIndex}
-                              className="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors"
-                            >
-                              <span className="text-primary leading-relaxed">•</span>
-                              <span className="text-sm leading-relaxed">{bullet}</span>
-                            </li>
-                          ))}
-                        </ul>
+                        {experience.bullets.length > 0 && (
+                          <ul className="space-y-1">
+                            {experience.bullets.map((bullet, bulletIndex) => (
+                              <li
+                                key={bulletIndex}
+                                className="flex items-start gap-3 text-gray-400 group-hover:text-gray-300 transition-colors"
+                              >
+                                <span className="text-primary leading-relaxed">•</span>
+                                <span className="text-sm leading-relaxed">{bullet}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </div>
                     </div>
                   </Link>

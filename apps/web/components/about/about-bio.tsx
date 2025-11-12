@@ -3,7 +3,7 @@ import StatsCard from '@/components/ui/stats-card';
 
 export default function AboutBio() {
   const stats = [
-    { value: 'Austin, TX', label: 'Based In' },
+    { value: 'Miami, FL', label: 'Based In' },
     { value: '7', label: 'Years of Experience' },
     { value: '20+', label: 'Production Apps' },
   ];

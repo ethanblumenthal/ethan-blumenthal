@@ -16,9 +16,32 @@ export const NAV_ITEMS = [
 
 export const PROJECTS = [
   {
+    title: 'Castle',
+    category: 'Bitcoin SMB Treasuries',
+    tagline: 'Bitcoin for SMBs',
+    image: '/castle.png',
+    slug: 'castle',
+    gradient: 'from-primary/20',
+    description:
+      "Castle is on a mission to help businesses save. We believe fixing the money is of critical importance. With sound money like bitcoin we can finally enable hard-working businesses to save again. We're grateful to help build that future. Castle automates your bitcoin treasury with integrations to keep everything in sync. Link your payment or bookkeeping platform to keep allocations right-sized to your business. Built with purpose: simplify your operations, save your time, fortify your capital.",
+    year: '2025-Present',
+    position: 'Founding Engineer',
+    location: 'Miami, FL',
+    stage: 'Early Stage',
+    customer: 'B2B',
+    previewUrl: 'https://savewithcastle.com',
+    desktopImages: [
+      '/castle/castle-1.png',
+      '/castle/castle-2.png',
+      '/castle/castle-3.png',
+      '/castle/castle-4.png',
+    ],
+  },
+  {
     title: 'Flow AI',
     category: 'Agentic CRE Workflows',
-    image: '/flow.jpg',
+    tagline: 'AI for CRE',
+    image: '/flow.png',
     slug: 'flow',
     gradient: 'from-primary/20',
     description:
@@ -39,6 +62,7 @@ export const PROJECTS = [
   {
     title: 'Cityfunds',
     category: 'Home Equity Originations',
+    tagline: 'HEI Originations',
     image: '/cityfunds.webp',
     slug: 'cityfunds',
     gradient: 'from-blue-500/20',
@@ -61,6 +85,7 @@ export const PROJECTS = [
   {
     title: 'OwnProp',
     category: 'Tokenized CRE Investments',
+    tagline: 'Tokenized CRE',
     image: '/ownprop.png',
     slug: 'ownprop',
     gradient: 'from-blue-500/20',
@@ -216,6 +241,16 @@ export interface WorkExperience {
 }
 
 export const WORK_EXPERIENCES: WorkExperience[] = [
+  {
+    company: 'Castle',
+    tagline: 'Bitcoin treasury management for SMBs',
+    location: 'Miami, FL',
+    period: '2025-Present',
+    startDate: '2025',
+    endDate: 'Present',
+    title: 'Founding Engineer',
+    bullets: [],
+  },
   {
     company: 'Flow AI',
     tagline: 'Agentic workflows for commercial real estate',

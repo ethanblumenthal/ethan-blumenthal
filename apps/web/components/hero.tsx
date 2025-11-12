@@ -8,7 +8,7 @@ export default function Hero() {
         {/* Status badge */}
         <div className="inline-flex items-center rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary ring-1 ring-inset ring-primary/30 backdrop-blur-sm">
           <span className="mr-2 h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-          Looking for New Opportunities
+          Available for Coffee
         </div>
 
         {/* Main hero content */}
@@ -26,8 +26,8 @@ export default function Hero() {
           </div>
 
           <p className="text-lg md:text-xl text-gray-400 max-w-2xl leading-relaxed">
-            Combining Bitcoin, Crypto, and AI to build revolutionary FinTech and PropTech products.
-            7 years of experience engineering with emerging technologies.
+            Driving Bitcoin adoption by building revolutionary FinTech and PropTech products. 7
+            years of experience engineering with emerging technologies.
           </p>
         </div>
 
@@ -43,7 +43,7 @@ export default function Hero() {
           </div>
           <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-white/10">
             <Database className="h-4 w-4 text-primary" />
-            <span className="text-sm text-gray-300 font-medium">Infrastructure</span>
+            <span className="text-sm text-gray-300 font-medium">DevOps</span>
           </div>
           <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-dark-secondary border border-white/10">
             <Brain className="h-4 w-4 text-primary" />
