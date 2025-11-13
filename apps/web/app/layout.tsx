@@ -11,7 +11,12 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Ethan Blumenthal',
-  description: 'Portfolio website for a Ethan Blumenthal, Founding Engineer',
+  description: 'Portfolio website for Ethan Blumenthal, Founding Engineer',
+  icons: {
+    icon: '/logo.svg',
+    shortcut: '/logo.svg',
+    apple: '/logo.svg',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
